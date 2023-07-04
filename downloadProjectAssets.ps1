@@ -2,13 +2,14 @@ $serverDir = [System.Environment]::GetEnvironmentVariable("PROJECT_ASSETS_SERVER
 $localDir = [System.Environment]::GetEnvironmentVariable("PROJECT_ASSETS_LOCAL_DIR", "Machine")
 $isEnable = $TRUE
 
+Write-Output $serverDir
 if(Test-Path -Path $serverDir){
     Write-Output "server aru"
 }else{
     Write-Output "server nai"
     $isEnable = $FALSE
 }
-
+Write-Output $localDir
 if(Test-Path -Path $localDir){
     Write-Output "local aru"
 }else{
