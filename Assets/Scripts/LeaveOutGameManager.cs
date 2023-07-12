@@ -5,18 +5,15 @@ using UnityEngine.UI;
 
 public class LeaveOutGameManager : BaseGameManager
 {
+    //使用するイラスト
     Sprite sprite_a;
     Sprite sprite_b;
 
-    public int spriteMax = 31;
+    //画面上にあるアイコン
+    Image[] icon;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Arrangements();
-        }
-    }
+    //イラストの数（イラストの通し番号の最も大きい数）
+    public int spriteMax;
 
     public override void Arrangements()
     {
@@ -27,7 +24,7 @@ public class LeaveOutGameManager : BaseGameManager
         }
 
         int childCount = iconParent.transform.childCount;
-        Image[] icon = new Image[childCount];
+        icon = new Image[childCount];
 
         for (int n = 0; n < childCount; n++)
         {
@@ -37,10 +34,15 @@ public class LeaveOutGameManager : BaseGameManager
             icon[n] = childObject.GetComponent<Image>();
         }
 
+        RandomChange();
+    }
+
+    void RandomChange()
+    {
         int randomIcon = Random.Range(0, icon.Length);
         spriteMax++;
-        int randomTexture = Random.Range(0, spriteMax); 
-        
+        int randomTexture = Random.Range(0, spriteMax);
+
         if (Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture))
         {
             sprite_a = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
@@ -66,5 +68,10 @@ public class LeaveOutGameManager : BaseGameManager
 
             icon[i].sprite = sprite_a;
         }
+    }
+
+    public override void TimeUp()
+    {
+        
     }
 }
