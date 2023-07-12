@@ -75,4 +75,9 @@ public class BaseGameManager : MonoBehaviour
     {
         overCanvas.SetActive(true);
     }
+
+    public void LessTime()
+    {
+        timeCurrent -= 10;
+    }
 }

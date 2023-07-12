@@ -15,10 +15,13 @@ public class LeaveOutGameManager : BaseGameManager
     //イラストの数（イラストの通し番号の最も大きい数）
     public int spriteMax;
 
+    int correctCount;
+    public int correctGoal;
+
     public override void Arrangements()
     {
         GameObject iconParent = GameObject.Find("IconParent");
-        if (!iconParent)
+        if (!iconParent || iconParent.transform.childCount <= 0)
         {
             return;
         }
@@ -35,6 +38,8 @@ public class LeaveOutGameManager : BaseGameManager
         }
 
         RandomChange();
+
+        correctCount = 0;
     }
 
     void RandomChange()
@@ -70,8 +75,26 @@ public class LeaveOutGameManager : BaseGameManager
         }
     }
 
+    public void Correct()
+    {
+        correctCount++;
+        RandomChange();
+    }
+
+    public void Incorrect()
+    {
+        LessTime();
+    }
+
     public override void TimeUp()
     {
-        
+        if (correctCount >= correctGoal)
+        {
+            GameClear();
+        }
+        else
+        {
+            GameOver();
+        }
     }
 }
