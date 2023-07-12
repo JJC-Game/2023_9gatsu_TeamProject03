@@ -39,7 +39,7 @@ public class BaseGameManager : MonoBehaviour
             timeCurrent -= Time.deltaTime;
 
             timeText.text = timeCurrent.ToString("000");
-            if (timeCurrent >= timeLimit)
+            if (timeCurrent <= 0)
             {
                 TimeUp();
             }
@@ -69,11 +69,13 @@ public class BaseGameManager : MonoBehaviour
     public void GameClear()
     {
         clearCanvas.SetActive(true);
+        gameFLG = false;
     }
 
     public void GameOver()
     {
         overCanvas.SetActive(true);
+        gameFLG = false;
     }
 
     public void LessTime()
