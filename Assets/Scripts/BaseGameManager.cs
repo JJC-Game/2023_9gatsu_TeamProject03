@@ -29,7 +29,7 @@ public class BaseGameManager : MonoBehaviour
         overCanvas.SetActive(false);
 
         timeCurrent = timeLimit;
-        timeText.text = timeCurrent.ToString("000");
+        timeText.text = timeCurrent.ToString("00");
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class BaseGameManager : MonoBehaviour
         {
             timeCurrent -= Time.deltaTime;
 
-            timeText.text = timeCurrent.ToString("000");
+            timeText.text = timeCurrent.ToString("00");
             if (timeCurrent <= 0)
             {
                 TimeUp();
