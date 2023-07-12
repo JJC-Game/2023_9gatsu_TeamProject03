@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LeaveOutGameManager : BaseGameManager
 {
@@ -17,6 +18,8 @@ public class LeaveOutGameManager : BaseGameManager
 
     int correctCount;
     public int correctGoal;
+
+    public TextMeshProUGUI questionNoText;
 
     public override void Arrangements()
     {
@@ -40,6 +43,7 @@ public class LeaveOutGameManager : BaseGameManager
         RandomChange();
 
         correctCount = 0;
+        questionNoText.text = (correctCount + 1).ToString("00");
     }
 
     void RandomChange()
@@ -78,7 +82,16 @@ public class LeaveOutGameManager : BaseGameManager
     public void Correct()
     {
         correctCount++;
-        RandomChange();
+
+        if (correctCount >= 99)
+        {
+            GameClear();
+        }
+        else
+        {
+            questionNoText.text = (correctCount + 1).ToString("00");
+            RandomChange();
+        }
     }
 
     public void Incorrect()
