@@ -58,7 +58,7 @@ public class LeaveOutGameManager : BaseGameManager
         ButtonReset();
 
         int randomIcon = Random.Range(0, icon.Length);
-        int randomTexture = Random.Range(0, spriteMax);
+        int randomTexture = Random.Range(0, spriteMax + 1);
 
         if (Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture))
         {
