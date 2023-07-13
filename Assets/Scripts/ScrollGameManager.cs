@@ -16,6 +16,8 @@ public class ScrollGameManager : BaseGameManager
 
     GameObject[] target;
 
+    GameObject[] icon;
+
     public Image targetPicture;
 
     AimController aim;
@@ -38,6 +40,7 @@ public class ScrollGameManager : BaseGameManager
 
         target = GameObject.FindGameObjectsWithTag("Target");
 
+        TargetReset(false);
         RandomChange();
     }
 
@@ -46,7 +49,7 @@ public class ScrollGameManager : BaseGameManager
         GameObject iconParent = GameObject.Find("BackGround_Scroll");
 
         int childCount = iconParent.transform.childCount;
-        GameObject[] icon = new GameObject[childCount];
+        icon = new GameObject[childCount];
 
         for (int n = 0; n < childCount; n++)
         {
@@ -66,8 +69,6 @@ public class ScrollGameManager : BaseGameManager
 
     void RandomChange()
     {
-        TargetReset();
-
         int randomTarget = Random.Range(0, target.Length);
         int randomTexture = Random.Range(spriteMin, spriteMax + 1);
 
@@ -80,11 +81,11 @@ public class ScrollGameManager : BaseGameManager
         targetPicture.sprite = sprite_Target;
     }
 
-    void TargetReset()
+    void TargetReset(bool flg)
     {
         for (int i = 0; i < target.Length; i++)
         {
-            target[i].SetActive(false);
+            target[i].SetActive(flg);
         }
     }
 
@@ -107,6 +108,21 @@ public class ScrollGameManager : BaseGameManager
                     else
                     {
                         questionNoText.text = (correctCount + 1).ToString("00");
+                        aimCount = 0;
+
+                        TargetReset(true);
+
+                        int randomNo = Random.Range(iconMin, icon.Length);
+
+                        for (int i = randomNo; i < icon.Length; i++)
+                        {
+                            icon[i].SetActive(false);
+                        }
+
+                        target = GameObject.FindGameObjectsWithTag("Target");
+
+                        TargetReset(false);
+                        RandomChange();
                     }
                 }
             }

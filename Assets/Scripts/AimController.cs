@@ -15,6 +15,7 @@ public class AimController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Target"))
         {
+            Debug.Log("Hit");
             targetIn = true;
         }
     }
@@ -23,6 +24,7 @@ public class AimController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Target"))
         {
+            Debug.Log("Out!");
             targetIn = false;
         }
     }
