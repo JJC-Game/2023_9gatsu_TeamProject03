@@ -8,7 +8,7 @@ public class BaseGameManager : MonoBehaviour
     public int timeLimit;
     float timeCurrent;
 
-    bool gameFLG = false;
+    public bool gameFLG = false;
 
     GameObject clearCanvas;
     GameObject overCanvas;
@@ -38,27 +38,34 @@ public class BaseGameManager : MonoBehaviour
         {
             timeCurrent -= Time.deltaTime;
 
+            if (timeCurrent <= 0)
+            {
+                timeCurrent = 0;
+            }
+
             timeText.text = timeCurrent.ToString("00");
             if (timeCurrent <= 0)
             {
                 TimeUp();
             }
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Arrangements();
-        }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            gameFLG = true;
+            UpdatePlus();
         }
     }
 
     virtual public void Arrangements()
     {
         
+    }
+
+    virtual public void UpdatePlus()
+    {
+
+    }
+
+    public void GameStart()
+    {
+        gameFLG = true;
     }
 
     virtual public void TimeUp()
