@@ -5,23 +5,22 @@ public class SmartphoneOperation : MonoBehaviour
 {
    // public Text text; // 確認のテキスト
     public Transform target; // 移動対象のオブジェクト
-    private float speed = 100f;//移動のスピード
-    private bool isFlicking = false; // フリック中かどうかのフラグ
-    private Vector3 flickVelocity; // フリックの速度ベクトル
+    private float speed = 23f;//移動のスピード
+    public bool isFlicking = false; // フリック中かどうかのフラグ
+    public Vector3 flickVelocity; // フリックの速度ベクトル
 
     public Collider movementBoundsCollider; // 移動範囲を制限するコライダー
-    private float acceleration = 150f; // 加速度
-    private float deceleration = 160f; // 減速度
-    private float maxSpeed = 100f; // 移動の最大速度
+    public float acceleration = 200f; // 加速度
+    public float deceleration = 1000f; // 減速度
+    public float maxSpeed = 300f; // 移動の最大速度
 
     private Vector3 initialPosition; // 初期位置
 
-    private float time;//タップした時間を図る
-    private float fulic = 0.8f;
+    public float time;//タップした時間を図る
+    public float flicTime;
+    private float fulic = 0.35f;
     private float tap = 0.11f;
-
-    public GameObject seikai;//正解のゲームオブジェクト
-    public GameObject hazule;//ハズレのゲームオブジェクト
+    public float timer;
 
     private bool fulicer;//フリック中
 
@@ -30,11 +29,13 @@ public class SmartphoneOperation : MonoBehaviour
     private float timeInBounds = 3f; // 範囲内に入っている必要のある時間
     private float currentTimeInBounds = 0f; // 現在の範囲内滞在時間
     public Transform Q;
+    [SerializeField] private float decelerationTime = 1f; // 減速がかかるまでの時間
+
+   public  bool clear;
     void Start()
     {
         initialPosition = target.position;
-        seikai.SetActive(false);
-        hazule.SetActive(false);
+
     }
 
     void ClampPosition()
@@ -56,108 +57,27 @@ public class SmartphoneOperation : MonoBehaviour
     {
        // OperationChecker();
         HandleInput();
-        Clear();
-    }
-    void OperationChecker()
-    {//どの操作をするかチェック
-        if ((Input.GetMouseButtonUp(0)))
+        if (clear == true)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log("オブジェクトヒット");
-                Debug.Log("Hit Collider: " + hit.collider.name);
-                GameObject objectHit = hit.collider.gameObject;
-                if (objectHit.tag == "Drag")
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        initialPosition = target.position;
-                    }
-                    else if (Input.GetMouseButton(0))
-                    {
-                        float dx = Input.GetAxis("Mouse X") * speed;
-                        float dy = Input.GetAxis("Mouse Y") * speed;
-                        target.Translate(dx, dy, 0f);
-
-                    }
-                }
-                else if (objectHit.tag == "PinchOutIn")
-                {
-
-                }
-                else
-                {
-                  
-                }
-            }
+            Clear();
         }
-    }
-    void Tap()
-    {
-        if (Input.touchCount == 1)
-        {
-            Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Ended)
-            {
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    GameObject objectHit = hit.collider.gameObject;
-                    if (objectHit.tag == "Correct")
-                    {
-                        seikai.SetActive(true);
-                        Debug.Log("正解");
-                    }
-                    else if (objectHit.tag == "Hazle")
-                    {
-                        hazule.SetActive(true);
-                        Debug.Log("ハズレ");
-                    }
-                    //text.text = "タップしたよ";
-                }
-            }
-
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            time = 0;
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log("オブジェクトヒット");
-                Debug.Log("Hit Collider: " + hit.collider.name);
-                GameObject objectHit = hit.collider.gameObject;
-                if (objectHit.tag == "Correct")
-                {
-                    seikai.SetActive(true);
-                    Debug.Log("正解");
-                }
-                else if (objectHit.tag == "Hazle")
-                {
-                    hazule.SetActive(true);
-                    Debug.Log("ハズレ");
-                }
-
-                //text.text = "タップしたよ";
-            }
-        }
     }
 
     void HandleInput()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            isFlicking = false;
+            ClampPosition();
+            time = 0;
+            timer = 0;          
             initialPosition = target.position;
             fulicer = false;
         }
         else if (Input.GetMouseButton(0))
         {
+            clear = false;
             float dx = Input.GetAxis("Mouse X") * speed;
             float dy = Input.GetAxis("Mouse Y") * speed;
             target.Translate(dx, dy, 0f);
@@ -166,46 +86,94 @@ public class SmartphoneOperation : MonoBehaviour
         }
         if (time <= tap && fulicer == false)
         {
-            Tap();
-            Debug.Log("タップ");
+            //Tap();
+           // Debug.Log("タップ");
         }
-        else if (time <= fulic)
+        if (time <= fulic)
         {
-            Debug.Log("フリック");
-            fulicer = true;
-            if (Input.GetMouseButtonUp(0))
-            {
+              if (Input.GetMouseButtonUp(0))
+              {
                 flickVelocity = (target.position - initialPosition).normalized * speed * 5f;
                 isFlicking = true;
                 initialPosition = target.position;
+                flicTime = time;
+              
                 //text.text = "フリック";
-
-            }
-
+                 }
             if (isFlicking)
             {
+                if (flicTime >= 0.25f)
+                {
+                    decelerationTime = 0.6f;
+                    maxSpeed = 7000;
+                    acceleration = 4000;
+                    deceleration = 5000;
+                    Debug.Log("減速する時間を決めたよ3");
+                }
+                else if (flicTime >= 0.2)
+                {
+                    decelerationTime = 1f;
+                    maxSpeed = 2000;
+                    acceleration = 1000;
+                    deceleration = 1500;
+                    Debug.Log("減速する時間を決めたよ2");
+                }
+                else if (flicTime >= 0.1)
+                {
+                    decelerationTime = 0.5f;
+                    maxSpeed = 1500;
+                    acceleration = 800;
+                    deceleration =950;
+                    Debug.Log("減速する時間を決めたよ");
+
+                }
+
+                timer += Time.deltaTime;
                 float currentSpeed = flickVelocity.magnitude;
                 float targetSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.deltaTime, 0f, maxSpeed);
                 flickVelocity = flickVelocity.normalized * targetSpeed;
-
-                target.position += flickVelocity * Time.deltaTime;
-
                 float decelerationMagnitude = deceleration * Time.deltaTime;
-                flickVelocity = Vector3.MoveTowards(flickVelocity, Vector3.zero, decelerationMagnitude);
+                target.position += flickVelocity * Time.deltaTime;
+               // Debug.Log(decelerationMagnitude);
+
+                if (timer >= decelerationTime) // 指定の時間(decelerationTime)を超えたら減速を開始
+                {
+                    if (flickVelocity.magnitude > 0.01f)
+                    {
+                        flickVelocity = Vector3.MoveTowards(flickVelocity, Vector3.zero, decelerationMagnitude);
+                        
+                    }
+                    else
+                    {
+                        flickVelocity = Vector3.zero;
+                        // isFlicking = false;
+                       
+                        time = 0;
+                    }
+                    Debug.Log("減速したよ");
+                    
+                }
 
                 if (flickVelocity.magnitude <= 0.01f)
                 {
+                    
                     isFlicking = false;
-                    time = 0;
                 }
             }
         }
-        ClampPosition();
-        if (Input.GetMouseButtonUp(0))
+        else
         {
-            time = 0;
+            ClampPosition();
         }
-
+        ClampPosition();
+        if ( !isFlicking)
+        {
+            clear = true;
+        }
+        else
+        {
+            clear = false;
+        }
     }
     void Clear()
     {
