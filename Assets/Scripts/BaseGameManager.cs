@@ -8,7 +8,7 @@ public class BaseGameManager : MonoBehaviour
     public int timeLimit;
     float timeCurrent;
 
-    bool gameFLG = false;
+    public bool gameFLG = false;
 
     GameObject clearCanvas;
     GameObject overCanvas;
@@ -37,6 +37,11 @@ public class BaseGameManager : MonoBehaviour
         if (gameFLG)
         {
             timeCurrent -= Time.deltaTime;
+
+            if (timeCurrent <= 0)
+            {
+                timeCurrent = 0;
+            }
 
             timeText.text = timeCurrent.ToString("00");
             if (timeCurrent <= 0)
