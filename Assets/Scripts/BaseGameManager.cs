@@ -43,22 +43,24 @@ public class BaseGameManager : MonoBehaviour
             {
                 TimeUp();
             }
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Arrangements();
-        }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            gameFLG = true;
+            UpdatePlus();
         }
     }
 
     virtual public void Arrangements()
     {
         
+    }
+
+    virtual public void UpdatePlus()
+    {
+
+    }
+
+    public void GameStart()
+    {
+        gameFLG = true;
     }
 
     virtual public void TimeUp()
