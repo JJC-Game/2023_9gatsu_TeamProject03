@@ -24,14 +24,14 @@ public class SmartphoneOperation : MonoBehaviour
 
     private bool fulicer;//フリック中
 
-    public Collider ClearBoundsCollider; // クリア範囲を配置するコライダー
+   // public Collider ClearBoundsCollider; // クリア範囲を配置するコライダー
 
     private float timeInBounds = 3f; // 範囲内に入っている必要のある時間
     private float currentTimeInBounds = 0f; // 現在の範囲内滞在時間
-    public Transform Q;
+   // public Transform Q;
     [SerializeField] private float decelerationTime = 1f; // 減速がかかるまでの時間
 
-   public  bool clear;
+   public  bool trisi;
     void Start()
     {
         initialPosition = target.position;
@@ -48,7 +48,7 @@ public class SmartphoneOperation : MonoBehaviour
         if (clampedPosition.x != target.position.x || clampedPosition.y != target.position.y)
         {
             flickVelocity = Vector3.zero;
-            isFlicking = false;
+           // isFlicking = false;
             target.position = clampedPosition;
         }
     }
@@ -57,10 +57,10 @@ public class SmartphoneOperation : MonoBehaviour
     {
        // OperationChecker();
         HandleInput();
-        if (clear == true)
-        {
-            Clear();
-        }
+      //  if (clear == true)
+      //  {
+            //Clear();
+       // }
 
     }
 
@@ -77,7 +77,7 @@ public class SmartphoneOperation : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-            clear = false;
+            //clear = false;
             float dx = Input.GetAxis("Mouse X") * speed;
             float dy = Input.GetAxis("Mouse Y") * speed;
             target.Translate(dx, dy, 0f);
@@ -102,28 +102,32 @@ public class SmartphoneOperation : MonoBehaviour
                  }
             if (isFlicking)
             {
-                if (flicTime >= 0.25f)
-                {
-                    decelerationTime = 0.6f;
-                    maxSpeed = 7000;
-                    acceleration = 4000;
-                    deceleration = 5000;
-                    Debug.Log("減速する時間を決めたよ3");
-                }
-                else if (flicTime >= 0.2)
+                isFlicking = true;
+                if (flicTime >= 0.21f)
                 {
                     decelerationTime = 1f;
-                    maxSpeed = 2000;
-                    acceleration = 1000;
-                    deceleration = 1500;
+                    maxSpeed = 10000;
+                    acceleration = 4000;
+                    deceleration = 5000;
+                    isFlicking = true;
+                    Debug.Log("減速する時間を決めたよ3");
+                }
+                else if (flicTime >= 0.1f)
+                {
+                    decelerationTime = 0.8f;
+                    maxSpeed = 3000;
+                    acceleration = 1500;
+                    deceleration = 1800;
+                    isFlicking = true;
                     Debug.Log("減速する時間を決めたよ2");
                 }
-                else if (flicTime >= 0.1)
+                else if (flicTime >= 0.000001f)
                 {
                     decelerationTime = 0.5f;
-                    maxSpeed = 1500;
-                    acceleration = 800;
-                    deceleration =950;
+                    maxSpeed = 400;
+                    acceleration = 1200;
+                    deceleration = 1500;
+                    isFlicking = true;
                     Debug.Log("減速する時間を決めたよ");
 
                 }
@@ -150,14 +154,15 @@ public class SmartphoneOperation : MonoBehaviour
                        
                         time = 0;
                     }
+                    trisi = true;
                     Debug.Log("減速したよ");
                     
                 }
 
-                if (flickVelocity.magnitude <= 0.01f)
+                if (flickVelocity.magnitude <= 0.00001f&& trisi==true)
                 {
-                    
                     isFlicking = false;
+                    trisi = false;
                 }
             }
         }
@@ -168,32 +173,32 @@ public class SmartphoneOperation : MonoBehaviour
         ClampPosition();
         if ( !isFlicking)
         {
-            clear = true;
+           // clear = true;
         }
         else
         {
-            clear = false;
+            //clear = false;
         }
     }
-    void Clear()
-    {
-        if (IsObjectInBounds())
-        {
-            currentTimeInBounds += Time.deltaTime;
+   // void Clear()
+  //  {
+    //    if (IsObjectInBounds())
+     //   {
+       //     currentTimeInBounds += Time.deltaTime;
 
-            if (currentTimeInBounds >= timeInBounds)
-            {
-                Debug.Log("クリア");
+        ///    if (currentTimeInBounds >= timeInBounds)
+        //    {
+        //        Debug.Log("クリア");
                 //text.text = "クリア";
-            }
-        }
-        else
-        {
-            currentTimeInBounds = 0f;
-        }
-    }
-    bool IsObjectInBounds()
-    {
-        return ClearBoundsCollider.bounds.Contains(Q.position);
-    }
+         //   }
+     //   }
+      //  else
+      //  {
+        //    currentTimeInBounds = 0f;
+       // }
+   // }
+   // bool IsObjectInBounds()
+   // {
+       // return ClearBoundsCollider.bounds.Contains(Q.position);
+   // }
 }
