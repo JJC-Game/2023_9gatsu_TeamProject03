@@ -9,6 +9,8 @@ public class BaseGameManager : MonoBehaviour
     float timeCurrent;
 
     public bool gameFLG = false;
+    // COMMENT_KUWABARA 変数名が何の情報も示してないので、ゲームがどうなったフラグなのかを示してほしいです.
+    // ソースコードを見る限り、isGameActive、とか、isGameEnableといった名前がいいんじゃないでしょうか.
 
     GameObject clearCanvas;
     GameObject overCanvas;
