@@ -15,6 +15,8 @@ public class LeaveOutGameManager : BaseGameManager
 
     GameObject[] button;
 
+    // COMMENT_KUWABARA iconList、buttonListといった変数名の方が望ましいです.
+
     //イラストの数（イラストの通し番号の最も大きい数）
     public int spriteMax;
 
@@ -59,6 +61,10 @@ public class LeaveOutGameManager : BaseGameManager
 
         int randomIcon = Random.Range(0, icon.Length);
         int randomTexture = Random.Range(0, spriteMax + 1);
+        // COMMENT_KUWABARA randomIconって、3 * 5で並んでいるアイコンの中で正解のアイコンはどれかを示しているのだと思いますので、
+        // correnctIconIdといった名前にしてください。変数が指しているものが何なのか提示してください.
+
+        // COMMENT_KUWABARA randomTextureについても、選択した後に、正解のテクスチャと、誤りのテクスチャがわかると思うので、それぞれを変数に納めてほしいですし、こちらもTextureIdといった名前の変数にしてほしいです.
 
         if (Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture))
         {
