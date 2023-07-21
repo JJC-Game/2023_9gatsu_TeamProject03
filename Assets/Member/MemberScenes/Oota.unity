@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 282589686}
   - component: {fileID: 282589685}
   m_Layer: 5
-  m_Name: Image
+  m_Name: List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 520053579}
   - component: {fileID: 520053578}
   m_Layer: 5
-  m_Name: Time
+  m_Name: TimeParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -806,8 +806,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 4dd70ec2220ae427b9b92a2d02dca9f0, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 689595630}
   - component: {fileID: 689595629}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1525,7 +1525,7 @@ GameObject:
   - component: {fileID: 825864644}
   - component: {fileID: 825864643}
   m_Layer: 5
-  m_Name: Image
+  m_Name: WoodFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 42976d2bf2b349d49bccdb377891db2a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e9818ed55650e14883ed199451d7b1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1917,7 +1917,7 @@ GameObject:
   - component: {fileID: 1220566563}
   - component: {fileID: 1220566565}
   m_Layer: 5
-  m_Name: Time
+  m_Name: Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c9f394143130f7545a272a4eb3ff3a0b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9e660125f0b48d4699a35f2fa0e60c3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2007,7 +2007,7 @@ GameObject:
   - component: {fileID: 1257602788}
   - component: {fileID: 1257602787}
   m_Layer: 5
-  m_Name: Time (2)
+  m_Name: Minus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,7 +2083,7 @@ GameObject:
   - component: {fileID: 1322182956}
   - component: {fileID: 1322182955}
   m_Layer: 5
-  m_Name: Time (1)
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2447,8 +2447,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 4dd70ec2220ae427b9b92a2d02dca9f0, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2555,7 +2555,7 @@ GameObject:
   - component: {fileID: 1662234582}
   - component: {fileID: 1662234584}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Coins Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2602,7 +2602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 17626c4fe6d1b444e8df777ffdadbc33, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9cb1676c22874894b9b2ed0f8bd01b58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2951,7 +2951,7 @@ GameObject:
   - component: {fileID: 1963397123}
   - component: {fileID: 1963397122}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3040,7 +3040,7 @@ GameObject:
   - component: {fileID: 2045311870}
   - component: {fileID: 2045311869}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3117,7 +3117,7 @@ GameObject:
   - component: {fileID: 2107827032}
   - component: {fileID: 2107827031}
   m_Layer: 5
-  m_Name: Time (1)
+  m_Name: Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3176,7 +3176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c9f394143130f7545a272a4eb3ff3a0b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9e660125f0b48d4699a35f2fa0e60c3, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3206,7 +3206,7 @@ GameObject:
   - component: {fileID: 2140433331}
   - component: {fileID: 2140433330}
   m_Layer: 5
-  m_Name: TimeFrame
+  m_Name: CircleFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
