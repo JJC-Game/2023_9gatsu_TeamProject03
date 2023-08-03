@@ -9,13 +9,6 @@ public class MainMenuManager : MonoBehaviour
     GameObject operateSelectCanvas;
     GameObject[] stageSelectCanvas;
 
-    [Header("ポーズメニューのカーソル初期位置")]
-    [SerializeField] GameObject focusPausemenu;
-
-    //フォーカスが外れないようにする処理用
-    GameObject currentFocus;   //現在
-    GameObject previousFocus;  //前フレーム
-
     void Start()
     {
         operateSelectCanvas = GameObject.Find("");
@@ -31,7 +24,6 @@ public class MainMenuManager : MonoBehaviour
 
     void Update()
     {
-        FocusCheck();
     }
 
     //すべてのキャンバスを非表示に
@@ -42,27 +34,6 @@ public class MainMenuManager : MonoBehaviour
         {
             stageSelectCanvas[i].SetActive(false);
         }
-    }
-
-    //フォーカスが外れていないかチェック
-    void FocusCheck()
-    {
-        //現在のフォーカスを格納
-        currentFocus = EventSystem.current.currentSelectedGameObject;
-
-        //もし前回までのフォーカスと同じなら即終了
-        if (currentFocus == previousFocus) return;
-
-        //もしフォーカスが外れていたら前フレームのフォーカスに戻す
-        if (currentFocus == null)
-        {
-            EventSystem.current.SetSelectedGameObject(previousFocus);
-            return;
-        }
-
-        //残された条件から、フォーカスが存在するのは確定
-        //前フレームのフォーカスを更新
-        previousFocus = EventSystem.current.currentSelectedGameObject;
     }
 
     public void StageSerectCanvasChange(int canvasNo)
