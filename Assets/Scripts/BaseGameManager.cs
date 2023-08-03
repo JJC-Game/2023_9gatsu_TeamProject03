@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BaseGameManager : MonoBehaviour
 {
@@ -90,5 +91,17 @@ public class BaseGameManager : MonoBehaviour
     public void LessTime()
     {
         timeCurrent -= 10;
+    }
+    
+    //シーン遷移
+    public void SceneMove(int sceneNo)
+    {
+        FadeManager.Instance.LoadSceneIndex(sceneNo, 0.5f);
+    }
+    
+    //シーンリセット
+    public void SceneReset()
+    {
+        FadeManager.Instance.LoadScene(SceneManager.GetActiveScene().name, 0.5f);
     }
 }
