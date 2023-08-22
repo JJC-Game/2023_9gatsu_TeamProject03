@@ -5,6 +5,7 @@ using UnityEngine;
 public class TypingGameManager : BaseGameManager
 {
     string answerWard;
+    string[] questionWard;
 
     public override void Arrangements()
     {
@@ -23,13 +24,18 @@ public class TypingGameManager : BaseGameManager
         }
     }
 
+    void WardChange()
+    {
+
+    }
+
     public void Correct()
     {
         if (inGameEnable)
         {
-            correctCount++;
+            AddScore();
 
-            //WardChange();
+            WardChange();
         }
     }
 
