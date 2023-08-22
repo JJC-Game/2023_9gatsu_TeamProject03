@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Threading.Tasks;
@@ -73,7 +73,6 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        Delete();
         isDragging = false;
         Destroy(dragObject);
         dragObject = null;
@@ -121,9 +120,5 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 drag.position = clampedDragPosition;
             }
         }
-    }
-    private async void Delete()
-    {
-        //d.DeletDrop();
     }
 }

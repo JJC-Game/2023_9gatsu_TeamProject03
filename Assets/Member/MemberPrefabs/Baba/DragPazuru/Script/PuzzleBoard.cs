@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
@@ -16,7 +16,7 @@ public class PuzzleBoard : MonoBehaviour
     // ピースの間隔を設定
     public float pieceSpacing = 10.0f;
     bool touchFlag;
-    int i = 0;
+   // int i = 0;
     int type;
     int o, d, t;
     public int selectedValue = 3;
