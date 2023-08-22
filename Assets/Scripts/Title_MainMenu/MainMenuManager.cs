@@ -11,12 +11,9 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-        operateSelectCanvas = GameObject.Find("");
+        operateSelectCanvas = GameObject.Find("StageSerect");
 
-        for (int i = 0; i <= 5; i++)
-        {
-            stageSelectCanvas[i] = GameObject.Find("" + i);
-        }
+        stageSelectCanvas = GameObject.FindGameObjectsWithTag("Stage");
 
         CanvasInit();
         operateSelectCanvas.SetActive(true);
