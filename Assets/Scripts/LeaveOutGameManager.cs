@@ -7,23 +7,18 @@ using TMPro;
 public class LeaveOutGameManager : BaseGameManager
 {
     //使用するイラスト
-    Sprite sprite_a;
-    Sprite sprite_b;
+    Sprite sprite_Correct;
+    Sprite sprite_Incorrect;
 
     //画面上にあるアイコン
-    Image[] icon;
+    Image[] iconList;
 
-    GameObject[] button;
+    GameObject[] buttonList;
 
     // COMMENT_KUWABARA iconList、buttonListといった変数名の方が望ましいです.
 
     //イラストの数（イラストの通し番号の最も大きい数）
     public int spriteMax;
-
-    int correctCount;
-    public int correctGoal;
-
-    public TextMeshProUGUI questionNoText;
 
     public override void Arrangements()
     {
@@ -35,8 +30,8 @@ public class LeaveOutGameManager : BaseGameManager
         }
 
         int childCount = iconParent.transform.childCount;
-        icon = new Image[childCount];
-        button = new GameObject[childCount];
+        iconList = new Image[childCount];
+        buttonList = new GameObject[childCount];
 
         for (int n = 0; n < childCount; n++)
         {
@@ -45,21 +40,20 @@ public class LeaveOutGameManager : BaseGameManager
             Transform childTransform_Button = buttonParent.transform.GetChild(n);
             GameObject childObject_Button = childTransform_Button.gameObject;
 
-            icon[n] = childObject.GetComponent<Image>();
-            button[n] = childObject_Button;
+            iconList[n] = childObject.GetComponent<Image>();
+            buttonList[n] = childObject_Button;
         }
 
         RandomChange();
 
         correctCount = 0;
-        questionNoText.text = (correctCount + 1).ToString("00");
     }
 
     void RandomChange()
     {
         ButtonReset();
 
-        int randomIcon = Random.Range(0, icon.Length);
+        int correnctIconId = Random.Range(0, iconList.Length);
         int randomTexture = Random.Range(0, spriteMax + 1);
         // COMMENT_KUWABARA randomIconって、3 * 5で並んでいるアイコンの中で正解のアイコンはどれかを示しているのだと思いますので、
         // correnctIconIdといった名前にしてください。変数が指しているものが何なのか提示してください.
@@ -68,7 +62,7 @@ public class LeaveOutGameManager : BaseGameManager
 
         if (Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture))
         {
-            sprite_a = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
+            sprite_Correct = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
 
             if (randomTexture % 2 == 0)
             {
@@ -78,62 +72,42 @@ public class LeaveOutGameManager : BaseGameManager
             {
                 randomTexture--;
             }
-            sprite_b = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
+            sprite_Incorrect = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
         }
 
-        for (int i = 0; i < icon.Length; i++)
+        for (int i = 0; i < iconList.Length; i++)
         {
-            if (i == randomIcon)
+            if (i == correnctIconId)
             {
-                icon[i].sprite = sprite_b;
-                button[i].SetActive(true);
+                iconList[i].sprite = sprite_Incorrect;
+                buttonList[i].SetActive(true);
                 continue;
             }
 
-            icon[i].sprite = sprite_a;
+            iconList[i].sprite = sprite_Correct;
         }
     }
 
     void ButtonReset()
     {
-        for (int n = 0; n <button.Length; n++)
+        for (int n = 0; n < buttonList.Length; n++)
         {
-            button[n].SetActive(false);
+            buttonList[n].SetActive(false);
         }
     }
 
     public void Correct()
     {
-        if (gameFLG)
+        if (inGameEnable)
         {
             correctCount++;
 
-            if (correctCount >= 99)
-            {
-                GameClear();
-            }
-            else
-            {
-                questionNoText.text = (correctCount + 1).ToString("00");
-                RandomChange();
-            }
+            RandomChange();
         }
     }
 
     public void Incorrect()
     {
         LessTime();
-    }
-
-    public override void TimeUp()
-    {
-        if (correctCount >= correctGoal)
-        {
-            GameClear();
-        }
-        else
-        {
-            GameOver();
-        }
     }
 }

@@ -9,9 +9,12 @@ public class BaseGameManager : MonoBehaviour
     public int timeLimit;
     float timeCurrent;
 
-    public bool gameFLG = false;
+    public bool inGameEnable = false;
     // COMMENT_KUWABARA 変数名が何の情報も示してないので、ゲームがどうなったフラグなのかを示してほしいです.
     // ソースコードを見る限り、isGameActive、とか、isGameEnableといった名前がいいんじゃないでしょうか.
+
+    public int correctCount;
+    public int correctGoal;
 
     GameObject clearCanvas;
     GameObject overCanvas;
@@ -32,12 +35,11 @@ public class BaseGameManager : MonoBehaviour
         overCanvas.SetActive(false);
 
         timeCurrent = timeLimit;
-        timeText.text = timeCurrent.ToString("00");
     }
 
     void Update()
     {
-        if (gameFLG)
+        if (inGameEnable)
         {
             timeCurrent -= Time.deltaTime;
 
@@ -46,7 +48,6 @@ public class BaseGameManager : MonoBehaviour
                 timeCurrent = 0;
             }
 
-            timeText.text = timeCurrent.ToString("00");
             if (timeCurrent <= 0)
             {
                 TimeUp();
@@ -68,24 +69,31 @@ public class BaseGameManager : MonoBehaviour
 
     public void GameStart()
     {
-        gameFLG = true;
+        inGameEnable = true;
     }
 
     virtual public void TimeUp()
     {
-        GameOver();
+        if (correctCount >= correctGoal)
+        {
+            GameClear();
+        }
+        else
+        {
+            GameOver();
+        }
     }
 
     public void GameClear()
     {
         clearCanvas.SetActive(true);
-        gameFLG = false;
+        inGameEnable = false;
     }
 
     public void GameOver()
     {
         overCanvas.SetActive(true);
-        gameFLG = false;
+        inGameEnable = false;
     }
 
     public void LessTime()

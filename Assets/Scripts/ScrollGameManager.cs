@@ -14,9 +14,8 @@ public class ScrollGameManager : BaseGameManager
 
     public int iconMin = 6;
 
-    GameObject[] target;
-
-    GameObject[] icon;
+    GameObject[] targetList;
+    GameObject[] iconList;
 
     public Image targetPicture;
 
@@ -25,20 +24,14 @@ public class ScrollGameManager : BaseGameManager
     float aimCount;
     public float aimGoal;
 
-    int correctCount;
-    public int correctGoal;
-
-    public TextMeshProUGUI questionNoText;
-
     public override void Arrangements()
     {
         IconSet();
 
         aim = GameObject.Find("Aim").GetComponent<AimController>();
         correctCount = 0;
-        questionNoText.text = (correctCount + 1).ToString("00");
 
-        target = GameObject.FindGameObjectsWithTag("Target");
+        targetList = GameObject.FindGameObjectsWithTag("Target");
 
         TargetReset(false);
         RandomChange();
@@ -49,43 +42,43 @@ public class ScrollGameManager : BaseGameManager
         GameObject iconParent = GameObject.Find("BackGround_Scroll");
 
         int childCount = iconParent.transform.childCount;
-        icon = new GameObject[childCount];
+        iconList = new GameObject[childCount];
 
         for (int n = 0; n < childCount; n++)
         {
             Transform childTransform = iconParent.transform.GetChild(n);
             GameObject childObject = childTransform.gameObject;
 
-            icon[n] = childObject;
+            iconList[n] = childObject;
         }
 
         int randomNo = Random.Range(iconMin, childCount);
 
         for (int i = randomNo; i < childCount; i++)
         {
-            icon[i].SetActive(false);
+            iconList[i].SetActive(false);
         }
     }
 
     void RandomChange()
     {
-        int randomTarget = Random.Range(0, target.Length);
+        int randomTarget = Random.Range(0, targetList.Length);
         int randomTexture = Random.Range(spriteMin, spriteMax + 1);
 
         sprite_Target = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
 
-        target[randomTarget].SetActive(true);
+        targetList[randomTarget].SetActive(true);
 
-        Image targetImage = target[randomTarget].GetComponent<Image>();
+        Image targetImage = targetList[randomTarget].GetComponent<Image>();
         targetImage.sprite = sprite_Target;
         targetPicture.sprite = sprite_Target;
     }
 
     void TargetReset(bool flg)
     {
-        for (int i = 0; i < target.Length; i++)
+        for (int i = 0; i < targetList.Length; i++)
         {
-            target[i].SetActive(flg);
+            targetList[i].SetActive(flg);
         }
     }
 
@@ -97,7 +90,7 @@ public class ScrollGameManager : BaseGameManager
 
             if (aimCount >= aimGoal)
             {
-                if (gameFLG)
+                if (inGameEnable)
                 {
                     correctCount++;
 
@@ -107,19 +100,18 @@ public class ScrollGameManager : BaseGameManager
                     }
                     else
                     {
-                        questionNoText.text = (correctCount + 1).ToString("00");
                         aimCount = 0;
 
                         TargetReset(true);
 
-                        int randomNo = Random.Range(iconMin, icon.Length);
+                        int randomNo = Random.Range(iconMin, iconList.Length);
 
-                        for (int i = randomNo; i < icon.Length; i++)
+                        for (int i = randomNo; i < iconList.Length; i++)
                         {
-                            icon[i].SetActive(false);
+                            iconList[i].SetActive(false);
                         }
 
-                        target = GameObject.FindGameObjectsWithTag("Target");
+                        targetList = GameObject.FindGameObjectsWithTag("Target");
 
                         TargetReset(false);
                         RandomChange();
