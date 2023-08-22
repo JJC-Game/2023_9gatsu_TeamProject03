@@ -1183,8 +1183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u56F3\u3092\u5C0F\u3055\u304F\u3057\u3088\u3046!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 370a80aa42539434f9754d3b67750c06, type: 2}
-  m_sharedMaterial: {fileID: -6383830251240019987, guid: 370a80aa42539434f9754d3b67750c06, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 64b4cf897e0bda348ba5054333f17fb5, type: 2}
+  m_sharedMaterial: {fileID: -6383830251240019987, guid: 64b4cf897e0bda348ba5054333f17fb5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2610,15 +2610,15 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 7301237652928758371, guid: 0116ccbe86081294c8ba52f562a49b4c, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 279961711}
   - key: {fileID: 3480897915467876571, guid: 0116ccbe86081294c8ba52f562a49b4c, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 8951414}
   - key: {fileID: -2672765632479314535, guid: 0116ccbe86081294c8ba52f562a49b4c, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 526330237}
   - key: {fileID: 5540969981346487749, guid: 0116ccbe86081294c8ba52f562a49b4c, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 279961713}
   - key: {fileID: 150888431587812234, guid: 0116ccbe86081294c8ba52f562a49b4c, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 8951416}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1620620612
@@ -3012,8 +3012,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u56F3\u3092\u5927\u304D\u304F\u3057\u3088\u3046!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 370a80aa42539434f9754d3b67750c06, type: 2}
-  m_sharedMaterial: {fileID: -6383830251240019987, guid: 370a80aa42539434f9754d3b67750c06, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3330,15 +3330,15 @@ PlayableDirector:
   - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: -3340333331013633202, guid: d1fe658a540d3de4a80aa1a8376d08f2, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1640119132}
   - key: {fileID: 7510118007997612499, guid: d1fe658a540d3de4a80aa1a8376d08f2, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1442108416}
   - key: {fileID: 7354223041048501637, guid: d1fe658a540d3de4a80aa1a8376d08f2, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1727684373}
   - key: {fileID: -5945861538084002207, guid: d1fe658a540d3de4a80aa1a8376d08f2, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1640119134}
   - key: {fileID: 9077352902946348610, guid: d1fe658a540d3de4a80aa1a8376d08f2, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1442108418}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &2052817714
