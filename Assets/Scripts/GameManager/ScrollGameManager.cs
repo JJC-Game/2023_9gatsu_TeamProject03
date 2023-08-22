@@ -29,7 +29,6 @@ public class ScrollGameManager : BaseGameManager
         IconSet();
 
         aim = GameObject.Find("Aim").GetComponent<AimController>();
-        correctCount = 0;
 
         targetList = GameObject.FindGameObjectsWithTag("Target");
 
@@ -92,30 +91,23 @@ public class ScrollGameManager : BaseGameManager
             {
                 if (inGameEnable)
                 {
-                    correctCount++;
+                    AddScore();
 
-                    if (correctCount >= 3)
+                    aimCount = 0;
+
+                    TargetReset(true);
+
+                    int randomNo = Random.Range(iconMin, iconList.Length);
+
+                    for (int i = randomNo; i < iconList.Length; i++)
                     {
-                        GameClear();
+                        iconList[i].SetActive(false);
                     }
-                    else
-                    {
-                        aimCount = 0;
 
-                        TargetReset(true);
+                    targetList = GameObject.FindGameObjectsWithTag("Target");
 
-                        int randomNo = Random.Range(iconMin, iconList.Length);
-
-                        for (int i = randomNo; i < iconList.Length; i++)
-                        {
-                            iconList[i].SetActive(false);
-                        }
-
-                        targetList = GameObject.FindGameObjectsWithTag("Target");
-
-                        TargetReset(false);
-                        RandomChange();
-                    }
+                    TargetReset(false);
+                    RandomChange();
                 }
             }
         }

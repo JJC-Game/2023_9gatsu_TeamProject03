@@ -13,16 +13,17 @@ public class BaseGameManager : MonoBehaviour
     // COMMENT_KUWABARA 変数名が何の情報も示してないので、ゲームがどうなったフラグなのかを示してほしいです.
     // ソースコードを見る限り、isGameActive、とか、isGameEnableといった名前がいいんじゃないでしょうか.
 
-    public int correctCount;
-    public int correctGoal;
+    public int scorePuls;  //正解時に増えるスコア
+    int scoreCurrent;         //現在のスコア
+    public int scoreGoal;  //目標のスコア
 
     GameObject clearCanvas;
     GameObject overCanvas;
 
-    public TextMeshProUGUI timeText;
-
     void Awake()
     {
+        scoreCurrent = 0;
+
         Arrangements();
     }
 
@@ -74,7 +75,7 @@ public class BaseGameManager : MonoBehaviour
 
     virtual public void TimeUp()
     {
-        if (correctCount >= correctGoal)
+        if (scoreCurrent >= scoreGoal)
         {
             GameClear();
         }
@@ -94,6 +95,11 @@ public class BaseGameManager : MonoBehaviour
     {
         overCanvas.SetActive(true);
         inGameEnable = false;
+    }
+
+    public void AddScore()
+    {
+        scoreCurrent += scorePuls;
     }
 
     public void LessTime()

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -153,6 +153,7 @@ public class DragFixData : MonoBehaviour
     {
         fixDataList = new List<Question>(); // リストを初期化
         TextAsset csvFile;
+        //csvFile = Resources.Load("DragQ/FixDataDrag") as TextAsset;
         csvFile = Resources.Load("DragQ/FixDataDrag") as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
 

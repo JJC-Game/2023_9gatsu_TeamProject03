@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Drag
   - Target
+  - Stage
   layers:
   - Default
   - TransparentFX

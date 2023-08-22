@@ -26,8 +26,8 @@ public class SmartphoneOperation : MonoBehaviour
 
    // public Collider ClearBoundsCollider; // クリア範囲を配置するコライダー
 
-    private float timeInBounds = 3f; // 範囲内に入っている必要のある時間
-    private float currentTimeInBounds = 0f; // 現在の範囲内滞在時間
+   // private float timeInBounds = 3f; // 範囲内に入っている必要のある時間
+    //private float currentTimeInBounds = 0f; // 現在の範囲内滞在時間
    // public Transform Q;
     [SerializeField] private float decelerationTime = 1f; // 減速がかかるまでの時間
 

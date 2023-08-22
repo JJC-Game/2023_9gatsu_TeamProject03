@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
 public class PinchZoom : MonoBehaviour
 {
     // タッチ操作の最小距離を定義
-    private float minPinchDistance = 10f;
+    //private float minPinchDistance = 10f;
 
     // タッチ操作の開始時の2点間の距離を保持する変数
     private float startPinchDistance = 0f;
@@ -77,7 +77,10 @@ public class PinchZoom : MonoBehaviour
                 targetObject.transform.localScale = startScale * scaleFactor;
             }
         }
-     
+        if (currentObject)
+        {
+            //Debug.Log(currentObject.transform.localScale + "++");
+        }
     }
 
     void ResetObjectToRandomScale()
@@ -114,8 +117,8 @@ public class PinchZoom : MonoBehaviour
     void SelectRandomImage()
     {
         // Imagesフォルダ内のすべての画像ファイルを取得
-        string[] imageFiles = Directory.GetFiles("Assets/Resources/Images", "*.jpg");
-
+        string[] imageFiles = Directory.GetFiles("Assets/Resources/ProjectAssets/GameIcon","*.png");
+        Debug.Log(imageFiles.Length);
         // ランダムにファイルを選択
         randomImageFileName = imageFiles[Random.Range(0, imageFiles.Length)];
         Debug.Log(randomImageFileName);
@@ -179,7 +182,6 @@ public class PinchZoom : MonoBehaviour
             Debug.LogError("Canvas component not found.");
             return;
         }
-
         // キャンバスのサイズを取得
         Vector2 canvasSize = canvas.GetComponent<RectTransform>().sizeDelta;
 
@@ -193,9 +195,10 @@ public class PinchZoom : MonoBehaviour
             float widthRatio = canvasSize.x / objectWidth;
             float heightRatio = canvasSize.y / objectHeight;
             float minRatio = Mathf.Min(widthRatio, heightRatio);
-
+            Debug.Log(minRatio);
             // スケールを調整
             obj.transform.localScale *= minRatio;
+            Debug.Log(currentObject.transform.localScale + "--");
         }
     }
     public void ButtonChick()
@@ -206,27 +209,29 @@ public class PinchZoom : MonoBehaviour
             // 現在のオブジェクトのスケールを取得
             Vector3 currentScale = currentObject != null ? currentObject.transform.localScale : targetObject.transform.localScale;
 
-            int maxAttempts = 100; // 最大試行回数を設定
+            int maxAttempts = 200; // 最大試行回数を設定
             float randomScale = Random.Range(minRandomScale, maxRandomScale);
             float diff = Mathf.Abs(randomScale - currentScale.x);
             int attempts = 0;
-            float maxDifference = 10f; // 最大のスケールの差
+            float maxDifference = 500f; // 最大のスケールの差
                                        // 生成された画像のカウントを1プラス
             generatedImageCount++;
 
             // カウントをログに出力
-            Debug.Log("生成された画像の数: " + generatedImageCount.ToString());
+            //Debug.Log("生成された画像の数: " + generatedImageCount.ToString());
             while ((Mathf.Approximately(diff, 0f) || diff < maxDifference) && attempts < maxAttempts)
             {
                 randomScale = Random.Range(minRandomScale, maxRandomScale);
                 diff = Mathf.Abs(randomScale - currentScale.x);
                 attempts++;
+                //Debug.Log(attempts);
             }
 
             if (attempts == maxAttempts)
             {
                 // 最大試行回数を超えても条件を満たすスケールが見つからなかった場合は、現在のスケールから±10の範囲内でランダムに選ぶ
                 randomScale = Random.Range(currentScale.x - maxDifference, currentScale.x + maxDifference);
+                Debug.Log(currentScale.x + "onaji"+ maxDifference+""+randomScale);
             }
 
 
@@ -240,12 +245,13 @@ public class PinchZoom : MonoBehaviour
             // 新しいオブジェクトのスケールをリセット
             currentObject.transform.localScale = initialScale;
             currentObject.transform.localScale = initialScale * randomScale;
+            Debug.Log(currentObject.transform.localScale);
             if (currentObject.transform.localScale.x <= 0 && currentObject.transform.localScale.y <= 0 && currentObject.transform.localScale.z <= 0)
             {
                 currentObject.transform.localScale = currentObject.transform.localScale * -1;
             }
             currentObject.AddComponent<BorderOnlyDisplay>();            // 新しいオブジェクトを最前列に表示
-           // int generatedImageCountText = generatedImageCount++;
+            Debug.Log(currentObject.transform.localScale + "+");
             CounntText.text =""+ generatedImageCount;
         }
     }

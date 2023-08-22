@@ -1,11 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class Director : MonoBehaviour
 {
     // 保存するファイルパスを指定（例：Assets/IDs.txt）
-    private string filePath = "Assets/X";
+    //private string filePath = "Assets/X";
     private ImageDragAndDrop draggingPiece; // ドラッグ中のオブジェクトを保持する変数
     public bool on = false;
     // 盤面の位置情報を管理する二次元配列
@@ -25,7 +25,7 @@ public class Director : MonoBehaviour
         get { return f; }
         set { f = value; }
     }
-    private float positionThreshold = 30000f;
+    //private float positionThreshold = 30000f;
     private ImageDragAndDrop[,] pieces; // ピースの配列を追加
     public int count = 0;
     ButtonClickHandler click;
@@ -219,7 +219,7 @@ public class Director : MonoBehaviour
     }
     public void DeletDrop()
     {
-        int c = 0, t = 0;
+        int c = 0;
         int[,] temp = new int[3, 3];
         int[,] temp2 = new int[3, 3];
 

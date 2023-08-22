@@ -45,8 +45,6 @@ public class LeaveOutGameManager : BaseGameManager
         }
 
         RandomChange();
-
-        correctCount = 0;
     }
 
     void RandomChange()
@@ -54,25 +52,25 @@ public class LeaveOutGameManager : BaseGameManager
         ButtonReset();
 
         int correnctIconId = Random.Range(0, iconList.Length);
-        int randomTexture = Random.Range(0, spriteMax + 1);
+        int TextureId = Random.Range(0, spriteMax + 1);
         // COMMENT_KUWABARA randomIconって、3 * 5で並んでいるアイコンの中で正解のアイコンはどれかを示しているのだと思いますので、
         // correnctIconIdといった名前にしてください。変数が指しているものが何なのか提示してください.
 
         // COMMENT_KUWABARA randomTextureについても、選択した後に、正解のテクスチャと、誤りのテクスチャがわかると思うので、それぞれを変数に納めてほしいですし、こちらもTextureIdといった名前の変数にしてほしいです.
 
-        if (Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture))
+        if (Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + TextureId))
         {
-            sprite_Correct = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
+            sprite_Correct = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + TextureId);
 
-            if (randomTexture % 2 == 0)
+            if (TextureId % 2 == 0)
             {
-                randomTexture++;
+                TextureId++;
             }
             else
             {
-                randomTexture--;
+                TextureId--;
             }
-            sprite_Incorrect = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
+            sprite_Incorrect = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + TextureId);
         }
 
         for (int i = 0; i < iconList.Length; i++)
@@ -100,7 +98,7 @@ public class LeaveOutGameManager : BaseGameManager
     {
         if (inGameEnable)
         {
-            correctCount++;
+            AddScore();
 
             RandomChange();
         }
