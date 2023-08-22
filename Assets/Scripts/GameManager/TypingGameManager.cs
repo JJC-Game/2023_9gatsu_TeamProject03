@@ -5,36 +5,31 @@ using UnityEngine;
 
 public class TypingGameManager : BaseGameManager
 {
-    string answerWard;
-    public List<string> fixDataList;
+    string answerWord;
+    List<string> fixDataList = new List<string>();
 
     public override void Arrangements()
     {
         LoadFixData();
+        WordChange();
     }
 
     void LoadFixData()
     {
         TextAsset csvFile;
-        csvFile = Resources.Load("FixData/ItemFixData") as TextAsset;
+        csvFile = Resources.Load("FixData/TypingWordList") as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
 
         while (reader.Peek() > -1)
         {
             string line = reader.ReadLine();
-            string[] elementArray = line.Split(',');
-            Debug.Log(line);
-
-            fixDataList.Add(elementArray[0]);
-            //            csvDatas.Add(line.Split(',')); // リストに入れる
+            fixDataList.Add(line);
         }
-
-
     }
 
     public void Decision(string input)
     {
-        if (answerWard == input)
+        if (answerWord == input)
         {
             Correct();
         }
@@ -44,9 +39,10 @@ public class TypingGameManager : BaseGameManager
         }
     }
 
-    void WardChange()
+    void WordChange()
     {
-
+        int wordNo = Random.Range(0, fixDataList.Count);
+        answerWord = fixDataList[wordNo];
     }
 
     public void Correct()
@@ -55,7 +51,7 @@ public class TypingGameManager : BaseGameManager
         {
             AddScore();
 
-            WardChange();
+            WordChange();
         }
     }
 
