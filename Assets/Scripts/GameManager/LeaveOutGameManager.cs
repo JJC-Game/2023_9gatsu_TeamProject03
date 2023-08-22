@@ -45,8 +45,6 @@ public class LeaveOutGameManager : BaseGameManager
         }
 
         RandomChange();
-
-        correctCount = 0;
     }
 
     void RandomChange()
@@ -100,7 +98,7 @@ public class LeaveOutGameManager : BaseGameManager
     {
         if (inGameEnable)
         {
-            correctCount++;
+            AddScore();
 
             RandomChange();
         }
