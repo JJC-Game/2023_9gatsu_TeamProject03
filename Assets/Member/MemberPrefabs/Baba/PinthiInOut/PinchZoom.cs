@@ -195,10 +195,10 @@ public class PinchZoom : MonoBehaviour
             float widthRatio = canvasSize.x / objectWidth;
             float heightRatio = canvasSize.y / objectHeight;
             float minRatio = Mathf.Min(widthRatio, heightRatio);
-            Debug.Log(minRatio);
+            Debug.Log(obj.transform.localScale*minRatio);
             // スケールを調整
             obj.transform.localScale *= minRatio;
-            Debug.Log(currentObject.transform.localScale + "--");
+            //Debug.Log(currentObject.transform.localScale + "="+ obj.transform.localScale+"*"+ minRatio);
         }
     }
     public void ButtonChick()
@@ -213,7 +213,7 @@ public class PinchZoom : MonoBehaviour
             float randomScale = Random.Range(minRandomScale, maxRandomScale);
             float diff = Mathf.Abs(randomScale - currentScale.x);
             int attempts = 0;
-            float maxDifference = 500f; // 最大のスケールの差
+            float maxDifference = 5f; // 最大のスケールの差
                                        // 生成された画像のカウントを1プラス
             generatedImageCount++;
 
@@ -245,7 +245,7 @@ public class PinchZoom : MonoBehaviour
             // 新しいオブジェクトのスケールをリセット
             currentObject.transform.localScale = initialScale;
             currentObject.transform.localScale = initialScale * randomScale;
-            Debug.Log(currentObject.transform.localScale);
+           // Debug.Log(currentObject.transform.localScale);
             if (currentObject.transform.localScale.x <= 0 && currentObject.transform.localScale.y <= 0 && currentObject.transform.localScale.z <= 0)
             {
                 currentObject.transform.localScale = currentObject.transform.localScale * -1;

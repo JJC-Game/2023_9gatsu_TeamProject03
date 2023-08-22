@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +13,8 @@ public class Timer : MonoBehaviour
     public bool end=false;
     public GameObject StartText;
     public TimeLine timeline;
-
+    bool startTimeLine=false;
+    float time=5;
     // Update is called once per frame
     private void Awake()
     {
@@ -39,15 +40,29 @@ public class Timer : MonoBehaviour
             timeline.EventPlay(id);
             Debug.Log("時間になりました！");
         }
+        StartTime();
+        StartTimes();
     }
     public void StartTime()
     {
-        startTime = true;
+        if (time <= 0)
+        {
+            startTime = true;
+            Debug.Log("時間になりました！");
+        }
     }
     public void StratTimeline()
     {
         StartText.SetActive(false);
         int id = 0;
         timeline.EventPlay(id);
+        startTimeLine = true;
+    }
+    public void StartTimes()
+    {
+        if(startTimeLine == true)
+        {
+            time -= Time.deltaTime;
+        }
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -23,6 +23,7 @@ public class SecondHandManager : MonoBehaviour
     {
         if (timer.startTime == true)
         {
+            Debug.Log("aiueo");
             s += Time.deltaTime;
             if (s >= 60.0f)
             {
