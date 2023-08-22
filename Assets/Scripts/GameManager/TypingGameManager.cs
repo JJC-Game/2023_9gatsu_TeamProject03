@@ -57,6 +57,9 @@ public class TypingGameManager : BaseGameManager
 
     public void Incorrect()
     {
-        LessTime();
+        if (inGameEnable)
+        {
+            LessTime();
+        }
     }
 }
