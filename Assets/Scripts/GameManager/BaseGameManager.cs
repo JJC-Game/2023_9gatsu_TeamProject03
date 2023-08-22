@@ -19,8 +19,6 @@ public class BaseGameManager : MonoBehaviour
     GameObject clearCanvas;
     GameObject overCanvas;
 
-    public TextMeshProUGUI timeText;
-
     void Awake()
     {
         Arrangements();
