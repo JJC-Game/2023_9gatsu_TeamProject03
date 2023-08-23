@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
-{ //カウントダウン
+{
+    PinchScore pinchScore;
+    GameObject targetObject;
+    //カウントダウン
     public float countdown = 60.0f;
     //タイムリミット
     private float timeLimit = 0.0f;
@@ -14,12 +16,16 @@ public class Timer : MonoBehaviour
     public GameObject StartText;
     public TimeLine timeline;
     bool startTimeLine=false;
-    float time=5;
+    float time=4;
     // Update is called once per frame
     private void Awake()
     {
-        GameObject targetObject = GameObject.Find("D");
+         targetObject = GameObject.Find("D");
         timeline = targetObject.GetComponent<TimeLine>();
+        if (targetObject.GetComponent<PinchScore>())
+        {
+            pinchScore = targetObject.GetComponent<PinchScore>();
+        }
     }
     void Update()
     {
@@ -47,8 +53,9 @@ public class Timer : MonoBehaviour
     {
         if (time <= 0)
         {
-            startTime = true;
+            startTime = true;            
             Debug.Log("時間になりました！");
+            GameStart();
         }
     }
     public void StratTimeline()
@@ -63,6 +70,13 @@ public class Timer : MonoBehaviour
         if(startTimeLine == true)
         {
             time -= Time.deltaTime;
+        }
+    }
+    private void GameStart()
+    {
+        if (targetObject.GetComponent<PinchScore>())
+        {
+            pinchScore.inGameEnable = true;
         }
     }
 }

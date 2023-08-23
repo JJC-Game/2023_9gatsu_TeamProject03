@@ -23,7 +23,7 @@ public class LeaveOutGameManager : BaseGameManager
     public override void Arrangements()
     {
         GameObject iconParent = GameObject.Find("IconParent");
-        GameObject buttonParent = GameObject.Find("ButtonArea");
+        GameObject buttonParent = GameObject.Find("ButtonParent");
         if (!iconParent || iconParent.transform.childCount <= 0)
         {
             return;
@@ -106,6 +106,9 @@ public class LeaveOutGameManager : BaseGameManager
 
     public void Incorrect()
     {
-        LessTime();
+        if (inGameEnable)
+        {
+            LessTime();
+        }
     }
 }

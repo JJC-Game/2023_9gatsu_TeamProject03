@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using TMPro;
 
 public class TypingGameManager : BaseGameManager
 {
     string answerWord;
     List<string> fixDataList = new List<string>();
 
+    TextMeshProUGUI questionText;
+
     public override void Arrangements()
     {
+        questionText = GameObject.Find("QuestionText").GetComponent<TextMeshProUGUI>();
         LoadFixData();
         WordChange();
     }
@@ -43,6 +47,8 @@ public class TypingGameManager : BaseGameManager
     {
         int wordNo = Random.Range(0, fixDataList.Count);
         answerWord = fixDataList[wordNo];
+
+        questionText.text = answerWord;
     }
 
     public void Correct()

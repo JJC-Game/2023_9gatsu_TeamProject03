@@ -30,9 +30,9 @@ public class PinchZoom : MonoBehaviour
     private string randomImageFileName;
 
     public Image image;
-    private int generatedImageCount = 0;
+    public int generatedImageCount = 0;
     public TextMeshProUGUI CounntText;
-    void Start()
+    void Awake()
     {
         // オブジェクトの初期位置とスケールを記録
         initialPosition = targetObject.transform.position;
@@ -118,10 +118,10 @@ public class PinchZoom : MonoBehaviour
     {
         // Imagesフォルダ内のすべての画像ファイルを取得
         string[] imageFiles = Directory.GetFiles("Assets/Resources/ProjectAssets/GameIcon","*.png");
-        Debug.Log(imageFiles.Length);
+       // Debug.Log(imageFiles.Length);
         // ランダムにファイルを選択
         randomImageFileName = imageFiles[Random.Range(0, imageFiles.Length)];
-        Debug.Log(randomImageFileName);
+      //  Debug.Log(randomImageFileName);
     }
 
     // 現在のオブジェクトのイメージを変更する関数
@@ -231,7 +231,7 @@ public class PinchZoom : MonoBehaviour
             {
                 // 最大試行回数を超えても条件を満たすスケールが見つからなかった場合は、現在のスケールから±10の範囲内でランダムに選ぶ
                 randomScale = Random.Range(currentScale.x - maxDifference, currentScale.x + maxDifference);
-                Debug.Log(currentScale.x + "onaji"+ maxDifference+""+randomScale);
+              //  Debug.Log(currentScale.x + "onaji"+ maxDifference+""+randomScale);
             }
 
 
@@ -251,7 +251,7 @@ public class PinchZoom : MonoBehaviour
                 currentObject.transform.localScale = currentObject.transform.localScale * -1;
             }
             currentObject.AddComponent<BorderOnlyDisplay>();            // 新しいオブジェクトを最前列に表示
-            Debug.Log(currentObject.transform.localScale + "+");
+         //   Debug.Log(currentObject.transform.localScale + "+");
             CounntText.text =""+ generatedImageCount;
         }
     }
