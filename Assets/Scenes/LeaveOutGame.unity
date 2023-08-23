@@ -4657,7 +4657,7 @@ GameObject:
   - component: {fileID: 1220566563}
   - component: {fileID: 1220566565}
   m_Layer: 5
-  m_Name: Clock
+  m_Name: ClockBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4796,7 +4796,7 @@ RectTransform:
   m_GameObject: {fileID: 1257602785}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2140433329}
@@ -6990,7 +6990,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0.55
+  m_FillAmount: 0.8
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -7388,7 +7388,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.55
+  m_FillAmount: 0.65
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0

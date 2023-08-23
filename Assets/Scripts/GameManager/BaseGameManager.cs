@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,8 @@ public class BaseGameManager : MonoBehaviour
 {
     public int timeLimit;
     float timeCurrent;
+    Image timer;
+    GameObject clockHand;
 
     public bool inGameEnable = false;
     // COMMENT_KUWABARA 変数名が何の情報も示してないので、ゲームがどうなったフラグなのかを示してほしいです.
@@ -23,6 +26,11 @@ public class BaseGameManager : MonoBehaviour
     void Awake()
     {
         scoreCurrent = 0;
+
+        timer = GameObject.Find("Clock").GetComponent<Image>();
+        timer.fillAmount = 1;
+
+        clockHand = GameObject.Find("CircleFrame");
 
         Arrangements();
     }
@@ -43,6 +51,9 @@ public class BaseGameManager : MonoBehaviour
         if (inGameEnable)
         {
             timeCurrent -= Time.deltaTime;
+            timer.fillAmount = timeCurrent / timeLimit;
+
+            clockHand.transform.rotation = Quaternion.Euler(0, 0, 360 * (timeCurrent / timeLimit));
 
             if (timeCurrent <= 0)
             {
@@ -71,6 +82,7 @@ public class BaseGameManager : MonoBehaviour
     public void GameStart()
     {
         inGameEnable = true;
+        Debug.Log("Start");
     }
 
     virtual public void TimeUp()
