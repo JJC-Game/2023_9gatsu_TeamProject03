@@ -20,6 +20,9 @@ public class BaseGameManager : MonoBehaviour
     int scoreCurrent;         //現在のスコア
     public int scoreGoal;  //目標のスコア
 
+    Image coinBag;
+    float gaugeMax;
+
     GameObject clearCanvas;
     GameObject overCanvas;
 
@@ -31,6 +34,11 @@ public class BaseGameManager : MonoBehaviour
         timer.fillAmount = 1;
 
         clockHand = GameObject.Find("CircleFrame");
+
+        coinBag = GameObject.Find("Square").GetComponent<Image>();
+        coinBag.fillAmount = 0;
+
+        gaugeMax = scoreGoal * 1.25f;
 
         Arrangements();
     }
@@ -112,11 +120,16 @@ public class BaseGameManager : MonoBehaviour
     public void AddScore()
     {
         scoreCurrent += scorePuls;
+
+        coinBag.fillAmount = scoreCurrent / gaugeMax;
     }
 
     public void LessTime()
     {
         timeCurrent -= 10;
+        timer.fillAmount = timeCurrent / timeLimit;
+
+        clockHand.transform.rotation = Quaternion.Euler(0, 0, 360 * (timeCurrent / timeLimit));
     }
     
     //シーン遷移
