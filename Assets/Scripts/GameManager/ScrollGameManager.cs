@@ -38,7 +38,7 @@ public class ScrollGameManager : BaseGameManager
 
     void IconSet()
     {
-        GameObject iconParent = GameObject.Find("BackGround_Scroll");
+        GameObject iconParent = GameObject.Find("IconParent");
 
         int childCount = iconParent.transform.childCount;
         iconList = new GameObject[childCount];
