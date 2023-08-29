@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class BaseGameManager : MonoBehaviour
 {
+    public int stageNo;
+    
     public int timeLimit;
     float timeCurrent;
     Image timer;
@@ -25,6 +28,11 @@ public class BaseGameManager : MonoBehaviour
 
     GameObject clearCanvas;
     GameObject overCanvas;
+
+    [Header("デモ演出")]
+    [SerializeField] PlayableDirector pd_gameStart;  //ゲームスタートのデモ演出
+    [SerializeField] PlayableDirector pd_gameClear;  //ゲームクリアのデモ演出
+    [SerializeField] PlayableDirector pd_gameOver;   //ゲームオーバーのデモ演出
 
     void Awake()
     {
@@ -87,6 +95,12 @@ public class BaseGameManager : MonoBehaviour
 
     }
 
+    public void StartDemoPlay()
+    {
+        //スタートデモを再生
+        pd_gameStart.Play();
+    }
+
     public void GameStart()
     {
         inGameEnable = true;
@@ -111,6 +125,12 @@ public class BaseGameManager : MonoBehaviour
     {
         clearCanvas.SetActive(true);
         inGameEnable = false;
+
+        if (PlayerPrefs.GetInt("StageScore_" + stageNo) < scoreCurrent)
+        {
+            PlayerPrefs.SetInt("StageScore_" + stageNo, scoreCurrent);
+            PlayerPrefs.Save();
+        }
     }
 
     public void GameOver()
