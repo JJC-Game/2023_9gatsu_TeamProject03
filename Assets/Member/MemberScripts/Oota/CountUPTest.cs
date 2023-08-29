@@ -10,12 +10,19 @@ public class CountUPTest : MonoBehaviour
 
     public bool StartFLG;
 
+    int reset = 0;
+
     public int targetCount = 10; // 目標のカウント数
     public float totalTime = 5f; // 決められた時間（秒）
     public AnimationCurve speedCurve; // アニメーションカーブで速度を調整
 
     public int currentCount = 0; // 現在のカウント数
     public float elapsedTime = 0f; // 経過時間
+
+    private void Start()
+    {
+        countText.text = reset.ToString("00000");
+    }
 
     public void CountStart()
     {
@@ -36,7 +43,7 @@ public class CountUPTest : MonoBehaviour
 
                 currentCount = Mathf.Clamp(currentCount + countToAdd, 0, targetCount);
 
-                countText.text = currentCount.ToString();
+                countText.text = currentCount.ToString("00000");
             }
     }
 }
