@@ -91,6 +91,8 @@ public class BaseGameManager : MonoBehaviour
     {
         inGameEnable = true;
         Debug.Log("Start");
+
+        SoundManager.Instance.PlayBGM(0);
     }
 
     virtual public void TimeUp()

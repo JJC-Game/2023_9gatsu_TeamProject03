@@ -32,7 +32,7 @@ public class Director : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        click = GameObject.Find("I").GetComponent<ButtonClickHandler>();
+        click = GameObject.Find("AnswerButton").GetComponent<ButtonClickHandler>();
     }
 
     // Update is called once per frame
@@ -190,15 +190,15 @@ public class Director : MonoBehaviour
                 draggingPiece.transform.position = boardPositions[newX, newY];
                 targetPiece.transform.position = boardPositions[dragX, dragY];
                 // ピースのIDを交換前と交換後でデバッグログで表示
-                Debug.Log("交換前：オブジェクト名: " + draggingPiece.gameObject.name + ", ID1: " + draggingPiece.ID1 + ", ID2: " + draggingPiece.ID2);
-                Debug.Log("交換前：入れ替え対象のオブジェクト名: " + targetPiece.gameObject.name + ", ID1: " + targetPiece.ID1 + ", ID2: " + targetPiece.ID2);
+               // Debug.Log("交換前：オブジェクト名: " + draggingPiece.gameObject.name + ", ID1: " + draggingPiece.ID1 + ", ID2: " + draggingPiece.ID2);
+              //  Debug.Log("交換前：入れ替え対象のオブジェクト名: " + targetPiece.gameObject.name + ", ID1: " + targetPiece.ID1 + ", ID2: " + targetPiece.ID2);
 
                 // ピースのIDを更新
                 draggingPiece.Set(newX, newY);
                 targetPiece.Set(dragX, dragY);
                 // ピースのIDを交換後でデバッグログで表示
-                Debug.Log("交換後：オブジェクト名: " + draggingPiece.gameObject.name + ", ID1: " + draggingPiece.ID1 + ", ID2: " + draggingPiece.ID2);
-                Debug.Log("交換後：入れ替え対象のオブジェクト名: " + targetPiece.gameObject.name + ", ID1: " + targetPiece.ID1 + ", ID2: " + targetPiece.ID2);
+              //  Debug.Log("交換後：オブジェクト名: " + draggingPiece.gameObject.name + ", ID1: " + draggingPiece.ID1 + ", ID2: " + draggingPiece.ID2);
+              //  Debug.Log("交換後：入れ替え対象のオブジェクト名: " + targetPiece.gameObject.name + ", ID1: " + targetPiece.ID1 + ", ID2: " + targetPiece.ID2);
 
                 // ピースの位置を更新した後に、複製したピースの位置情報を初期化
                 for (int x = 0; x < boardSizeX; x++)
@@ -222,7 +222,7 @@ public class Director : MonoBehaviour
         int c = 0;
         int[,] temp = new int[3, 3];
         int[,] temp2 = new int[3, 3];
-
+        count = 0;
         // Check for horizontal matches and update 'temp' array
         for (int i = 0; i < 3; i++)
         {
@@ -233,9 +233,11 @@ public class Director : MonoBehaviour
                 int prevCellValue = Field[i, j - 1];
                 string objNameBefore = obj[i, j - 1].gameObject.name; // オブジェクト名を取得
                 string objNameCurrent = obj[i, j].gameObject.name; // オブジェクト名を取得
-                Debug.Log("横" + currentCellValue + "前" + prevCellValue + " (オブジェクト名前: " + objNameBefore + ", オブジェクト名: " + objNameCurrent + ") " + Field[i, j]); // デバッグログに番号とオブジェクト名を表示
-                if (Field[i, j] == Field[i, j - 1])
+                //Debug.Log(currentCellValue + 1 + "" + prevCellValue);
+                // Debug.Log("横" + currentCellValue + "前" + prevCellValue + " (オブジェクト名前: " + objNameBefore + ", オブジェクト名: " + objNameCurrent + ") " + Field[i, j]); // デバッグログに番号とオブジェクト名を表示
+                if (currentCellValue == prevCellValue + 1)
                 {
+                  //Debug.Log(Field[i, j] + "" + Field[i - 1, j]);
                     c++;
                     if (c >= 3)
                     {
@@ -249,7 +251,7 @@ public class Director : MonoBehaviour
                 }
             }
         }
-
+        /*
         // Check for vertical matches and update 'temp2' array
         for (int j = 0; j < 3; j++)
         {
@@ -260,9 +262,10 @@ public class Director : MonoBehaviour
                 int prevCellValue = Field[i - 1, j];
                 string objNameBefore = obj[i - 1, j].gameObject.name; // オブジェクト名を取得
                 string objNameCurrent = obj[i, j].gameObject.name; // オブジェクト名を取得
-                //Debug.Log("縦"+currentCellValue + "前" + prevCellValue + " (オブジェクト名前: " + objNameBefore + ", オブジェクト名: " + objNameCurrent + ") " + Field[i, j]); // デバッグログに番号とオブジェクト名を表示
+             //Debug.Log("縦"+currentCellValue + "前" + prevCellValue + " (オブジェクト名前: " + objNameBefore + ", オブジェクト名: " + objNameCurrent + ") " + Field[i, j]); // デバッグログに番号とオブジェクト名を表示
                 if (Field[i, j] == Field[i - 1, j])
                 {
+              Debug.Log(Field[i, j] + "" + Field[i - 1, j]);
                     c++;
                     if (c >= 3)
                     {
@@ -276,7 +279,7 @@ public class Director : MonoBehaviour
                 }
             }
         }
-
+        */
         // Delete horizontal matches
         for (int i = 0; i < 3; i++)
         {
@@ -323,7 +326,7 @@ public class Director : MonoBehaviour
                         int type = Random.Range(6, 6);
 
                         // 生成したピースのImageDragAndDropコンポーネントを取得して設定
-                        ImageDragAndDrop imageDragAndDrop = obj[k, j].GetComponent<ImageDragAndDrop>();
+                        ImageDragAndDrop imageDragAndDrop = obj[k, j].GetComponent<ImageDragAndDrop>();  k
                         imageDragAndDrop.Set(type);
                     }
                 */
