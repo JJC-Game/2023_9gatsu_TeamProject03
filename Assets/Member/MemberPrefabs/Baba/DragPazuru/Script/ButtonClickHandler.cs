@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -10,5 +10,6 @@ public class ButtonClickHandler : MonoBehaviour, IPointerClickHandler
     {
         check = true;
         count++;
+        Debug.Log("on");
     }
 }

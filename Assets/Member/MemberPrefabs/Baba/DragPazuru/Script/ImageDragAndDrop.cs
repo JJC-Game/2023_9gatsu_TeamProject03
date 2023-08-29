@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using TMPro;
 public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] Sprite[] sprites;
@@ -15,6 +16,9 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private Vector3 offset; // ドラッグオブジェクトのオフセット
     public Collider dragBoundsCollider;
     private ImageDragAndDrop draggingPiece; // ドラッグ中のオブジェクトを保持する変数
+    public string[] number;
+    public TextMeshProUGUI text;
+
     int Type;
     public int ID1
     {
@@ -46,6 +50,7 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         P1 = GetComponent<RectTransform>().position; // 自身の位置情報を親オブジェクトとして指定
         P2 = RectTransformUtility.WorldToScreenPoint(Camera.main, P1);
         d = GameObject.Find("D").GetComponent<Director>();
+      
     }
 
 
@@ -82,7 +87,8 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     }
     public void Set(int n)
     {
-        GetComponent<Image>().sprite = sprites[n];
+        //GetComponent<Image>().sprite = sprites[n];
+        text.text= number[n];
         gameObject.name = "type" + n;
     }
     public void Set(int x, int y)
