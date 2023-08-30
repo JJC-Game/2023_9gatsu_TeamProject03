@@ -6,5 +6,5 @@ using UnityEngine;
 public class OperationFixData
 {
     public int _id;                     // アイテムのID.
-    public string[] _operationText = new string[3];                // 説明文1.
+    public string[] _operationText = new string[3];                // 説明文.
 }
