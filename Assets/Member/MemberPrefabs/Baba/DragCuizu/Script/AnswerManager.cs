@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class AnswerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject targetObject = GameObject.Find("D");
+        GameObject targetObject = GameObject.Find("GameManager");
         D = targetObject.GetComponent<DragFixData>();
         childCount = transform.childCount;
         for (int i = 0; i < childCount; i++)

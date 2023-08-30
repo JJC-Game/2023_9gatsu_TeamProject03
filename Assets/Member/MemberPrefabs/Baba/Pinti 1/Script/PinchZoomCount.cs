@@ -12,7 +12,7 @@ public class PinchZoomCount : MonoBehaviour
     private void Start()
     {
         initialScale = transform.localScale;
-        GameObject targetObject = GameObject.Find("D");
+        GameObject targetObject = GameObject.Find("GameManager");
         timer = targetObject.GetComponent<Timer>();
     }
 

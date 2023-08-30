@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
@@ -19,10 +19,12 @@ public class RangeCheck : MonoBehaviour
     public List<Sprite> imageToShow = new List<Sprite>();  // 表示する画像
     Timer timer;
     public GameObject ScoreText;
+    BaseGameManager baseManager;
     private void Start()
     {
+        GameObject targetObject = GameObject.Find("GameManager");
+        baseManager = targetObject.GetComponent<BaseGameManager>();
         ScoreText.SetActive(false);
-        GameObject targetObject = GameObject.Find("D");
         timer = targetObject.GetComponent<Timer>();
         solveButton.onClick.AddListener(CheckSolution);
         GenerateRandomProblem();
@@ -30,10 +32,10 @@ public class RangeCheck : MonoBehaviour
     }
     private void Update()
     {
-        if (timer.end == true)
-        {
-            ScoreText.SetActive(true);
-        }
+       // if (timer.end == true)
+      //  {
+      //      ScoreText.SetActive(true);
+     //   }
     }
     private void GenerateRandomProblem()
     {
@@ -121,13 +123,15 @@ public class RangeCheck : MonoBehaviour
         int objectsInsideCount = CountObjectsInside(parentObjects[targetIndex]);
         if (objectsInsideCount == targetCount)
         {
-            resultText.text = "正解！";
+           // resultText.text = "正解！";
+            baseManager.AddScore();
             correctCount++;
             GenerateRandomProblem();
         }
         else
         {
-            resultText.text = "不正解。もう一度試してみてください。";
+            baseManager.LessTime();
+          //  resultText.text = "不正解。もう一度試してみてください。";
         }
         numberText[0].text = correctCount.ToString();
         numberText[1].text = correctCount.ToString();

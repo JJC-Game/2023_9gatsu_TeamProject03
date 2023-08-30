@@ -29,9 +29,12 @@ public class Director : MonoBehaviour
     private ImageDragAndDrop[,] pieces; // ピースの配列を追加
     public int count = 0;
     ButtonClickHandler click;
+    DragGameManager dragMan;
     // Start is called before the first frame update
     void Start()
     {
+        GameObject targetObject = GameObject.Find("GameManager");
+        dragMan = targetObject.GetComponent<DragGameManager>();
         click = GameObject.Find("AnswerButton").GetComponent<ButtonClickHandler>();
     }
 
@@ -350,7 +353,12 @@ public class Director : MonoBehaviour
                     Field[x, y] = 6;
                 }
             }
+            dragMan.AddScore();
             on = true;
+        }
+        else
+        {
+            dragMan.LessTime();
         }
     }
 

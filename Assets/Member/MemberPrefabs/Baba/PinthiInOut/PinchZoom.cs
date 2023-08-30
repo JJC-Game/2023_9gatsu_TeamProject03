@@ -31,9 +31,12 @@ public class PinchZoom : MonoBehaviour
 
     public Image image;
     public int generatedImageCount = 0;
-    public TextMeshProUGUI CounntText;
+    PinchScore pinch;
+    //public TextMeshProUGUI CounntText;
     void Awake()
     {
+        GameObject targetObject = GameObject.Find("GameManager");
+        pinch = targetObject.GetComponent<PinchScore>();
         // オブジェクトの初期位置とスケールを記録
         initialPosition = targetObject.transform.position;
         initialScale = targetObject.transform.localScale;
@@ -41,7 +44,7 @@ public class PinchZoom : MonoBehaviour
         ResetObjectToRandomScale();
         SelectRandomImage();
         generatedImageCount = 1;
-        CounntText.text = "1";
+      //  CounntText.text = "1";
     }
 
     void Update()
@@ -216,7 +219,7 @@ public class PinchZoom : MonoBehaviour
             float maxDifference = 5f; // 最大のスケールの差
                                        // 生成された画像のカウントを1プラス
             generatedImageCount++;
-
+            pinch.AddScore();
             // カウントをログに出力
             //Debug.Log("生成された画像の数: " + generatedImageCount.ToString());
             while ((Mathf.Approximately(diff, 0f) || diff < maxDifference) && attempts < maxAttempts)
@@ -251,8 +254,12 @@ public class PinchZoom : MonoBehaviour
                 currentObject.transform.localScale = currentObject.transform.localScale * -1;
             }
             currentObject.AddComponent<BorderOnlyDisplay>();            // 新しいオブジェクトを最前列に表示
-         //   Debug.Log(currentObject.transform.localScale + "+");
-            CounntText.text =""+ generatedImageCount;
+                                                                        //   Debug.Log(currentObject.transform.localScale + "+");
+                                                                        // CounntText.text =""+ generatedImageCount;
+        }
+        else
+        {
+            pinch.LessTime();
         }
     }
 }
