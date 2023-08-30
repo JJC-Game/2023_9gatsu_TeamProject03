@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -63,8 +63,8 @@ public class Tutorial : MonoBehaviour
         if (dragFixData.nowNumber >= 4)
         {
             timer.startTime = false;       
-                int id = 1;
-                timer.timeline.EventPlay(id);            
+              //  int id = 1;
+              //  timer.timeline.EventPlay(id);            
         }
         if (Input.GetMouseButton(0)&& StartTutorialText)
         {
@@ -82,8 +82,8 @@ public class Tutorial : MonoBehaviour
         if (rangeCheck.correctCount >= 4)
         {
             timer.startTime = false;
-            int id = 1;
-            timer.timeline.EventPlay(id);
+            //int id = 1;
+           // timer.timeline.EventPlay(id);
         }
         if (Input.GetMouseButton(0) && StartTutorialText)
         {

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -25,7 +25,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     AnswerManager anserManager;
     private void Awake()
     {
-        GameObject targetObject = GameObject.Find("D");
+        GameObject targetObject = GameObject.Find("GameManager");
         GameObject targetObjectA = GameObject.Find("A");
         another = anotherObject.GetComponent<AnotherScript>();
         drag = targetObject.GetComponent<DragFixData>();

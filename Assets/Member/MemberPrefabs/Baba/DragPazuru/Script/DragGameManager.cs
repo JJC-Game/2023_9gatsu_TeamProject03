@@ -10,6 +10,8 @@ public class DragGameManager : BaseGameManager
     public GameObject start;
     public override void UpdatePlus()
     {
+        base.UpdatePlus();
+        /*
         if (puzzle.number > nextScore)
         {
             AddScore();
@@ -20,14 +22,17 @@ public class DragGameManager : BaseGameManager
         {
             start.SetActive(false);
         }
-
+        */
     }
     public override void Arrangements()
     {
+        base.Arrangements();
+        /*
         scorePuls = 1;
         scoreGoal = 2;
         timeLimit = 60;
         puzzle = puzzleObjyekt.GetComponent<PuzzleBoard>();
+        */
     }
     public override void TimeUp()
     {

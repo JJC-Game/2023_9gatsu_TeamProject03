@@ -5,6 +5,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     PinchScore pinchScore;
+    DragGameManager dragGameManajer;
     GameObject targetObject;
     //カウントダウン
     public float countdown = 60.0f;
@@ -12,20 +13,19 @@ public class Timer : MonoBehaviour
     private float timeLimit = 0.0f;
 
     public bool startTime=false;
-    public bool end=false;
-    public GameObject StartText;
-    public TimeLine timeline;
+    //public bool end=false;
+   // public GameObject StartText;
+   // public TimeLine timeline;
     bool startTimeLine=false;
     float time=4;
+    private int num=100;
     // Update is called once per frame
     private void Awake()
     {
-         targetObject = GameObject.Find("D");
-        timeline = targetObject.GetComponent<TimeLine>();
-        if (targetObject.GetComponent<PinchScore>())
-        {
-            pinchScore = targetObject.GetComponent<PinchScore>();
-        }
+         targetObject = GameObject.Find("GameManager");
+        //  timeline = targetObject.GetComponent<TimeLine>();
+        GameStart();
+        StratTimeline();
     }
     void Update()
     {
@@ -40,10 +40,10 @@ public class Timer : MonoBehaviour
         }
         if (countdown <= timeLimit)
         {
-            end = true;
+            //end = true;
             startTime = false;
-            int id = 1;
-            timeline.EventPlay(id);
+           // int id = 1;
+           // timeline.EventPlay(id);
             Debug.Log("時間になりました！");
         }
         StartTime();
@@ -55,14 +55,14 @@ public class Timer : MonoBehaviour
         {
             startTime = true;            
             Debug.Log("時間になりました！");
-            GameStart();
+          //  GameStart();
         }
     }
     public void StratTimeline()
     {
-        StartText.SetActive(false);
-        int id = 0;
-        timeline.EventPlay(id);
+       // StartText.SetActive(false);
+        //int id = 0;
+       // timeline.EventPlay(id);
         startTimeLine = true;
     }
     public void StartTimes()
@@ -74,9 +74,18 @@ public class Timer : MonoBehaviour
     }
     private void GameStart()
     {
-        if (targetObject.GetComponent<PinchScore>())
+        switch (num)
         {
-            pinchScore.inGameEnable = true;
+            case 0:
+                if (targetObject.GetComponent<PinchScore>())
+                {
+                    pinchScore = targetObject.GetComponent<PinchScore>();
+                    //|| pinchScore.inGameEnable == true
+                }
+                break;
+            case 1:
+                dragGameManajer = targetObject.GetComponent<DragGameManager>();
+                break;
         }
     }
 }

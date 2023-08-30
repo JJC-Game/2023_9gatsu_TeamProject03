@@ -8,10 +8,13 @@ public class AnotherScript : MonoBehaviour
    // public TextMeshProUGUI FailureText;
     float time=3;
     bool TimerCheck=false;
+    BaseGameManager baseManager;
     public void Awake()
     {
         GameObject TextObjyekut = GameObject.Find("AText");
-       // FailureText = TextObjyekut.GetComponent<TextMeshProUGUI>();
+        // FailureText = TextObjyekut.GetComponent<TextMeshProUGUI>();
+        GameObject targetObject = GameObject.Find("GameManager");
+        baseManager = targetObject.GetComponent<BaseGameManager>();
     }
     private void Update()
     {
@@ -68,12 +71,14 @@ public class AnotherScript : MonoBehaviour
                 getChildTMProScripts[i].condition = false;
                 getChildTMProScripts[i].ok = false;
                 Debug.Log("リセット");
+            baseManager.AddScore();
             }
-     //   }
-       // else
-       // {
-           // FailureText.text = "不正解";
-            TimerCheck = true;
+        //   }
+        // else
+        // {
+        // FailureText.text = "不正解";
+        baseManager.LessTime();
+         TimerCheck = true;
        // }
         // true の数を表示
         Debug.Log("文字の数 " + trueCount);
