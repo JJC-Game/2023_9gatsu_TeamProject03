@@ -49,7 +49,7 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         GetComponent<RectTransform>().rotation = Quaternion.identity;
         P1 = GetComponent<RectTransform>().position; // 自身の位置情報を親オブジェクトとして指定
         P2 = RectTransformUtility.WorldToScreenPoint(Camera.main, P1);
-        d = GameObject.Find("D").GetComponent<Director>();
+        d = GameObject.Find("GameManager").GetComponent<Director>();
       
     }
 

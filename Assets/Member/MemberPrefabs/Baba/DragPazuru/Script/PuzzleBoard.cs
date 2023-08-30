@@ -31,7 +31,7 @@ public class PuzzleBoard : MonoBehaviour
     private List<int> generatedNumbers = new List<int>(); // 生成済みの数字を格納するリスト
     private void Awake()
     {
-        dire = GameObject.Find("D").GetComponent<Director>();
+        dire = GameObject.Find("GameManager").GetComponent<Director>();
         //coler();
         GenerateNewRandomValues();
     }
@@ -109,8 +109,8 @@ public class PuzzleBoard : MonoBehaviour
                 imageDragAndDrop.ID1 = row;
                 imageDragAndDrop.ID2 = col;
                 // Debug.Log(type);"Piece at (" + row + ", " + col + ") - Position: " + piece.transform.localPosition + " - ID1: " + imageDragAndDrop.ID1 + " - ID2: " + imageDragAndDrop.ID2 +
-                GameObject.Find("D").GetComponent<Director>().obj[row, col] = piece;
-                GameObject.Find("D").GetComponent<Director>().Field[row, col] = type;
+                GameObject.Find("GameManager").GetComponent<Director>().obj[row, col] = piece;
+                GameObject.Find("GameManager").GetComponent<Director>().Field[row, col] = type;
             }
         }
 
