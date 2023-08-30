@@ -154,7 +154,7 @@ public class DragFixData : MonoBehaviour
         fixDataList = new List<Question>(); // リストを初期化
         TextAsset csvFile;
         //csvFile = Resources.Load("DragQ/FixDataDrag") as TextAsset;
-        csvFile = Resources.Load("DragQ/FixDataDrag") as TextAsset;
+        csvFile = Resources.Load("DragQ/FixData2") as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
 
         while (reader.Peek() > -1)

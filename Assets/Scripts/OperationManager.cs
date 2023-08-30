@@ -6,12 +6,12 @@ using TMPro;
 
 public class OperationManager : Singleton<OperationManager>
 {
-    List<OperationFixData> fixDataList;
+    public List<OperationFixData> fixDataList;
 
     bool startFLG;
     int progress = 0;
 
-    TextMeshProUGUI opetrationText;
+    TextMeshProUGUI operationText;
 
     GameObject operationCanvas;
 
@@ -19,6 +19,10 @@ public class OperationManager : Singleton<OperationManager>
 
     void Start()
     {
+        baseGM = GameObject.Find("GameManager").GetComponent<BaseGameManager>();
+        operationText = GameObject.Find("OperationText").GetComponent<TextMeshProUGUI>();
+        operationCanvas = GameObject.Find("OperationCanvas").transform.gameObject;
+
         LoadFixData();
         OperationTextChange();
     }
@@ -31,7 +35,7 @@ public class OperationManager : Singleton<OperationManager>
     void LoadFixData()
     {
         TextAsset csvFile;
-        csvFile = Resources.Load("FixData/OpetationFixData") as TextAsset;
+        csvFile = Resources.Load("FixData/OperationText") as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
 
         while (reader.Peek() > -1)
@@ -42,12 +46,13 @@ public class OperationManager : Singleton<OperationManager>
 
             OperationFixData newOperationFixData = new OperationFixData();
             newOperationFixData._id = int.Parse(elementArray[0]);
+
+            //if (elementArray[].Contains())
             newOperationFixData._operationText[0] = elementArray[1];
             newOperationFixData._operationText[1] = elementArray[2];
             newOperationFixData._operationText[2] = elementArray[3];
 
             fixDataList.Add(newOperationFixData);
-            //            csvDatas.Add(line.Split(',')); // リストに入れる
         }
     }
 
@@ -55,7 +60,7 @@ public class OperationManager : Singleton<OperationManager>
     {
         if (progress >= 0 && progress <= 2)
         {
-            opetrationText.text = fixDataList[baseGM.stageNo]._operationText[progress];
+            operationText.text = fixDataList[baseGM.stageNo]._operationText[progress];
             progress++;
         }
         else
