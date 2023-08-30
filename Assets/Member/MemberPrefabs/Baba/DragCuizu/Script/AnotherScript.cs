@@ -1,24 +1,24 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 public class AnotherScript : MonoBehaviour
 {
     public bool ok = false;
     public bool okTM = false;
-    public TextMeshProUGUI FailureText;
+   // public TextMeshProUGUI FailureText;
     float time=3;
     bool TimerCheck=false;
     public void Awake()
     {
         GameObject TextObjyekut = GameObject.Find("AText");
-        FailureText = TextObjyekut.GetComponent<TextMeshProUGUI>();
+       // FailureText = TextObjyekut.GetComponent<TextMeshProUGUI>();
     }
     private void Update()
     {
         timer();
         if (time <= 0)
         {
-            FailureText.text = "";
+           // FailureText.text = "";
             time = 3;
             TimerCheck = false;
         }
@@ -56,8 +56,8 @@ public class AnotherScript : MonoBehaviour
         List<string> anser = new List<string>();
         anser = getAnsers.Options;
 
-        if (anser.Count == okCont)
-        {
+    //    if (anser.Count == okCont)
+     //   {
             Debug.Log("正かい");
             ok = true;
             okTM = true;
@@ -69,12 +69,12 @@ public class AnotherScript : MonoBehaviour
                 getChildTMProScripts[i].ok = false;
                 Debug.Log("リセット");
             }
-        }
-        else
-        {
-            FailureText.text = "不正解";
+     //   }
+       // else
+       // {
+           // FailureText.text = "不正解";
             TimerCheck = true;
-        }
+       // }
         // true の数を表示
         Debug.Log("文字の数 " + trueCount);
         Debug.Log("合ってる数 " + okCont);
