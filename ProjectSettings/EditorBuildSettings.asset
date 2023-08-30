@@ -11,4 +11,40 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 808ce45ca120e0441aa4b465ca131a6d
+  - enabled: 1
+    path: Assets/Scenes/GameTapTutorial.unity
+    guid: 3733cadb17c4a0c42894e52a37bf1214
+  - enabled: 1
+    path: Assets/Scenes/LeaveOutGame.unity
+    guid: 40efc056aa4cbc844b0db63e56158bac
+  - enabled: 1
+    path: Assets/Scenes/TypingGame.unity
+    guid: 6f5b567c6f4f02b408da6c37c97a88cd
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Swipe.unity
+    guid: a66d0126bafb8864da7cc76c7a6ec51e
+  - enabled: 1
+    path: Assets/Scenes/ScrollGame.unity
+    guid: aedd338c5e73a62439d05429babe7862
+  - enabled: 1
+    path: Assets/Scenes/SwipeGame.unity
+    guid: 223c0bd38beb2a442a09594edb7fb626
+  - enabled: 1
+    path: Assets/Scenes/GameDragTutorial.unity
+    guid: db5c30d9a9bbf7443b3427fc0a0ad242
+  - enabled: 1
+    path: Assets/Scenes/GameDrag1.unity
+    guid: 6ebdb4b5a2e8db3438e333ad9a227078
+  - enabled: 1
+    path: Assets/Scenes/DragCuizu.unity
+    guid: 21e9d328881b18748a6c833eb1f9db46
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Pinch.unity
+    guid: acb8f9b4dd7aec14599d93642ed5fe0e
+  - enabled: 1
+    path: Assets/Scenes/Pinch.unity
+    guid: 0d3c2959ad75e274aa0f1f802708ed75
+  - enabled: 1
+    path: Assets/Scenes/PintiN.unity
+    guid: 1c6077f4fab3e3f409a26b9e1a710f00
   m_configObjects: {}
