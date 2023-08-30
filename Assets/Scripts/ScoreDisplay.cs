@@ -21,6 +21,8 @@ public class ScoreDisplay : MonoBehaviour
             {
                 sumScore += PlayerPrefs.GetInt("StageScore_" + stageNo, 0);
             }
+
+            text.text = sumScore.ToString("00000");
         }
         else
         {

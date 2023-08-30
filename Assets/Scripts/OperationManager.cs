@@ -47,7 +47,19 @@ public class OperationManager : Singleton<OperationManager>
             OperationFixData newOperationFixData = new OperationFixData();
             newOperationFixData._id = int.Parse(elementArray[0]);
 
-            //if (elementArray[].Contains())
+            if (elementArray[1].Contains(@"\n"))
+            {
+                elementArray[1] = elementArray[1].Replace(@"\n", System.Environment.NewLine);
+            }
+            if (elementArray[2].Contains(@"\n"))
+            {
+                elementArray[2] = elementArray[2].Replace(@"\n", System.Environment.NewLine);
+            }
+            if (elementArray[3].Contains(@"\n"))
+            {
+                elementArray[3] = elementArray[3].Replace(@"\n", System.Environment.NewLine);
+            }
+
             newOperationFixData._operationText[0] = elementArray[1];
             newOperationFixData._operationText[1] = elementArray[2];
             newOperationFixData._operationText[2] = elementArray[3];
