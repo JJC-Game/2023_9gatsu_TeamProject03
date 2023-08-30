@@ -150,7 +150,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 4f71ed00016001f46b8f8d9113971c95, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2e9818ed55650e14883ed199451d7b1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 940d7e2b76081ed4794545451d94014b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1649,7 +1649,7 @@ GameObject:
   - component: {fileID: 1109831600}
   - component: {fileID: 1109831599}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: QuestionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3beb7696b712dfe43a083b689903bfca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bd88dfa89d32a949baaf775f9696ce4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2222,7 +2222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c9e660125f0b48d4699a35f2fa0e60c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a8749b4030fb7145803f9163ad70176, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3165,7 +3165,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a596c50d529d7c488cd2d57a3ff7b0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 952e67cf42c55cc4aacf1032f7c3bf4a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3286,6 +3286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1795391338}
   - component: {fileID: 1795391337}
+  - component: {fileID: 1795391339}
   m_Layer: 0
   m_Name: Timeline Start
   m_TagString: Untagged
@@ -3303,7 +3304,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: a9c879d469957394990b73df334778a0, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -3322,6 +3323,10 @@ PlayableDirector:
     value: {fileID: 1271419165}
   - key: {fileID: -3488268012815965411, guid: a9c879d469957394990b73df334778a0, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -380805451416932572, guid: a9c879d469957394990b73df334778a0, type: 2}
+    value: {fileID: 708977202950281033}
+  - key: {fileID: -4446863074988522753, guid: a9c879d469957394990b73df334778a0, type: 2}
+    value: {fileID: 1795391339}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1795391338
@@ -3339,6 +3344,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1795391339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795391336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 15134e28029422b468b9e929b6f7bee2, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3215157975513674502}
+          m_TargetAssemblyTypeName: BaseGameManager, Assembly-CSharp
+          m_MethodName: GameStart
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1963397120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,7 +3446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a596c50d529d7c488cd2d57a3ff7b0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 952e67cf42c55cc4aacf1032f7c3bf4a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3456,7 +3491,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 47f9352857fd18d4b91ea858f49bf0ed, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -3550,7 +3585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6f85a06eead10fb4bb8a0fe12004e075, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5bbeb3b8e2dc034ca7410085978a144, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3718,7 +3753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c9e660125f0b48d4699a35f2fa0e60c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a8749b4030fb7145803f9163ad70176, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5026,7 +5061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1724245845371087110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14751,16 +14786,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d63e8fe682d8c46b7637ad2bf05586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNo: 0
-  timeLimit: 0
+  stageNo: 1
+  timeLimit: 60
   inGameEnable: 0
-  scorePuls: 0
-  scoreGoal: 0
+  scorePuls: 1
+  scoreGoal: 10
   scoreCurrentText: {fileID: 0}
   scoreHighText: {fileID: 0}
-  pd_gameStart: {fileID: 0}
-  pd_gameClear: {fileID: 0}
-  pd_gameOver: {fileID: 0}
+  pd_gameStart: {fileID: 1795391337}
+  pd_gameClear: {fileID: 1994272114}
+  pd_gameOver: {fileID: 1848930}
 --- !u!4 &3452736280503127138
 Transform:
   m_ObjectHideFlags: 0
@@ -17030,7 +17065,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4218411522392449503}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17441,7 +17476,8 @@ MonoBehaviour:
   MasterGroup: {fileID: 24300002, guid: 349834c5d87001a4398685f82abbe577, type: 2}
   BGMGroup: {fileID: -3542938276952349665, guid: 349834c5d87001a4398685f82abbe577, type: 2}
   SEGroup: {fileID: -934536182363291255, guid: 349834c5d87001a4398685f82abbe577, type: 2}
-  bgmClip: []
+  bgmClip:
+  - {fileID: 8300000, guid: ad210bdc48b0ffe4985807f31b4cfcb0, type: 3}
   se_SysClip: []
   se_GameClip: []
 --- !u!4 &4586660767419794873
@@ -17816,7 +17852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &4622865914385751339
 MonoBehaviour:
   m_ObjectHideFlags: 0

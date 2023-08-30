@@ -1257,9 +1257,9 @@ MonoBehaviour:
   scoreGoal: 10
   scoreCurrentText: {fileID: 0}
   scoreHighText: {fileID: 0}
-  pd_gameStart: {fileID: 0}
-  pd_gameClear: {fileID: 0}
-  pd_gameOver: {fileID: 0}
+  pd_gameStart: {fileID: 1548631351}
+  pd_gameClear: {fileID: 1415903446}
+  pd_gameOver: {fileID: 192776449}
 --- !u!114 &625921429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4327,6 +4327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548631350}
   - component: {fileID: 1548631351}
+  - component: {fileID: 1548631352}
   m_Layer: 0
   m_Name: Timeline Start Scr
   m_TagString: Untagged
@@ -4378,8 +4379,42 @@ PlayableDirector:
     value: {fileID: 1751194970}
   - key: {fileID: -3488268012815965411, guid: a9c879d469957394990b73df334778a0, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -380805451416932572, guid: a9c879d469957394990b73df334778a0, type: 2}
+    value: {fileID: 463272758939782386}
+  - key: {fileID: -4446863074988522753, guid: a9c879d469957394990b73df334778a0, type: 2}
+    value: {fileID: 1548631352}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &1548631352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548631349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 15134e28029422b468b9e929b6f7bee2, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 625921428}
+          m_TargetAssemblyTypeName: BaseGameManager, Assembly-CSharp
+          m_MethodName: GameStart
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1552527757
 GameObject:
   m_ObjectHideFlags: 0
@@ -7635,7 +7670,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 275587501115740846}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10032,7 +10067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &499943561180307606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10113,7 +10148,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16751450
+    rgba: 4294941530
   m_fontColor: {r: 0.3537736, g: 0.60898465, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -10577,7 +10612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!223 &1696123765074147906
 Canvas:
   m_ObjectHideFlags: 0
@@ -10756,7 +10791,8 @@ MonoBehaviour:
   MasterGroup: {fileID: 24300002, guid: 349834c5d87001a4398685f82abbe577, type: 2}
   BGMGroup: {fileID: -3542938276952349665, guid: 349834c5d87001a4398685f82abbe577, type: 2}
   SEGroup: {fileID: -934536182363291255, guid: 349834c5d87001a4398685f82abbe577, type: 2}
-  bgmClip: []
+  bgmClip:
+  - {fileID: 8300000, guid: db64887a6f3ef8f488219501267c21fd, type: 3}
   se_SysClip: []
   se_GameClip: []
 --- !u!1 &5603939034119202263
