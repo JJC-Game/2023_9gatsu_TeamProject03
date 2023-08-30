@@ -10,17 +10,14 @@ public class PauseManager : MonoBehaviour
     public bool pauseFLG;    //ポーズ中
 
     [Header("キャンバス")]
-    [SerializeField] GameObject[] canvas;
+    [SerializeField] GameObject canvas;
 
     BaseGameManager baseGM;
 
     void Start()
     {
         //初期化
-        CanvasInit();
-
-        //メインメニューだけアクティブ
-        canvas[0].SetActive(true);
+        canvas.SetActive(false);
 
         baseGM = GameObject.Find("GameManager").GetComponent<BaseGameManager>();
     }
@@ -34,7 +31,7 @@ public class PauseManager : MonoBehaviour
     public void ChangePause(bool flg)
     {
         //キャンバス全部消す
-        CanvasInit();
+        canvas.SetActive(false);
 
         pauseFLG = flg;
 
@@ -44,23 +41,13 @@ public class PauseManager : MonoBehaviour
             baseGM.inGameEnable = false;
 
             Time.timeScale = 0;
-            canvas[1].SetActive(true);
+            canvas.SetActive(true);
         }
         else
         {
             Time.timeScale = 1;
-            canvas[0].SetActive(true);
 
             baseGM.inGameEnable = true;
-        }
-    }
-
-    //すべてのキャンバスを非表示に
-    void CanvasInit()
-    {
-        for (int i = 0; i < canvas.Length; i++)
-        {
-            canvas[i].SetActive(false);
         }
     }
 
