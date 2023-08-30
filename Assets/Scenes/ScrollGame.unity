@@ -1625,51 +1625,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329436859}
   m_CullTransparentMesh: 1
---- !u!1 &333507318
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 333507320}
-  - component: {fileID: 333507319}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &333507319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333507318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f153f37ccc7ab47b97dfe58736601d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scroll: {fileID: 1328375559}
---- !u!4 &333507320
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333507318}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.255211, y: -31.5705, z: 90.984955}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &364954546
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,10 +4754,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec11af5a2aff9b247ac161fcd58ae53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageNo: 0
   timeLimit: 80
   inGameEnable: 0
   scorePuls: 3
   scoreGoal: 9
+  pd_gameStart: {fileID: 0}
+  pd_gameClear: {fileID: 0}
+  pd_gameOver: {fileID: 0}
   spriteMin: 0
   spriteMax: 31
   iconMin: 6
