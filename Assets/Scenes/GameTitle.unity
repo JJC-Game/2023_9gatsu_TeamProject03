@@ -295,7 +295,8 @@ MonoBehaviour:
   MasterGroup: {fileID: 24300002, guid: 349834c5d87001a4398685f82abbe577, type: 2}
   BGMGroup: {fileID: -3542938276952349665, guid: 349834c5d87001a4398685f82abbe577, type: 2}
   SEGroup: {fileID: -934536182363291255, guid: 349834c5d87001a4398685f82abbe577, type: 2}
-  bgmClip: []
+  bgmClip:
+  - {fileID: 8300000, guid: f658ec0743818d94ab985ab60331b98e, type: 3}
   se_SysClip: []
   se_GameClip: []
 --- !u!1 &1362482358

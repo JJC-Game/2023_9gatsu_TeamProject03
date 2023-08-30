@@ -6,7 +6,7 @@ public class TitleManager : MonoBehaviour
 {
     void Start()
     {
-        
+        SoundManager.Instance.PlayBGM(0);
     }
 
     void Update()

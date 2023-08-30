@@ -17,6 +17,8 @@ public class MainMenuManager : MonoBehaviour
 
         CanvasInit();
         operateSelectCanvas.SetActive(true);
+
+        SoundManager.Instance.PlayBGM(0);
     }
 
     void Update()
