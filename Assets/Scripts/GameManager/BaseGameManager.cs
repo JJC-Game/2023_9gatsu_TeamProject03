@@ -9,7 +9,8 @@ using UnityEngine.Playables;
 public class BaseGameManager : MonoBehaviour
 {
     public int stageNo;
-    
+
+    [Header("制限時間関連")]
     public int timeLimit;
     float timeCurrent;
     Image timer;
@@ -19,9 +20,12 @@ public class BaseGameManager : MonoBehaviour
     // COMMENT_KUWABARA 変数名が何の情報も示してないので、ゲームがどうなったフラグなのかを示してほしいです.
     // ソースコードを見る限り、isGameActive、とか、isGameEnableといった名前がいいんじゃないでしょうか.
 
+    [Header("スコア関連")]
     public int scorePuls;  //正解時に増えるスコア
     int scoreCurrent;         //現在のスコア
     public int scoreGoal;  //目標のスコア
+    public TextMeshProUGUI scoreCurrentText;
+    public TextMeshProUGUI scoreHighText;
 
     Image coinBag;
     float gaugeMax;
