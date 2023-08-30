@@ -16959,7 +16959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3452736280503127138}
   m_Layer: 0
-  m_Name: Operation
+  m_Name: "\u25CFCanvas"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
