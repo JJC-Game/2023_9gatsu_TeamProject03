@@ -36,7 +36,6 @@ public class BaseGameManager : MonoBehaviour
     [Header("デモ演出")]
     [SerializeField] PlayableDirector pd_gameStart;  //ゲームスタートのデモ演出
     [SerializeField] PlayableDirector pd_gameClear;  //ゲームクリアのデモ演出
-    [SerializeField] PlayableDirector pd_gameOver;   //ゲームオーバーのデモ演出
 
     void Awake()
     {
@@ -148,6 +147,8 @@ public class BaseGameManager : MonoBehaviour
         scoreCurrent += scorePuls;
 
         coinBag.fillAmount = scoreCurrent / gaugeMax;
+
+        SoundManager.Instance.PlaySE_Sys(2);
     }
 
     public void LessTime()
@@ -156,6 +157,8 @@ public class BaseGameManager : MonoBehaviour
         timer.fillAmount = timeCurrent / timeLimit;
 
         clockHand.transform.rotation = Quaternion.Euler(0, 0, 360 * (timeCurrent / timeLimit));
+
+        SoundManager.Instance.PlaySE_Sys(3);
     }
     
     //シーン遷移
