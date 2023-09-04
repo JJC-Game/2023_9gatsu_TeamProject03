@@ -11,9 +11,12 @@ public class TypingGameManager : BaseGameManager
 
     TextMeshProUGUI questionText;
 
+    GameObject blind;
+
     public override void Arrangements()
     {
         questionText = GameObject.Find("QuestionText").GetComponent<TextMeshProUGUI>();
+        blind = GameObject.Find("Blind");
         LoadFixData();
         WordChange();
     }
@@ -28,6 +31,14 @@ public class TypingGameManager : BaseGameManager
         {
             string line = reader.ReadLine();
             fixDataList.Add(line);
+        }
+    }
+
+    public override void UpdatePlus()
+    {
+        if (inGameEnable && blind.activeSelf)
+        {
+            blind.SetActive(false);
         }
     }
 
