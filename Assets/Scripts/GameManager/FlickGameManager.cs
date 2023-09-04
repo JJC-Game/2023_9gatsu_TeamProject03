@@ -46,5 +46,12 @@ public class FlickGameManager : BaseGameManager
                 RandomChange();
             }
         }
+        else
+        {
+            if (inGameEnable)
+            {
+                LessTime();
+            }
+        }
     }
 }

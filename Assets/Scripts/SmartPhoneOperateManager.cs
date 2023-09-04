@@ -4,38 +4,32 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class OperationManager : Singleton<OperationManager>
+public class SmartPhoneOperateManager : MonoBehaviour
 {
-    public List<OperationFixData> fixDataList;
+    public List<SmartPhoneOperateFixData> fixDataList;
 
-    bool startFLG;
+    int stageNo;
     int progress = 0;
 
     TextMeshProUGUI operationText;
 
-    GameObject operationCanvas;
-
-    BaseGameManager baseGM;
-
     void Start()
     {
-        baseGM = GameObject.Find("GameManager").GetComponent<BaseGameManager>();
         operationText = GameObject.Find("OperationText").GetComponent<TextMeshProUGUI>();
-        operationCanvas = GameObject.Find("OperationCanvas").transform.gameObject;
 
         LoadFixData();
         OperationTextChange();
     }
-    
+
     void Update()
     {
-        
+
     }
 
     void LoadFixData()
     {
         TextAsset csvFile;
-        csvFile = Resources.Load("FixData/OperationText") as TextAsset;
+        csvFile = Resources.Load("FixData/SmartPhoneOperateText") as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
 
         while (reader.Peek() > -1)
@@ -44,7 +38,7 @@ public class OperationManager : Singleton<OperationManager>
             string[] elementArray = line.Split(',');
             Debug.Log(line);
 
-            OperationFixData newOperationFixData = new OperationFixData();
+            SmartPhoneOperateFixData newOperationFixData = new SmartPhoneOperateFixData();
             newOperationFixData._id = int.Parse(elementArray[0]);
 
             if (elementArray[1].Contains(@"\n"))
@@ -72,28 +66,12 @@ public class OperationManager : Singleton<OperationManager>
     {
         if (progress >= 0 && progress <= 2)
         {
-            operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
+            operationText.text = fixDataList[stageNo]._operationText[progress];
             progress++;
         }
         else
         {
-            if (!startFLG)
-            {
-                baseGM.StartDemoPlay();
-                startFLG = true;
-                progress = 0;
-            }
-            else
-            {
-                operationCanvas.SetActive(false);
-                progress = 0;
-            }
+            FadeManager.Instance.LoadSceneIndex(1, 0.5f);
         }
-    }
-
-    public void TextDisplay()
-    {
-        operationCanvas.SetActive(true);
-        OperationTextChange();
     }
 }
