@@ -26,6 +26,10 @@ public class DragFixData : MonoBehaviour
     public int nowNumber = 1;
     AnswerManager anserManager;
     int anserText;
+    bool QuestionOne = false;
+    DragCuizuBaseMane cuizeMane;
+    int num = 0;
+    Timer timer;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,22 +38,36 @@ public class DragFixData : MonoBehaviour
         anserManager = gridLayoutGroup.GetComponent<AnswerManager>();
         // Create an instance of Question class
         Question question = new Question();
-
+        LoadFixData();
         // Access hiraganaList array
         string[] hiraganaList = question.hiraganaList;
         now[0].SetText("" + nowNumber);
-        InitializeAnswerTexts();
-        LoadFixData();
-        Answer(currentQuestionIndex);
-        Ansew();
-        CrateAnswer();
-        DisplayQuestion(currentQuestionIndex);
+        cuizeMane = GameObject.Find("GameManager").GetComponent<DragCuizuBaseMane>();
         // DisplayQuestion(currentQuestionIndex);
+        timer = GameObject.Find("GameManager").GetComponent<Timer>();
+        InitializeAnswerTexts();
+        Answer(currentQuestionIndex);
+        
+        Ansew();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (timer.startTime == true && num == 0)
+        {
+            cuizeMane.inGameEnable = true;
+        }
+        if (cuizeMane.inGameEnable == true)
+        {
+            QuestionOne = true;
+        }
+        if (QuestionOne == true&&num==0)
+        {
+            num++;
+            CrateAnswer();
+            DisplayQuestion(currentQuestionIndex);
+        }
         if (another.ok == true)
         {
             NextQuestion();

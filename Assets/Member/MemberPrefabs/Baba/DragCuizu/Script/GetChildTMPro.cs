@@ -23,6 +23,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public bool modoru = false;
     Timer timer;
     AnswerManager anserManager;
+    DragCuizuBaseMane dragCuizeMane;
     private void Awake()
     {
         GameObject targetObject = GameObject.Find("GameManager");
@@ -31,20 +32,25 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         drag = targetObject.GetComponent<DragFixData>();
         timer = targetObject.GetComponent<Timer>();
         anserManager = targetObjectA.GetComponent<AnswerManager>();
-
+        dragCuizeMane = targetObject.GetComponent<DragCuizuBaseMane>();
+         prePosition = transform.position;
     }
     void Update()
     {
-        check();
-        if (ID == DragID)
+        if (dragCuizeMane.inGameEnable == true)
         {
-            ok = true;
-        }
-        if (another.okTM == true)
-        {
-            dragPosi();
-            era = null;
-            anserManager.reduce();
+            check();
+            if (ID == DragID)
+            {
+                ok = true;
+            }
+            if (another.okTM == true)
+            {
+                dragPosi();
+                era = null;
+                anserManager.reduce();
+            }
+
         }
 
     }
