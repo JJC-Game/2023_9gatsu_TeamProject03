@@ -41,9 +41,20 @@ public class MainMenuManager : MonoBehaviour
         stageSelectCanvas[canvasNo].SetActive(true);
     }
 
+    public void CanvasBack()
+    {
+        CanvasInit();
+        operateSelectCanvas.SetActive(true);
+    }
+
     //シーン遷移
     public void SceneMove(int sceneNo)
     {
         FadeManager.Instance.LoadSceneIndex(sceneNo, 0.5f);
+    }
+
+    public void GameStop()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
