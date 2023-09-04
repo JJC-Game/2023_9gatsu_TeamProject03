@@ -193,15 +193,15 @@ public class Director : MonoBehaviour
                 draggingPiece.transform.position = boardPositions[newX, newY];
                 targetPiece.transform.position = boardPositions[dragX, dragY];
                 // ピースのIDを交換前と交換後でデバッグログで表示
-               // Debug.Log("交換前：オブジェクト名: " + draggingPiece.gameObject.name + ", ID1: " + draggingPiece.ID1 + ", ID2: " + draggingPiece.ID2);
-              //  Debug.Log("交換前：入れ替え対象のオブジェクト名: " + targetPiece.gameObject.name + ", ID1: " + targetPiece.ID1 + ", ID2: " + targetPiece.ID2);
+                // Debug.Log("交換前：オブジェクト名: " + draggingPiece.gameObject.name + ", ID1: " + draggingPiece.ID1 + ", ID2: " + draggingPiece.ID2);
+                //  Debug.Log("交換前：入れ替え対象のオブジェクト名: " + targetPiece.gameObject.name + ", ID1: " + targetPiece.ID1 + ", ID2: " + targetPiece.ID2);
 
                 // ピースのIDを更新
                 draggingPiece.Set(newX, newY);
                 targetPiece.Set(dragX, dragY);
                 // ピースのIDを交換後でデバッグログで表示
-              //  Debug.Log("交換後：オブジェクト名: " + draggingPiece.gameObject.name + ", ID1: " + draggingPiece.ID1 + ", ID2: " + draggingPiece.ID2);
-              //  Debug.Log("交換後：入れ替え対象のオブジェクト名: " + targetPiece.gameObject.name + ", ID1: " + targetPiece.ID1 + ", ID2: " + targetPiece.ID2);
+                //  Debug.Log("交換後：オブジェクト名: " + draggingPiece.gameObject.name + ", ID1: " + draggingPiece.ID1 + ", ID2: " + draggingPiece.ID2);
+                //  Debug.Log("交換後：入れ替え対象のオブジェクト名: " + targetPiece.gameObject.name + ", ID1: " + targetPiece.ID1 + ", ID2: " + targetPiece.ID2);
 
                 // ピースの位置を更新した後に、複製したピースの位置情報を初期化
                 for (int x = 0; x < boardSizeX; x++)
@@ -215,152 +215,156 @@ public class Director : MonoBehaviour
                     }
                 }
                 // 盤面の位置とID、ドラッグ後の位置とIDをテキストファイルに保存
-               // SavePositionsAndIDsToFile saver = new SavePositionsAndIDsToFile();
+                // SavePositionsAndIDsToFile saver = new SavePositionsAndIDsToFile();
                 //saver.SavePositionsAndIDs(filePath, pieces);
             }
         }
     }
     public void DeletDrop()
     {
-        int c = 0;
-        int[,] temp = new int[3, 3];
-        int[,] temp2 = new int[3, 3];
-        count = 0;
-        // Check for horizontal matches and update 'temp' array
-        for (int i = 0; i < 3; i++)
+        if (dragMan.inGameEnable == true)
         {
-            c = 1;
-            for (int j = 1; j < 3; j++)
-            {
-                int currentCellValue = Field[i, j];
-                int prevCellValue = Field[i, j - 1];
-                string objNameBefore = obj[i, j - 1].gameObject.name; // オブジェクト名を取得
-                string objNameCurrent = obj[i, j].gameObject.name; // オブジェクト名を取得
-                //Debug.Log(currentCellValue + 1 + "" + prevCellValue);
-                // Debug.Log("横" + currentCellValue + "前" + prevCellValue + " (オブジェクト名前: " + objNameBefore + ", オブジェクト名: " + objNameCurrent + ") " + Field[i, j]); // デバッグログに番号とオブジェクト名を表示
-                if (currentCellValue == prevCellValue + 1)
-                {
-                  //Debug.Log(Field[i, j] + "" + Field[i - 1, j]);
-                    c++;
-                    if (c >= 3)
-                    {
-                        Debug.Log("combo");
-                        temp[i, j] = c;
-                    }
-                }
-                else
-                {
-                    c = 1;
-                }
-            }
-        }
-        /*
-        // Check for vertical matches and update 'temp2' array
-        for (int j = 0; j < 3; j++)
-        {
-            c = 1;
-            for (int i = 1; i < 3; i++)
-            {
-                int currentCellValue = Field[i, j];
-                int prevCellValue = Field[i - 1, j];
-                string objNameBefore = obj[i - 1, j].gameObject.name; // オブジェクト名を取得
-                string objNameCurrent = obj[i, j].gameObject.name; // オブジェクト名を取得
-             //Debug.Log("縦"+currentCellValue + "前" + prevCellValue + " (オブジェクト名前: " + objNameBefore + ", オブジェクト名: " + objNameCurrent + ") " + Field[i, j]); // デバッグログに番号とオブジェクト名を表示
-                if (Field[i, j] == Field[i - 1, j])
-                {
-              Debug.Log(Field[i, j] + "" + Field[i - 1, j]);
-                    c++;
-                    if (c >= 3)
-                    {
-                        Debug.Log("combo");
-                        temp2[i, j] = c;
-                    }
-                }
-                else
-                {
-                    c = 1;
-                }
-            }
-        }
-        */
-        // Delete horizontal matches
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                if (temp[i, j] >= 3)
-                {
-                    count++;
-                    /*
-                    //Debug.Log("Deleting Drop at (" + i + ", " + j + ") with number " + Field[i, j]);
-                    for (int k = j; temp[i, j] > 0; k--, temp[i, j]--)
-                    {
-                        Field[i, k] = 6;
-                        //Debug.Log("obj[" + i + ", " + k + "]の名前: " + obj[i, k].gameObject.name);
-                        // obj[i, k].GetComponent<DropCnt>().Set(6);
-                        int type = Random.Range(6, 6);
-
-                        // 生成したピースのImageDragAndDropコンポーネントを取得して設定
-                        ImageDragAndDrop imageDragAndDrop = obj[i, k].GetComponent<ImageDragAndDrop>();
-                        imageDragAndDrop.Set(type);
-                    }*/
-                }
-            }
-        }
-
-        // Delete vertical matches
-        for (int j = 0; j < 3; j++)
-        {
+            int c = 0;
+            int[,] temp = new int[3, 3];
+            int[,] temp2 = new int[3, 3];
+            count = 0;
+            // Check for horizontal matches and update 'temp' array
             for (int i = 0; i < 3; i++)
             {
-                //Debug.Log(temp2);
-                if (temp2[i, j] >= 3)
+                c = 1;
+                for (int j = 1; j < 3; j++)
                 {
-                    count++;
-                    /*
-                   // Debug.Log("Deleting Drop at (" + i + ", " + j + ") with number " + Field[i, j]);
-                    for (int k = i; temp2[i, j] > 0; k--, temp2[i, k]--)
+                    int currentCellValue = Field[i, j];
+                    int prevCellValue = Field[i, j - 1];
+                    string objNameBefore = obj[i, j - 1].gameObject.name; // オブジェクト名を取得
+                    string objNameCurrent = obj[i, j].gameObject.name; // オブジェクト名を取得
+                                                                       //Debug.Log(currentCellValue + 1 + "" + prevCellValue);
+                                                                       // Debug.Log("横" + currentCellValue + "前" + prevCellValue + " (オブジェクト名前: " + objNameBefore + ", オブジェクト名: " + objNameCurrent + ") " + Field[i, j]); // デバッグログに番号とオブジェクト名を表示
+                    if (currentCellValue == prevCellValue + 1)
                     {
-                        Field[k, j] = 6;
-                        //Debug.Log("obj[" + k + ", " + j + "]の名前: " + obj[k, j].gameObject.name);
-
-                        // int six = 6;
-                        //obj[k, j].GetComponent<DropCnt>().Set(6);
-                        int type = Random.Range(6, 6);
-
-                        // 生成したピースのImageDragAndDropコンポーネントを取得して設定
-                        ImageDragAndDrop imageDragAndDrop = obj[k, j].GetComponent<ImageDragAndDrop>();  k
-                        imageDragAndDrop.Set(type);
+                        //Debug.Log(Field[i, j] + "" + Field[i - 1, j]);
+                        c++;
+                        if (c >= 3)
+                        {
+                            Debug.Log("combo");
+                            temp[i, j] = c;
+                        }
                     }
-                */
+                    else
+                    {
+                        c = 1;
+                    }
                 }
             }
-        }
-        if (count >= 3)
-        {
-            // 盤面のピースと盤面情報を全て消す
-            for (int x = 0; x < boardSizeX; x++)
+            /*
+            // Check for vertical matches and update 'temp2' array
+            for (int j = 0; j < 3; j++)
             {
-                for (int y = 0; y < boardSizeY; y++)
+                c = 1;
+                for (int i = 1; i < 3; i++)
                 {
-                    // ピースのGameObjectを削除
-                    if (obj[x, y] != null)
+                    int currentCellValue = Field[i, j];
+                    int prevCellValue = Field[i - 1, j];
+                    string objNameBefore = obj[i - 1, j].gameObject.name; // オブジェクト名を取得
+                    string objNameCurrent = obj[i, j].gameObject.name; // オブジェクト名を取得
+                 //Debug.Log("縦"+currentCellValue + "前" + prevCellValue + " (オブジェクト名前: " + objNameBefore + ", オブジェクト名: " + objNameCurrent + ") " + Field[i, j]); // デバッグログに番号とオブジェクト名を表示
+                    if (Field[i, j] == Field[i - 1, j])
                     {
-                        Destroy(obj[x, y]);
-                        obj[x, y] = null;
+                  Debug.Log(Field[i, j] + "" + Field[i - 1, j]);
+                        c++;
+                        if (c >= 3)
+                        {
+                            Debug.Log("combo");
+                            temp2[i, j] = c;
+                        }
                     }
-                    // 盤面情報を初期値（6）にリセット
-                    Field[x, y] = 6;
+                    else
+                    {
+                        c = 1;
+                    }
                 }
             }
-            dragMan.AddScore();
-            on = true;
-        }
-        else
-        {
-            dragMan.LessTime();
+            */
+            // Delete horizontal matches
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (temp[i, j] >= 3)
+                    {
+                        count++;
+                        /*
+                        //Debug.Log("Deleting Drop at (" + i + ", " + j + ") with number " + Field[i, j]);
+                        for (int k = j; temp[i, j] > 0; k--, temp[i, j]--)
+                        {
+                            Field[i, k] = 6;
+                            //Debug.Log("obj[" + i + ", " + k + "]の名前: " + obj[i, k].gameObject.name);
+                            // obj[i, k].GetComponent<DropCnt>().Set(6);
+                            int type = Random.Range(6, 6);
+
+                            // 生成したピースのImageDragAndDropコンポーネントを取得して設定
+                            ImageDragAndDrop imageDragAndDrop = obj[i, k].GetComponent<ImageDragAndDrop>();
+                            imageDragAndDrop.Set(type);
+                        }*/
+                    }
+                }
+            }
+
+            // Delete vertical matches
+            for (int j = 0; j < 3; j++)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    //Debug.Log(temp2);
+                    if (temp2[i, j] >= 3)
+                    {
+                        count++;
+                        /*
+                       // Debug.Log("Deleting Drop at (" + i + ", " + j + ") with number " + Field[i, j]);
+                        for (int k = i; temp2[i, j] > 0; k--, temp2[i, k]--)
+                        {
+                            Field[k, j] = 6;
+                            //Debug.Log("obj[" + k + ", " + j + "]の名前: " + obj[k, j].gameObject.name);
+
+                            // int six = 6;
+                            //obj[k, j].GetComponent<DropCnt>().Set(6);
+                            int type = Random.Range(6, 6);
+
+                            // 生成したピースのImageDragAndDropコンポーネントを取得して設定
+                            ImageDragAndDrop imageDragAndDrop = obj[k, j].GetComponent<ImageDragAndDrop>();  k
+                            imageDragAndDrop.Set(type);
+                        }
+                    */
+                    }
+                }
+            }
+            if (count >= 3)
+            {
+                // 盤面のピースと盤面情報を全て消す
+                for (int x = 0; x < boardSizeX; x++)
+                {
+                    for (int y = 0; y < boardSizeY; y++)
+                    {
+                        // ピースのGameObjectを削除
+                        if (obj[x, y] != null)
+                        {
+                            Destroy(obj[x, y]);
+                            obj[x, y] = null;
+                        }
+                        // 盤面情報を初期値（6）にリセット
+                        Field[x, y] = 6;
+                    }
+                }
+                dragMan.AddScore();
+                on = true;
+            }
+            else
+            {
+                dragMan.LessTime();
+            }
         }
     }
+
 
 
 }

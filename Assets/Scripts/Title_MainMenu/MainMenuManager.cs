@@ -39,18 +39,24 @@ public class MainMenuManager : MonoBehaviour
     {
         CanvasInit();
         stageSelectCanvas[canvasNo].SetActive(true);
+
+        SoundManager.Instance.PlaySE_Sys(0);
     }
 
     public void CanvasBack()
     {
         CanvasInit();
         operateSelectCanvas.SetActive(true);
+
+        SoundManager.Instance.PlaySE_Sys(0);
     }
 
     //シーン遷移
     public void SceneMove(int sceneNo)
     {
         FadeManager.Instance.LoadSceneIndex(sceneNo, 0.5f);
+
+        SoundManager.Instance.PlaySE_Sys(1);
     }
 
     public void GameStop()

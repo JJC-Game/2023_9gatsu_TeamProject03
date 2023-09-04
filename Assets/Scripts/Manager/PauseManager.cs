@@ -42,12 +42,16 @@ public class PauseManager : MonoBehaviour
 
             Time.timeScale = 0;
             canvas.SetActive(true);
+
+            SoundManager.Instance.PlaySE_Sys(4);
         }
         else
         {
             Time.timeScale = 1;
 
             baseGM.inGameEnable = true;
+
+            SoundManager.Instance.PlaySE_Sys(5);
         }
     }
 
