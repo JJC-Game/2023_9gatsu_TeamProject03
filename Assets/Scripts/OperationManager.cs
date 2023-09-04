@@ -72,7 +72,7 @@ public class OperationManager : Singleton<OperationManager>
     {
         if (progress >= 0 && progress <= 2)
         {
-            operationText.text = fixDataList[baseGM.stageNo]._operationText[progress];
+            operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
             progress++;
         }
         else
