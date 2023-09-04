@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
     //public bool end=false;
    // public GameObject StartText;
    // public TimeLine timeline;
-    bool startTimeLine=false;
+   public bool startTimeLine=false;
     float time=4;
     private int num=100;
     // Update is called once per frame
