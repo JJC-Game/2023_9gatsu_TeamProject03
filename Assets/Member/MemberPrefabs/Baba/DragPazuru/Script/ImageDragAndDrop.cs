@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using TMPro;
-public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     [SerializeField] Sprite[] sprites;
     private bool isDragging = false;
@@ -43,46 +43,73 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     Director d;
     bool touchFlag;
     Vector2 m;
-
+    DragGameManager dGame;
+    Image i;
+    Color currentColor; // 現在の色を取得
+    float redComponent;
+    float greenComponent;
+    float blueComponent;
+    float alphaComponent;
+    bool dragObj=false;
     private void Start()
     {
         GetComponent<RectTransform>().rotation = Quaternion.identity;
         P1 = GetComponent<RectTransform>().position; // 自身の位置情報を親オブジェクトとして指定
         P2 = RectTransformUtility.WorldToScreenPoint(Camera.main, P1);
         d = GameObject.Find("GameManager").GetComponent<Director>();
-      
+        dGame= GameObject.Find("GameManager").GetComponent<DragGameManager>();
+        i = GetComponent<Image>();
+        Color currentColor = i.color; // 現在の色を取得
+
+        redComponent = currentColor.r;
+        greenComponent = currentColor.g;
+        blueComponent = currentColor.b;
+        alphaComponent = currentColor.a;
     }
 
 
     void Update()
     {
-        HandleInput();
+        if (dGame.inGameEnable == true)
+        {
+          //  HandleInput();
+        }
+        
         // Debug.Log(Type);
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        // ドラッグオブジェクトを複製して作成
-        dragObject = Instantiate(gameObject, transform.parent);
-        dragObject.GetComponent<Image>().raycastTarget = false;
-        dragObject.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
-        dragObject.transform.SetAsLastSibling();
-        Transform drag = dragObject.transform;
-        initialPosition = drag.position;
-        dragObject.SetActive(false);
-        // 元のピースをドラッグ可能にする
-        gameObject.GetComponent<Image>().raycastTarget = true;
-        d.SetDraggingPiece(this);
-        isDragging = true;
-        dragStartPosition = eventData.position; // スクリーン座標をワールド座標に変換して代入
-        //Debug.Log("OnPointerDown: isDragging = " + isDragging);
+        if (dGame.inGameEnable == true)
+        {
+            // ドラッグオブジェクトを複製して作成
+            dragObject = Instantiate(gameObject, transform.parent);
+            dragObject.GetComponent<Image>().raycastTarget = false;
+            dragObject.GetComponent<Image>().color = new Color(i.color.r, i.color.g, i.color.b, 0.97f);
+            dragObject.transform.SetAsLastSibling();
+            Transform drag = dragObject.transform;
+            initialPosition = drag.position;
+            dragObject.SetActive(true);
+            this.i.color = new Color(i.color.r, i.color.g, i.color.b, 0.5f);
+            // 元のピースをドラッグ可能にする
+            gameObject.GetComponent<Image>().raycastTarget = true;
+            Transform dra = dragObject.transform;
+            d.SetDraggingPiece(this);
+            isDragging = true;
+            dragStartPosition = eventData.position; // スクリーン座標をワールド座標に変換して代入
+            dragObj = true;                                 //Debug.Log("OnPointerDown: isDragging = " + isDragging);
+        }
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        isDragging = false;
-        Destroy(dragObject);
-        dragObject = null;
-        d.ClearDraggingPiece();
-
+        if (dGame.inGameEnable == true)
+        {
+            isDragging = false;
+            Destroy(dragObject);
+            dragObject = null;
+            d.ClearDraggingPiece();
+            this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
+            dragObj = false;
+        }
 
     }
     public void Set(int n)
@@ -126,5 +153,25 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 drag.position = clampedDragPosition;
             }
         }
+    }
+    private void SetImageAlpha(float alpha)
+    {
+        Image image = GetComponent<Image>();
+        Color color = image.color;
+        color.a = alpha;
+        image.color = color;
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        // if (timer.startTime == true)
+        //{
+        if (dGame.inGameEnable == true&& dragObj==true)
+        {
+            transform.position = eventData.position;
+            dragObject.transform.position = eventData.position;
+            //ClampPosition();
+            d.ComparePositions();
+        }
+        // }
     }
 }
