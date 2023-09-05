@@ -80,6 +80,7 @@ public class OperationManager : Singleton<OperationManager>
             if (!startFLG)
             {
                 baseGM.StartDemoPlay();
+                operationCanvas.SetActive(false);
                 startFLG = true;
                 progress = 0;
             }

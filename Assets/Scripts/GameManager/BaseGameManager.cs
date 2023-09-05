@@ -11,7 +11,7 @@ public class BaseGameManager : MonoBehaviour
     public int stageNo;
 
     [Header("制限時間関連")]
-    public int timeLimit;
+    int timeLimit = 90;
     float timeCurrent;
     Image timer;
     GameObject clockHand;
@@ -46,10 +46,10 @@ public class BaseGameManager : MonoBehaviour
 
         clockHand = GameObject.Find("CircleFrame");
 
-        coinBag = GameObject.Find("Square").GetComponent<Image>();
-        coinBag.fillAmount = 0;
+        //coinBag = GameObject.Find("Square").GetComponent<Image>();
+        //coinBag.fillAmount = 0;
 
-        gaugeMax = scoreGoal * 1.25f;
+        //gaugeMax = scoreGoal * 1.25f;
 
         Arrangements();
     }
