@@ -34,8 +34,4 @@ public class DragGameManager : BaseGameManager
         puzzle = puzzleObjyekt.GetComponent<PuzzleBoard>();
         */
     }
-    public override void TimeUp()
-    {
-        base.TimeUp();
-    }
 }

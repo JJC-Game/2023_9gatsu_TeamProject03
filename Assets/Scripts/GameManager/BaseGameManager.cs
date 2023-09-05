@@ -15,23 +15,16 @@ public class BaseGameManager : MonoBehaviour
     float timeCurrent;
     Image timer;
     GameObject clockHand;
+    TextMeshProUGUI timeText;
 
     public bool inGameEnable = false;
     // COMMENT_KUWABARA 変数名が何の情報も示してないので、ゲームがどうなったフラグなのかを示してほしいです.
     // ソースコードを見る限り、isGameActive、とか、isGameEnableといった名前がいいんじゃないでしょうか.
 
     [Header("スコア関連")]
-    public int scorePuls;  //正解時に増えるスコア
-    int scoreCurrent;         //現在のスコア
-    public int scoreGoal;  //目標のスコア
-    public TextMeshProUGUI scoreCurrentText;
-    public TextMeshProUGUI scoreHighText;
-
-    Image coinBag;
-    float gaugeMax;
-
-    GameObject clearCanvas;
-    GameObject overCanvas;
+    public int coinPulsTimes;  //一問当たりのコイン獲得枚数
+    int questionCurrent;         //正解数
+    TextMeshProUGUI questionText;
 
     [Header("デモ演出")]
     [SerializeField] PlayableDirector pd_gameStart;  //ゲームスタートのデモ演出
@@ -39,29 +32,20 @@ public class BaseGameManager : MonoBehaviour
 
     void Awake()
     {
-        scoreCurrent = 0;
+        questionCurrent = 0;
 
         timer = GameObject.Find("Clock").GetComponent<Image>();
         timer.fillAmount = 1;
 
         clockHand = GameObject.Find("CircleFrame");
 
-        //coinBag = GameObject.Find("Square").GetComponent<Image>();
-        //coinBag.fillAmount = 0;
-
-        //gaugeMax = scoreGoal * 1.25f;
+        timeText = GameObject.Find("TimelimitNumber").GetComponent<TextMeshProUGUI>();
 
         Arrangements();
     }
 
     void Start()
     {
-        clearCanvas = GameObject.Find("ClearCanvas");
-        overCanvas = GameObject.Find("OverCanvas");
-
-        clearCanvas.SetActive(false);
-        overCanvas.SetActive(false);
-
         timeCurrent = timeLimit;
     }
 
@@ -74,9 +58,13 @@ public class BaseGameManager : MonoBehaviour
 
             clockHand.transform.rotation = Quaternion.Euler(0, 0, 360 * (timeCurrent / timeLimit));
 
+            timeText.text = timeCurrent.ToString("00");
+
             if (timeCurrent <= 0)
             {
                 timeCurrent = 0;
+                timer.fillAmount = timeCurrent / timeLimit;
+                clockHand.transform.rotation = Quaternion.Euler(0, 0, 360 * (timeCurrent / timeLimit));
             }
 
             if (timeCurrent <= 0)
@@ -112,41 +100,30 @@ public class BaseGameManager : MonoBehaviour
         SoundManager.Instance.PlayBGM(0);
     }
 
-    virtual public void TimeUp()
+    public void TimeUp()
     {
-        if (scoreCurrent >= scoreGoal)
-        {
-            GameClear();
-        }
-        else
-        {
-            GameOver();
-        }
+        GameClear();
     }
 
     public void GameClear()
     {
-        clearCanvas.SetActive(true);
         inGameEnable = false;
 
-        if (PlayerPrefs.GetInt("StageScore_" + stageNo) < scoreCurrent)
+        int coinSum = questionCurrent * coinPulsTimes;
+
+        if (PlayerPrefs.GetInt("StageScoreMax_" + stageNo) < coinSum)
         {
-            PlayerPrefs.SetInt("StageScore_" + stageNo, scoreCurrent);
-            PlayerPrefs.Save();
+            PlayerPrefs.SetInt("StageScoreMax_" + stageNo, coinSum);
         }
-    }
 
-    public void GameOver()
-    {
-        overCanvas.SetActive(true);
-        inGameEnable = false;
+        coinSum += PlayerPrefs.GetInt("StageScore_" + stageNo, 0);
+        PlayerPrefs.SetInt("StageScore_" + stageNo, coinSum);
+        PlayerPrefs.Save();
     }
 
     public void AddScore()
     {
-        scoreCurrent += scorePuls;
-
-        coinBag.fillAmount = scoreCurrent / gaugeMax;
+        questionCurrent++;
 
         SoundManager.Instance.PlaySE_Sys(2);
     }
