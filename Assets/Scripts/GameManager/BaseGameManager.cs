@@ -40,13 +40,13 @@ public class BaseGameManager : MonoBehaviour
         clockHand = GameObject.Find("CircleFrame");
 
         timeText = GameObject.Find("TimelimitNumber").GetComponent<TextMeshProUGUI>();
+        timeCurrent = timeLimit;
+        timeText.text = timeCurrent.ToString("00");
+
+        questionText = GameObject.Find("QuestionNumber").GetComponent<TextMeshProUGUI>();
+        questionText.text = 1.ToString("00");
 
         Arrangements();
-    }
-
-    void Start()
-    {
-        timeCurrent = timeLimit;
     }
 
     void Update()
