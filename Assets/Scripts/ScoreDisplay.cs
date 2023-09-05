@@ -7,26 +7,17 @@ public class ScoreDisplay : MonoBehaviour
 {
     TextMeshProUGUI text;
 
-    public int stageNo = 0;
+    public int stageNo = 1;
 
     void Start()
     {
         text = gameObject.GetComponent<TextMeshProUGUI>();
 
-        if (stageNo <= 0)
-        {
-            int sumScore = 0;
+        int sumScore = 0;
 
-            for (int i = 0; i < 8; i++)
-            {
-                sumScore += PlayerPrefs.GetInt("StageScore_" + stageNo, 0);
-            }
+        sumScore += PlayerPrefs.GetInt("StageScore_" + stageNo, 0);
+        sumScore += PlayerPrefs.GetInt("StageScore_" + (stageNo+1), 0);
 
-            text.text = sumScore.ToString("00000");
-        }
-        else
-        {
-            text.text = PlayerPrefs.GetInt("StageScore_" + stageNo, 0).ToString("0000");
-        }
+        text.text = sumScore.ToString("00000");
     }
 }

@@ -6,18 +6,10 @@ using TMPro;
 
 public class ScrollGameManager : BaseGameManager
 {
-    //使用するイラスト
-    Sprite sprite_Target;
-    //イラストの数（イラストの通し番号の最も大きい数）
-    public int spriteMin;
-    public int spriteMax;
-
     public int iconMin = 6;
 
     GameObject[] targetList;
     GameObject[] iconList;
-
-    public Image targetPicture;
 
     AimController aim;
 
@@ -62,15 +54,9 @@ public class ScrollGameManager : BaseGameManager
     void RandomChange()
     {
         int randomTarget = Random.Range(0, targetList.Length);
-        int randomTexture = Random.Range(spriteMin, spriteMax + 1);
-
-        sprite_Target = Resources.Load<Sprite>("ProjectAssets/GameIcon/Icon_" + randomTexture);
-
         targetList[randomTarget].SetActive(true);
 
         Image targetImage = targetList[randomTarget].GetComponent<Image>();
-        targetImage.sprite = sprite_Target;
-        targetPicture.sprite = sprite_Target;
     }
 
     void TargetReset(bool flg)

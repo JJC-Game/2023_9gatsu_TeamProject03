@@ -12,9 +12,4 @@ public class PinchScore : BaseGameManager
     {
         base.Arrangements();
     }
-    public override void TimeUp()
-    {
-        base.TimeUp();
-
-    }
 }
