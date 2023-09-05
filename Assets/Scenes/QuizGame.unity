@@ -3869,10 +3869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNo: 6
   inGameEnable: 0
-  scorePuls: 60
-  scoreGoal: 250
-  scoreCurrentText: {fileID: 0}
-  scoreHighText: {fileID: 0}
+  coinPulsTimes: 0
   pd_gameStart: {fileID: 623489862}
   pd_gameClear: {fileID: 796402600}
 --- !u!114 &873247459
