@@ -2730,7 +2730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0ae7c3b6f8db875489823403d7551cac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68033c53df02c2a4f8436bf6ef2fdfce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2806,7 +2806,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0ae7c3b6f8db875489823403d7551cac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68033c53df02c2a4f8436bf6ef2fdfce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3049,7 +3049,7 @@ GameObject:
   - component: {fileID: 2052010583}
   - component: {fileID: 2052010582}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ClearCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
