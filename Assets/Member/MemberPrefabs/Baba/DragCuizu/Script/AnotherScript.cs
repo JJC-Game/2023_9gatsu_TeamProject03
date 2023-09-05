@@ -6,7 +6,7 @@ public class AnotherScript : MonoBehaviour
     public bool ok = false;
     public bool okTM = false;
    // public TextMeshProUGUI FailureText;
-    float time=3;
+  //  float time=3;
     bool TimerCheck=false;
     BaseGameManager baseManager;
     public void Awake()
@@ -18,13 +18,8 @@ public class AnotherScript : MonoBehaviour
     }
     private void Update()
     {
-        timer();
-        if (time <= 0)
-        {
-           // FailureText.text = "";
-            time = 3;
-            TimerCheck = false;
-        }
+
+
     }
     public void sheck()
     {
@@ -88,11 +83,5 @@ public class AnotherScript : MonoBehaviour
         }
      
     }
-    private void timer()
-    {
-        if (TimerCheck == true)
-        {
-            time -= Time.deltaTime;
-        }
-    }
+
 }

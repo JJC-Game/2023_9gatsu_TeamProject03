@@ -54,10 +54,6 @@ public class DragFixData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer.startTime == true && num == 0)
-        {
-            cuizeMane.inGameEnable = true;
-        }
         if (cuizeMane.inGameEnable == true)
         {
             QuestionOne = true;
