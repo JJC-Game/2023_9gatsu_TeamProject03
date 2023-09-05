@@ -14,6 +14,7 @@ public class OperationManager : Singleton<OperationManager>
     TextMeshProUGUI operationText;
 
     GameObject operationCanvas;
+    GameObject choicesCanvas;
 
     BaseGameManager baseGM;
 
@@ -22,9 +23,13 @@ public class OperationManager : Singleton<OperationManager>
         baseGM = GameObject.Find("GameManager").GetComponent<BaseGameManager>();
         operationText = GameObject.Find("OperationText").GetComponent<TextMeshProUGUI>();
         operationCanvas = GameObject.Find("OperationCanvas").transform.gameObject;
+        choicesCanvas = GameObject.Find("ChoicesCanvas").transform.gameObject;
 
         LoadFixData();
         OperationTextChange();
+
+        operationCanvas.SetActive(false);
+        choicesCanvas.SetActive(true);
     }
     
     void Update()
@@ -79,10 +84,8 @@ public class OperationManager : Singleton<OperationManager>
         {
             if (!startFLG)
             {
-                baseGM.StartDemoPlay();
                 operationCanvas.SetActive(false);
-                startFLG = true;
-                progress = 0;
+                GameStart();
             }
             else
             {
@@ -96,5 +99,24 @@ public class OperationManager : Singleton<OperationManager>
     {
         operationCanvas.SetActive(true);
         OperationTextChange();
+    }
+
+    void GameStart()
+    {
+        baseGM.StartDemoPlay();
+        startFLG = true;
+        progress = 0;
+    }
+
+    public void Choice_Yes()
+    {
+        choicesCanvas.SetActive(false);
+        operationCanvas.SetActive(true);
+    }
+
+    public void Choice_No()
+    {
+        choicesCanvas.SetActive(false);
+        GameStart();
     }
 }

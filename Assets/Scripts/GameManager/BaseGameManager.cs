@@ -124,6 +124,7 @@ public class BaseGameManager : MonoBehaviour
     public void AddScore()
     {
         questionCurrent++;
+        questionText.text = questionCurrent + 1.ToString("00");
 
         SoundManager.Instance.PlaySE_Sys(2);
     }
