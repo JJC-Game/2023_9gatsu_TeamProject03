@@ -7,13 +7,15 @@ public class MainMenuManager : MonoBehaviour
 {
     [Header("キャンバス")]
     GameObject operateSelectCanvas;
-    GameObject[] stageSelectCanvas;
+    GameObject[] stageSelectCanvas = new GameObject[3];
 
     void Start()
     {
-        operateSelectCanvas = GameObject.Find("StageSerect");
+        operateSelectCanvas = GameObject.Find("StageSerectCanvas");
 
-        stageSelectCanvas = GameObject.FindGameObjectsWithTag("Stage");
+        stageSelectCanvas[0] = GameObject.Find("TapCanvas");
+        stageSelectCanvas[1] = GameObject.Find("SwipeCanvas");
+        stageSelectCanvas[2] = GameObject.Find("DragCanvas");
 
         CanvasInit();
         operateSelectCanvas.SetActive(true);
