@@ -90,6 +90,13 @@ public class DragFixData : MonoBehaviour
         else
         {
             Debug.Log("クイズ終了");
+            currentQuestionIndex = 0;
+            currentQuestionIndex++;
+            Answer(currentQuestionIndex);
+            CrateAnswer();
+            DisplayQuestion(currentQuestionIndex);
+            gridLayoutGroup.enabled = true;
+            nowNumber++;
             // クイズ終了の処理をここに追加
         }
     }
