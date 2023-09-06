@@ -26,6 +26,11 @@ public class BaseGameManager : MonoBehaviour
     int questionCurrent;         //正解数
     TextMeshProUGUI questionText;
 
+    //ゲーム終了時
+    TextMeshProUGUI clearNoText;
+    TextMeshProUGUI getCoinText_Current;
+    TextMeshProUGUI getCoinText_Max;
+
     [Header("デモ演出")]
     [SerializeField] PlayableDirector pd_gameStart;  //ゲームスタートのデモ演出
     [SerializeField] PlayableDirector pd_gameClear;  //ゲームクリアのデモ演出
@@ -45,6 +50,12 @@ public class BaseGameManager : MonoBehaviour
 
         questionText = GameObject.Find("QuestionNumber").GetComponent<TextMeshProUGUI>();
         questionText.text = 1.ToString("00");
+
+        clearNoText = GameObject.Find("ClearNumber").GetComponent<TextMeshProUGUI>();
+        getCoinText_Current = GameObject.Find("GetCoinNumber_Current").GetComponent<TextMeshProUGUI>();
+        getCoinText_Max = GameObject.Find("GetCoinNumber_Max").GetComponent<TextMeshProUGUI>();
+
+        GameObject.Find("ClearCanvas").SetActive(false);
 
         Arrangements();
     }
@@ -109,16 +120,25 @@ public class BaseGameManager : MonoBehaviour
     {
         inGameEnable = false;
 
-        int coinSum = (questionCurrent-1) * coinPulsTimes;
+        pd_gameClear.Play();
 
-        if (PlayerPrefs.GetInt("StageScoreMax_" + stageNo) < coinSum)
+        questionCurrent--;
+
+        int coinSum = questionCurrent * coinPulsTimes;
+
+        if (PlayerPrefs.GetInt("StageScoreMax_" + stageNo, 0) < coinSum)
         {
             PlayerPrefs.SetInt("StageScoreMax_" + stageNo, coinSum);
         }
 
+        clearNoText.text = questionCurrent.ToString("00");
+        getCoinText_Current.text = coinSum.ToString("0000");
+
         coinSum += PlayerPrefs.GetInt("StageScore_" + stageNo, 0);
         PlayerPrefs.SetInt("StageScore_" + stageNo, coinSum);
         PlayerPrefs.Save();
+
+        getCoinText_Max.text = PlayerPrefs.GetInt("StageScoreMax_" + stageNo, 0).ToString("0000");
     }
 
     public void AddScore()
