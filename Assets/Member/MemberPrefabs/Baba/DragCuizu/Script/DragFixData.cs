@@ -22,7 +22,6 @@ public class DragFixData : MonoBehaviour
     private AnotherScript another;
     private float enableGridLayoutTime = 0.1f;
     private bool isDelaying = false;
-    public TextMeshProUGUI[] now;
     public int nowNumber = 1;
     AnswerManager anserManager;
     int anserText;
@@ -41,7 +40,6 @@ public class DragFixData : MonoBehaviour
         LoadFixData();
         // Access hiraganaList array
         string[] hiraganaList = question.hiraganaList;
-        now[0].SetText("" + nowNumber);
         cuizeMane = GameObject.Find("GameManager").GetComponent<DragCuizuBaseMane>();
         // DisplayQuestion(currentQuestionIndex);
         timer = GameObject.Find("GameManager").GetComponent<Timer>();
@@ -74,7 +72,6 @@ public class DragFixData : MonoBehaviour
             StartCoroutine(DisableGridLayoutAfterDelay());
         }
         anserText = nowNumber - 1;
-        now[1].SetText("" + anserText);
     }
     // ボタンを押した時に呼ばれる関数
     public void NextQuestion()
@@ -89,7 +86,6 @@ public class DragFixData : MonoBehaviour
             DisplayQuestion(currentQuestionIndex);
             gridLayoutGroup.enabled = true;
             nowNumber++;
-            now[0].SetText(""+nowNumber) ;
         }
         else
         {
