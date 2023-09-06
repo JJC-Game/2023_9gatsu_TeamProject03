@@ -20,6 +20,14 @@ public class Fric : MonoBehaviour, IDragHandler
     private Vector3 offset; // タップ位置とキャラクター中心のオフセット
     public Transform a;
     BaseGameManager baseGameManajer;
+    public  float timer=3;//フリックとスワイプの判別時間
+    public Vector3 nowPosition;//オブジェクトの場所を取得
+    public Vector3 bforePosition;//オブジェクトの場所を取得
+    public bool stop;//trueになったらスワイプ後その場にとどまる]
+    public int nowTimeNumber = 1;
+    float stopTimer;
+    [SerializeField]
+    int stopNumber;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -39,22 +47,53 @@ public class Fric : MonoBehaviour, IDragHandler
                 rb.velocity = velocity;
                 isFlicked = false;
                 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(startTouchPos.x, startTouchPos.y, transform.position.z));
+                timer = 0;                                //数値のリセット
+                nowTimeNumber = 1;
+                bforePosition = Vector3.zero;
+                nowPosition = Vector3.zero;
+            }
+            if (Input.GetMouseButton(0))
+            {
+                timer += Time.deltaTime;
+                if (timer>= nowTimeNumber)//1秒ごとに現在の場所を保存する
+                {
+                    bforePosition = nowPosition;//前の場所のオブジェクトの場所を取得
+                    nowPosition = transform.position;//オブジェクトの場所を取得
+                    nowTimeNumber++;
+                        if (nowPosition == bforePosition)//前の場所のオブジェクトの場所と現在の場所が同じなら時間を図る
+                        {
+                             stopTimer += Time.deltaTime;
+                                 if (stopTimer>= stopNumber)//指定の時間を超えたらスワイプ後停止する
+                                  {
+                                      stop = true;
+                                  }
+                        }
+                }       
             }
             else if (Input.GetMouseButtonUp(0) && !isFlicked)
             {
-                endTouchPos = Input.mousePosition;
-                endTime = Time.time;
+                if (stop==false)
+                {
+                    endTouchPos = Input.mousePosition;
+                    endTime = Time.time;
 
-                Vector3 touchDelta = endTouchPos - startTouchPos;
-                float touchDuration = endTime - startTime;
-                Vector3 touchDirection = touchDelta.normalized;
+                    Vector3 touchDelta = endTouchPos - startTouchPos;
+                    float touchDuration = endTime - startTime;
+                    Vector3 touchDirection = touchDelta.normalized;
 
-                float flickSpeed = touchDelta.magnitude / touchDuration;
+                    float flickSpeed = touchDelta.magnitude / touchDuration;
 
-                velocity += touchDirection * flickSpeed * acceleration * Time.deltaTime;
-                velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+                    velocity += touchDirection * flickSpeed * acceleration * Time.deltaTime;
+                    velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
 
-                isFlicked = true;
+                    isFlicked = true;
+                    timer = 0;
+                }
+                else
+                {
+                    stop = false;
+                    timer = 0;
+                }
             }
             ClampPosition();
         }
