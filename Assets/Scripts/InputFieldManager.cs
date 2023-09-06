@@ -7,7 +7,13 @@ public class InputFieldManager : MonoBehaviour
     private InputField inputField;
     public string resultText;   // 入力されたテキストを格納
 
+    private RectTransform parentRect;
+    private Vector3 defaultParentPos;  // 初期位置
+    private bool isOnceInput = true; // 入力時のfooter・bodyの位置移動フラグ
+
     private bool isCancel = false;  // cancelボタンが押されたか
+
+    public TextMeshProUGUI debugText;
 
     TypingGameManager typingGameManager;
 
@@ -15,21 +21,34 @@ public class InputFieldManager : MonoBehaviour
     void Start()
     {
         inputField = this.gameObject.GetComponent<InputField>();
+        parentRect = this.transform.parent.GetComponent<RectTransform>();
         typingGameManager = GameObject.Find("GameManager").GetComponent<TypingGameManager>();
+        defaultParentPos = parentRect.localPosition;
         InitInputField();
     }
 
-    private void Update()
+    void Update()
     {
-        if (typingGameManager.inGameEnable && !inputField.isFocused)
+        StartInputText();
+    }
+
+    // 入力開始時
+    private void StartInputText()
+    {
+        if (inputField.isFocused && isOnceInput)
         {
-            TouchScreenKeyboard.Open("文字を入力してください", TouchScreenKeyboardType.Default);
+            isOnceInput = false;
+            // y軸をいい感じの値にする
+            parentRect.localPosition += new Vector3(0, 940f, 0);
         }
     }
 
+    // キーボードによって上にずれたUIの位置を戻す
     public void ResetKeybord()
     {
-        TouchScreenKeyboard.Open("文字を入力してください", TouchScreenKeyboardType.Default);
+        isOnceInput = true;
+        parentRect.localPosition = defaultParentPos;
+        isCancel = false;
     }
 
     // フィールドの初期化
@@ -79,6 +98,7 @@ public class InputFieldManager : MonoBehaviour
         {
             // 他の部分をタップした場合
             inputField.text = resultText;
+            ResetKeybord();
             Debug.Log("Canseled");
         }
     }

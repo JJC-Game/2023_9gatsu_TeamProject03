@@ -63,6 +63,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void GameStop()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 }
