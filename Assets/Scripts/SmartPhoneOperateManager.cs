@@ -6,19 +6,30 @@ using TMPro;
 
 public class SmartPhoneOperateManager : MonoBehaviour
 {
-    public List<SmartPhoneOperateFixData> fixDataList;
+    List<SmartPhoneOperateFixData> fixDataList;
 
     int stageNo;
     int progress = 0;
 
     TextMeshProUGUI operationText;
 
+    GameObject buttonClose;
+    GameObject nextButton;
+    GameObject endButton;
+
     void Start()
     {
         operationText = GameObject.Find("OperationText").GetComponent<TextMeshProUGUI>();
 
+        buttonClose = GameObject.Find("ButtonClose");
+        nextButton = GameObject.Find("NextButton");
+        endButton = GameObject.Find("EndButton");
+
+        buttonClose.SetActive(false);
+        endButton.SetActive(false);
+
         LoadFixData();
-        OperationTextChange();
+        OperationTextNext();
     }
 
     void Update()
@@ -62,16 +73,47 @@ public class SmartPhoneOperateManager : MonoBehaviour
         }
     }
 
-    public void OperationTextChange()
+    public void OperationTextNext()
     {
         if (progress >= 0 && progress <= 2)
         {
             operationText.text = fixDataList[stageNo]._operationText[progress];
             progress++;
+
+            if (progress > 2)
+            {
+                nextButton.SetActive(false);
+                endButton.SetActive(true);
+            }
         }
-        else
+
+        if (!buttonClose.activeSelf)
         {
-            FadeManager.Instance.LoadSceneIndex(1, 0.5f);
+            buttonClose.SetActive(true);
         }
+    }
+
+    public void OperationTextBack()
+    {
+        if (progress >= 0 && progress <= 2)
+        {
+            operationText.text = fixDataList[stageNo]._operationText[progress];
+            progress--;
+
+            if (progress <= 0)
+            {
+                buttonClose.SetActive(false);
+            }
+            if (!nextButton.activeSelf)
+            {
+                nextButton.SetActive(true);
+                endButton.SetActive(false);
+            }
+        }
+    }
+
+    public void SceneMove()
+    {
+        FadeManager.Instance.LoadSceneIndex(1, 0.5f);
     }
 }
