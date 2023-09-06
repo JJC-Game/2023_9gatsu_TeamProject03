@@ -7,7 +7,6 @@ public class AnotherScript : MonoBehaviour
     public bool okTM = false;
    // public TextMeshProUGUI FailureText;
   //  float time=3;
-    bool TimerCheck=false;
     BaseGameManager baseManager;
     public void Awake()
     {
@@ -75,7 +74,7 @@ public class AnotherScript : MonoBehaviour
             {
                 // FailureText.text = "不正解";
                 baseManager.LessTime();
-                TimerCheck = true;
+                //TimerCheck = true;
             }
             // true の数を表示
             Debug.Log("文字の数 " + trueCount);

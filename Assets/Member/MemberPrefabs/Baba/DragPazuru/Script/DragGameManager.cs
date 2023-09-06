@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class DragGameManager : BaseGameManager
 {
-    PuzzleBoard puzzle;
     public GameObject puzzleObjyekt;
-    int nextScore = 1;
     public GameObject start;
     public override void UpdatePlus()
     {
