@@ -32,7 +32,7 @@ public class BaseGameManager : MonoBehaviour
 
     void Awake()
     {
-        questionCurrent = 0;
+        questionCurrent = 1;
 
         timer = GameObject.Find("Clock").GetComponent<Image>();
         timer.fillAmount = 1;
@@ -109,7 +109,7 @@ public class BaseGameManager : MonoBehaviour
     {
         inGameEnable = false;
 
-        int coinSum = questionCurrent * coinPulsTimes;
+        int coinSum = (questionCurrent-1) * coinPulsTimes;
 
         if (PlayerPrefs.GetInt("StageScoreMax_" + stageNo) < coinSum)
         {
@@ -124,7 +124,7 @@ public class BaseGameManager : MonoBehaviour
     public void AddScore()
     {
         questionCurrent++;
-        questionText.text = questionCurrent + 1.ToString("00");
+        questionText.text = questionCurrent.ToString("00");
 
         SoundManager.Instance.PlaySE_Sys(2);
     }

@@ -38,13 +38,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuizGame.unity
     guid: 21e9d328881b18748a6c833eb1f9db46
-  - enabled: 1
-    path: Assets/Scenes/dast/Tutorial Pinch.unity
-    guid: acb8f9b4dd7aec14599d93642ed5fe0e
-  - enabled: 1
-    path: Assets/Scenes/dast/Pinch.unity
-    guid: 0d3c2959ad75e274aa0f1f802708ed75
-  - enabled: 1
-    path: Assets/Scenes/dast/PintiN.unity
-    guid: 1c6077f4fab3e3f409a26b9e1a710f00
   m_configObjects: {}
