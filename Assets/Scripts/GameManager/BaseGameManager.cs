@@ -34,6 +34,8 @@ public class BaseGameManager : MonoBehaviour
     [Header("デモ演出")]
     [SerializeField] PlayableDirector pd_gameStart;  //ゲームスタートのデモ演出
     [SerializeField] PlayableDirector pd_gameClear;  //ゲームクリアのデモ演出
+    [SerializeField] PlayableDirector pd_correct;  //ゲームスタートのデモ演出
+    [SerializeField] PlayableDirector pd_incorrect;  //ゲームクリアのデモ演出
 
     void Awake()
     {
@@ -146,6 +148,7 @@ public class BaseGameManager : MonoBehaviour
         questionCurrent++;
         questionText.text = questionCurrent.ToString("00");
 
+        pd_correct.Play();
         SoundManager.Instance.PlaySE_Sys(2);
     }
 
@@ -156,6 +159,7 @@ public class BaseGameManager : MonoBehaviour
 
         clockHand.transform.rotation = Quaternion.Euler(0, 0, 360 * (timeCurrent / timeLimit));
 
+        pd_incorrect.Play();
         SoundManager.Instance.PlaySE_Sys(3);
     }
     

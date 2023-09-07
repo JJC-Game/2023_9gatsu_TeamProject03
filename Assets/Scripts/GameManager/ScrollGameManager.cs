@@ -12,6 +12,7 @@ public class ScrollGameManager : BaseGameManager
     GameObject[] iconList;
 
     AimController aim;
+    Image aimTimer;
 
     float aimCount;
     public float aimGoal;
@@ -21,6 +22,7 @@ public class ScrollGameManager : BaseGameManager
         IconSet();
 
         aim = GameObject.Find("Aim").GetComponent<AimController>();
+        aimTimer = GameObject.Find("AimTimer").GetComponent<Image>();
 
         targetList = GameObject.FindGameObjectsWithTag("Target");
 
@@ -72,6 +74,7 @@ public class ScrollGameManager : BaseGameManager
         if (aim.targetIn)
         {
             aimCount += Time.deltaTime;
+            aimTimer.fillAmount = aimCount / aimGoal;
 
             if (aimCount >= aimGoal)
             {
@@ -80,6 +83,7 @@ public class ScrollGameManager : BaseGameManager
                     AddScore();
 
                     aimCount = 0;
+                    aimTimer.fillAmount = aimCount / aimGoal;
 
                     TargetReset(true);
 
@@ -100,6 +104,7 @@ public class ScrollGameManager : BaseGameManager
         else
         {
             aimCount = 0;
+            aimTimer.fillAmount = aimCount / aimGoal;
         }
     }
 }
