@@ -74,12 +74,12 @@ public class SmartPhoneOperateManager : MonoBehaviour
 
     public void OperationTextNext()
     {
-        if (progress >= 0 && progress <= 2)
+        if (progress >= 0 && progress < 2)
         {
             progress++;
             operationText.text = fixDataList[stageNo]._operationText[progress];
 
-            if (progress > 2)
+            if (progress > 1)
             {
                 nextButton.SetActive(false);
                 endButton.SetActive(true);

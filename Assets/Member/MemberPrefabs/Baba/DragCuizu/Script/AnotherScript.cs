@@ -67,8 +67,8 @@ public class AnotherScript : MonoBehaviour
                     getChildTMProScripts[i].condition = false;
                     getChildTMProScripts[i].ok = false;
                     Debug.Log("リセット");
-                    baseManager.AddScore();
                 }
+                baseManager.AddScore();
             }
             else
             {

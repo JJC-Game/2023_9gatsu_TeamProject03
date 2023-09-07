@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fixDataList: []
-  stageNo: 1
+  stageNo: 2
 --- !u!1 &2736589558289659834
 GameObject:
   m_ObjectHideFlags: 0
