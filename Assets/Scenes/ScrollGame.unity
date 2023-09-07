@@ -4595,7 +4595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 50
-  maxSpeed: 10000
+  maxSpeed: 1000
   friction: 0.95
   minVelocity: 0.1
   isFlicked: 0
