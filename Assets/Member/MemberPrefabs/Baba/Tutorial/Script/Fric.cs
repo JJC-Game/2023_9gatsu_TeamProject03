@@ -68,6 +68,10 @@ public class Fric : MonoBehaviour, IDragHandler
                                       stop = true;
                                   }
                         }
+                         else
+                         {
+                                stop = false;
+                         }
                 }       
             }
             else if (Input.GetMouseButtonUp(0) && !isFlicked)
