@@ -93,6 +93,8 @@ public class OperationManager : Singleton<OperationManager>
                 progress = 0;
             }
         }
+
+        SoundManager.Instance.PlaySE_Game(0);
     }
 
     public void TextDisplay()

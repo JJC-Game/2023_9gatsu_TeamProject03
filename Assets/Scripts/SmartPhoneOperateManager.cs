@@ -90,6 +90,8 @@ public class SmartPhoneOperateManager : MonoBehaviour
         {
             buttonClose.SetActive(false);
         }
+
+        SoundManager.Instance.PlaySE_Game(0);
     }
 
     public void OperationTextBack()
@@ -109,10 +111,14 @@ public class SmartPhoneOperateManager : MonoBehaviour
                 endButton.SetActive(false);
             }
         }
+
+        SoundManager.Instance.PlaySE_Game(0);
     }
 
     public void SceneMove()
     {
         FadeManager.Instance.LoadSceneIndex(1, 0.5f);
+
+        SoundManager.Instance.PlaySE_Sys(3);
     }
 }
