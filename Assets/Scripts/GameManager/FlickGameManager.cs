@@ -10,6 +10,8 @@ public class FlickGameManager : BaseGameManager
 
     AimController aim;
 
+    int currentTarget;
+
     public override void Arrangements()
     {
         aim = GameObject.Find("Aim").GetComponent<AimController>();
@@ -23,6 +25,13 @@ public class FlickGameManager : BaseGameManager
     void RandomChange()
     {
         int randomTarget = Random.Range(0, targetList.Length);
+
+        if (randomTarget == currentTarget)
+        {
+            randomTarget = Random.Range(0, targetList.Length);
+        }
+
+        currentTarget = randomTarget;
         targetList[randomTarget].SetActive(true);
     }
 
