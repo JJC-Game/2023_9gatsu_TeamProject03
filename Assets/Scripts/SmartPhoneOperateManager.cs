@@ -6,9 +6,9 @@ using TMPro;
 
 public class SmartPhoneOperateManager : MonoBehaviour
 {
-    List<SmartPhoneOperateFixData> fixDataList;
+    public List<SmartPhoneOperateFixData> fixDataList;
 
-    int stageNo;
+    public int stageNo;
     int progress = 0;
 
     TextMeshProUGUI operationText;
@@ -25,11 +25,10 @@ public class SmartPhoneOperateManager : MonoBehaviour
         nextButton = GameObject.Find("NextButton");
         endButton = GameObject.Find("EndButton");
 
-        buttonClose.SetActive(false);
         endButton.SetActive(false);
 
         LoadFixData();
-        OperationTextNext();
+        operationText.text = fixDataList[stageNo]._operationText[progress];
     }
 
     void Update()
@@ -77,8 +76,8 @@ public class SmartPhoneOperateManager : MonoBehaviour
     {
         if (progress >= 0 && progress <= 2)
         {
-            operationText.text = fixDataList[stageNo]._operationText[progress];
             progress++;
+            operationText.text = fixDataList[stageNo]._operationText[progress];
 
             if (progress > 2)
             {
@@ -87,9 +86,9 @@ public class SmartPhoneOperateManager : MonoBehaviour
             }
         }
 
-        if (!buttonClose.activeSelf)
+        if (buttonClose.activeSelf)
         {
-            buttonClose.SetActive(true);
+            buttonClose.SetActive(false);
         }
     }
 
@@ -97,12 +96,12 @@ public class SmartPhoneOperateManager : MonoBehaviour
     {
         if (progress >= 0 && progress <= 2)
         {
-            operationText.text = fixDataList[stageNo]._operationText[progress];
             progress--;
+            operationText.text = fixDataList[stageNo]._operationText[progress];
 
             if (progress <= 0)
             {
-                buttonClose.SetActive(false);
+                buttonClose.SetActive(true);
             }
             if (!nextButton.activeSelf)
             {
