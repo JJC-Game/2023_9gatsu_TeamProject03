@@ -25,8 +25,10 @@ public class OperationManager : Singleton<OperationManager>
         operationCanvas = GameObject.Find("OperationCanvas").transform.gameObject;
         choicesCanvas = GameObject.Find("ChoicesCanvas").transform.gameObject;
 
-        LoadFixData();
-        OperationTextChange();
+        LoadFixData(); 
+        
+        operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
+        progress++;
 
         operationCanvas.SetActive(false);
         choicesCanvas.SetActive(true);
@@ -94,7 +96,7 @@ public class OperationManager : Singleton<OperationManager>
             }
         }
 
-        SoundManager.Instance.PlaySE_Game(0);
+        SoundManager.Instance.PlaySE_Game(1);
     }
 
     public void TextDisplay()
