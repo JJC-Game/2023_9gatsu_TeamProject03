@@ -13,8 +13,6 @@ public class InputFieldManager : MonoBehaviour
 
     private bool isCancel = false;  // cancelボタンが押されたか
 
-    public TextMeshProUGUI debugText;
-
     TypingGameManager typingGameManager;
 
 

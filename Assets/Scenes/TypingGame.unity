@@ -2287,7 +2287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultText: 
-  debugText: {fileID: 0}
 --- !u!1 &1460919806
 GameObject:
   m_ObjectHideFlags: 0
@@ -5566,8 +5565,8 @@ MonoBehaviour:
   coinPulsTimes: 0
   pd_gameStart: {fileID: 1795391337}
   pd_gameClear: {fileID: 1994272114}
-  pd_correct: {fileID: 0}
-  pd_incorrect: {fileID: 0}
+  pd_correct: {fileID: 6690255855949689375}
+  pd_incorrect: {fileID: 6690255855918791033}
 --- !u!4 &3452736280503127138
 Transform:
   m_ObjectHideFlags: 0
