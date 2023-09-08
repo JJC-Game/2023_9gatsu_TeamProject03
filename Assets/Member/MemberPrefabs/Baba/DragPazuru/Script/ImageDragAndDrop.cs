@@ -51,6 +51,7 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     float blueComponent;
     float alphaComponent;
     bool dragObj=false;
+  public  bool dragOK=false;
     private void Start()
     {
         GetComponent<RectTransform>().rotation = Quaternion.identity;
@@ -81,34 +82,44 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (dGame.inGameEnable == true)
         {
-            // ドラッグオブジェクトを複製して作成
-            dragObject = Instantiate(gameObject, transform.parent);
-            dragObject.GetComponent<Image>().raycastTarget = false;
-            dragObject.GetComponent<Image>().color = new Color(i.color.r, i.color.g, i.color.b, 0.97f);
-            dragObject.transform.SetAsLastSibling();
-            Transform drag = dragObject.transform;
-            initialPosition = drag.position;
-            dragObject.SetActive(true);
-            this.i.color = new Color(i.color.r, i.color.g, i.color.b, 0.5f);
-            // 元のピースをドラッグ可能にする
-            gameObject.GetComponent<Image>().raycastTarget = true;
-            Transform dra = dragObject.transform;
-            d.SetDraggingPiece(this);
-            isDragging = true;
-            dragStartPosition = eventData.position; // スクリーン座標をワールド座標に変換して代入
-            dragObj = true;                                 //Debug.Log("OnPointerDown: isDragging = " + isDragging);
+            if (Input.touchCount == 1)
+            {
+                // ドラッグオブジェクトを複製して作成
+                dragObject = Instantiate(gameObject, transform.parent);
+                dragObject.GetComponent<Image>().raycastTarget = false;
+                dragObject.GetComponent<Image>().color = new Color(i.color.r, i.color.g, i.color.b, 0.97f);
+                dragObject.transform.SetAsLastSibling();
+                Transform drag = dragObject.transform;
+                initialPosition = drag.position;
+                dragObject.SetActive(true);
+                this.i.color = new Color(i.color.r, i.color.g, i.color.b, 0.5f);
+                // 元のピースをドラッグ可能にする
+                gameObject.GetComponent<Image>().raycastTarget = true;
+                Transform dra = dragObject.transform;
+                d.SetDraggingPiece(this);
+                isDragging = true;
+                dragStartPosition = eventData.position; // スクリーン座標をワールド座標に変換して代入
+                dragObj = true;
+                dragOK = true;
+            }
+                       //Debug.Log("OnPointerDown: isDragging = " + isDragging);
         }
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         if (dGame.inGameEnable == true)
         {
-            isDragging = false;
-            Destroy(dragObject);
-            dragObject = null;
-            d.ClearDraggingPiece();
-            this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
-            dragObj = false;
+            if (dragOK == true)
+            {
+                isDragging = false;
+                Destroy(dragObject);
+                dragObject = null;
+                d.ClearDraggingPiece();
+                this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
+                dragObj = false;
+                dragOK = false;
+            }
+           
         }
 
     }
@@ -167,10 +178,14 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         //{
         if (dGame.inGameEnable == true&& dragObj==true)
         {
-            transform.position = eventData.position;
-            dragObject.transform.position = eventData.position;
-            //ClampPosition();
-            d.ComparePositions();
+            if (dragOK == true)
+            {
+                transform.position = eventData.position;
+                dragObject.transform.position = eventData.position;
+                //ClampPosition();
+                d.ComparePositions();
+            }
+
         }
         // }
     }
