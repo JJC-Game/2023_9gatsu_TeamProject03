@@ -8,6 +8,8 @@ public class ScrollGameManager : BaseGameManager
 {
     public int iconMin = 6;
 
+    int currentNo;
+
     GameObject[] targetList;
     GameObject[] iconList;
 
@@ -56,6 +58,12 @@ public class ScrollGameManager : BaseGameManager
     void RandomChange()
     {
         int randomTarget = Random.Range(0, targetList.Length);
+
+        if (currentNo == randomTarget)
+        {
+            randomTarget = Random.Range(0, targetList.Length);
+        }
+
         targetList[randomTarget].SetActive(true);
 
         Image targetImage = targetList[randomTarget].GetComponent<Image>();

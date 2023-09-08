@@ -50,7 +50,7 @@ public class MainMenuManager : MonoBehaviour
         CanvasInit();
         operateSelectCanvas.SetActive(true);
 
-        SoundManager.Instance.PlaySE_Sys(3);
+        SoundManager.Instance.PlaySE_Sys(5);
     }
 
     //シーン遷移

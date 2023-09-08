@@ -7,6 +7,7 @@ using TMPro;
 public class TypingGameManager : BaseGameManager
 {
     string answerWord;
+    string currentWord = "";
     List<string> fixDataList = new List<string>();
 
     TextMeshProUGUI questionText;
@@ -59,6 +60,13 @@ public class TypingGameManager : BaseGameManager
         int wordNo = Random.Range(0, fixDataList.Count);
         answerWord = fixDataList[wordNo];
 
+        if (currentWord == answerWord)
+        {
+            wordNo = Random.Range(0, fixDataList.Count);
+            answerWord = fixDataList[wordNo];
+        }
+
+        currentWord = answerWord;
         questionText.text = answerWord;
     }
 

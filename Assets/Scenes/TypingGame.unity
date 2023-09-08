@@ -4875,7 +4875,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNo: 2
   inGameEnable: 0
-  coinPulsTimes: 0
   pd_gameStart: {fileID: 1795391337}
   pd_gameClear: {fileID: 1994272114}
   pd_correct: {fileID: 6690255855949689375}
@@ -7895,7 +7894,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f75ef3729fbf564ca831d882cf4d5c8, type: 3}
   - {fileID: 8300000, guid: 5100ce13e75ca7c4c9cbfd4ff2859240, type: 3}
   se_GameClip:
-  - {fileID: 8300000, guid: fef01371c722fbe40bb72a59f1b36ca0, type: 3}
   - {fileID: 8300000, guid: ca7c717941955fc4283d63599222c35c, type: 3}
 --- !u!4 &4008410594923332479
 Transform:
