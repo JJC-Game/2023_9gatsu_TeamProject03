@@ -24,10 +24,11 @@ public class Fric : MonoBehaviour, IDragHandler
     public Vector3 nowPosition;//オブジェクトの場所を取得
     public Vector3 bforePosition;//オブジェクトの場所を取得
     public bool stop;//trueになったらスワイプ後その場にとどまる]
-    public int nowTimeNumber = 1;
+    private float nowTimeNumber = 0.2f;
     float stopTimer;
     [SerializeField]
-    int stopNumber;
+    float stopNumber=0.2f;
+    public float dragSpeed = 0.1f; // ドラッグ速度を調整するための係数
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,7 +49,7 @@ public class Fric : MonoBehaviour, IDragHandler
                 isFlicked = false;
                 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(startTouchPos.x, startTouchPos.y, transform.position.z));
                 timer = 0;                                //数値のリセット
-                nowTimeNumber = 1;
+                nowTimeNumber = 0.2f;
                 bforePosition = Vector3.zero;
                 nowPosition = Vector3.zero;
             }
@@ -59,9 +60,10 @@ public class Fric : MonoBehaviour, IDragHandler
                 {
                     bforePosition = nowPosition;//前の場所のオブジェクトの場所を取得
                     nowPosition = transform.position;//オブジェクトの場所を取得
-                    nowTimeNumber++;
-                        if (nowPosition == bforePosition)//前の場所のオブジェクトの場所と現在の場所が同じなら時間を図る
+                    nowTimeNumber+=0.002f;
+                        if (Mathf.Abs(nowPosition.y - bforePosition.y) <= 1.5)//前の場所のオブジェクトの場所と現在の場所が同じなら時間を図る
                         {
+                        Debug.Log(nowPosition + "と" + bforePosition);
                              stopTimer += Time.deltaTime;
                                  if (stopTimer>= stopNumber)//指定の時間を超えたらスワイプ後停止する
                                   {
@@ -152,10 +154,12 @@ public class Fric : MonoBehaviour, IDragHandler
         if (baseGameManajer.inGameEnable == true)
         {
             // ドラッグの差分を計算して現在の位置に加えます
-            transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
+            Vector3 deltaPosition = new Vector3(eventData.delta.x, eventData.delta.y, 0);
+            transform.position += deltaPosition * dragSpeed;
         }
 
     }
+
 
 
 }
