@@ -28,7 +28,6 @@ public class OperationManager : Singleton<OperationManager>
         LoadFixData(); 
         
         operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
-        progress++;
 
         operationCanvas.SetActive(false);
         choicesCanvas.SetActive(true);
@@ -75,12 +74,35 @@ public class OperationManager : Singleton<OperationManager>
         }
     }
 
+    public void OperationTextBack()
+    {
+        if (progress >= 1 && progress <= 3)
+        {
+            progress--;
+            operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
+        }
+        else
+        {
+            if (!startFLG)
+            {
+                baseGM.SceneMove(1);
+            }
+            else
+            {
+                operationCanvas.SetActive(false);
+                progress = 0;
+            }
+        }
+
+        SoundManager.Instance.PlaySE_Game(1);
+    }
+
     public void OperationTextChange()
     {
         if (progress >= 0 && progress <= 2)
         {
-            operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
             progress++;
+            operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
         }
         else
         {
