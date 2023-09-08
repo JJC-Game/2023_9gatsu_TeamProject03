@@ -94,7 +94,7 @@ public class OperationManager : Singleton<OperationManager>
             }
         }
 
-        SoundManager.Instance.PlaySE_Game(1);
+        SoundManager.Instance.PlaySE_Game(0);
     }
 
     public void OperationTextChange()
@@ -118,7 +118,7 @@ public class OperationManager : Singleton<OperationManager>
             }
         }
 
-        SoundManager.Instance.PlaySE_Game(1);
+        SoundManager.Instance.PlaySE_Game(0);
     }
 
     public void TextDisplay()

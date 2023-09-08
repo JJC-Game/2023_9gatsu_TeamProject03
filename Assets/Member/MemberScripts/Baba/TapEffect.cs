@@ -19,8 +19,6 @@ public class TapEffect : MonoBehaviour
             {
                 effectInstance.transform.SetParent(effectParent.transform);
             }
-
-            SoundManager.Instance.PlaySE_Game(0);
         }
 
         if (Input.touchCount > 0)

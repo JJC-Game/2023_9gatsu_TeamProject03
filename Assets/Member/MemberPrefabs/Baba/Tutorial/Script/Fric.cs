@@ -5,10 +5,10 @@ using UnityEngine.EventSystems;
 
 public class Fric : MonoBehaviour, IDragHandler
 {
-    public float acceleration = 10.0f;
-    public float maxSpeed = 5.0f;
-    public float friction = 0.95f;
-    public float minVelocity = 0.1f;
+    private float acceleration = 5.0f;
+    private float maxSpeed = 5000.0f;
+    private float friction = 0.92f;
+    private float minVelocity = 0.1f;
     private Vector3 startTouchPos;
     private Vector3 endTouchPos;
     private Rigidbody rb;
@@ -28,7 +28,7 @@ public class Fric : MonoBehaviour, IDragHandler
     float stopTimer;
     [SerializeField]
     float stopNumber=0.2f;
-    public float dragSpeed = 0.1f; // ドラッグ速度を調整するための係数
+    private float dragSpeed = 0.1f; // ドラッグ速度を調整するための係数
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,7 +49,7 @@ public class Fric : MonoBehaviour, IDragHandler
                 isFlicked = false;
                 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(startTouchPos.x, startTouchPos.y, transform.position.z));
                 timer = 0;                                //数値のリセット
-                nowTimeNumber = 0.2f;
+                nowTimeNumber = 0.1f;
                 bforePosition = Vector3.zero;
                 nowPosition = Vector3.zero;
             }
@@ -60,8 +60,8 @@ public class Fric : MonoBehaviour, IDragHandler
                 {
                     bforePosition = nowPosition;//前の場所のオブジェクトの場所を取得
                     nowPosition = transform.position;//オブジェクトの場所を取得
-                    nowTimeNumber+=0.002f;
-                        if (Mathf.Abs(nowPosition.y - bforePosition.y) <= 1.5)//前の場所のオブジェクトの場所と現在の場所が同じなら時間を図る
+                    nowTimeNumber+=0.01f;
+                        if (Mathf.Abs(nowPosition.y - bforePosition.y) <= 5)//前の場所のオブジェクトの場所と現在の場所が同じなら時間を図る
                         {
                         Debug.Log(nowPosition + "と" + bforePosition);
                              stopTimer += Time.deltaTime;
@@ -80,6 +80,22 @@ public class Fric : MonoBehaviour, IDragHandler
             {
                 if (stop==false)
                 {
+                    if (Mathf.Abs(nowPosition.y - bforePosition.y) >= 70)
+                    {
+                        acceleration = 5;
+                        Debug.Log(3);
+                    }
+                    else if (Mathf.Abs(nowPosition.y - bforePosition.y) >= 50)
+                    {
+                        acceleration = 5;
+                        Debug.Log(2);
+                    }
+                    else if (Mathf.Abs(nowPosition.y - bforePosition.y) >= 0)
+                    {
+                        acceleration = 5;
+                        //  Debug.Log(Mathf.Abs(nowPosition.y - bforePosition.y));
+                        Debug.Log(1);
+                    }
                     endTouchPos = Input.mousePosition;
                     endTime = Time.time;
 

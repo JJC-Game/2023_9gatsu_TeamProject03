@@ -10,7 +10,7 @@ public class FlickGameManager : BaseGameManager
 
     AimController aim;
 
-    int currentTarget;
+    int currentTarget = 0;
 
     public override void Arrangements()
     {
