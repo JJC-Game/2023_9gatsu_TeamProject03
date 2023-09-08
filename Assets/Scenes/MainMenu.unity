@@ -23515,7 +23515,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6c8b948caa53f084a934a0f47944f91c, type: 3}
   - {fileID: 8300000, guid: 8f75ef3729fbf564ca831d882cf4d5c8, type: 3}
   - {fileID: 8300000, guid: 5100ce13e75ca7c4c9cbfd4ff2859240, type: 3}
-  se_GameClip: []
+  se_GameClip:
+  - {fileID: 8300000, guid: fef01371c722fbe40bb72a59f1b36ca0, type: 3}
+  - {fileID: 8300000, guid: ecc2598953503294fae9707fd2d6b7d0, type: 3}
 --- !u!4 &8401103823433260511
 Transform:
   m_ObjectHideFlags: 0
