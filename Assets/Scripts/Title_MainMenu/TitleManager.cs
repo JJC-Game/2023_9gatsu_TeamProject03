@@ -13,6 +13,8 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            SoundManager.Instance.PlaySE_Game(1);
+
             FadeManager.Instance.LoadSceneIndex(1, 0.5f);
         }
     }
