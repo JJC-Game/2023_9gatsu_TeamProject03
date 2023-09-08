@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ScoreDisplay : MonoBehaviour
 {
     //使用するイラスト
-    public Sprite sprite;
+    public Image coinImage;
     int textureId;
 
     TextMeshProUGUI text;
@@ -22,7 +23,7 @@ public class ScoreDisplay : MonoBehaviour
         sumScore += PlayerPrefs.GetInt("StageScore_" + stageNo, 0);
         sumScore += PlayerPrefs.GetInt("StageScore_" + (stageNo+1), 0);
 
-        text.text = sumScore.ToString("00000");
+        text.text = sumScore.ToString("0");
 
         if (sumScore >= 1000000)
         {
@@ -47,7 +48,7 @@ public class ScoreDisplay : MonoBehaviour
 
         if (Resources.Load<Sprite>("ProjectAssets/UIPack/CoinMountain_" + textureId))
         {
-            sprite = Resources.Load<Sprite>("ProjectAssets/UIPack/CoinMountain_" + textureId);
+            coinImage.sprite = Resources.Load<Sprite>("ProjectAssets/UIPack/CoinMountain_" + textureId);
         }
     }
 }
