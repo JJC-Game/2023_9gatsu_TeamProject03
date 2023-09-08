@@ -11,7 +11,7 @@ public class BaseGameManager : MonoBehaviour
     public int stageNo;
 
     [Header("制限時間関連")]
-    int timeLimit = 90;
+    int timeLimit = 60;
     float timeCurrent;
     Image timer;
     GameObject clockHand;
@@ -22,7 +22,7 @@ public class BaseGameManager : MonoBehaviour
     // ソースコードを見る限り、isGameActive、とか、isGameEnableといった名前がいいんじゃないでしょうか.
 
     [Header("スコア関連")]
-    public int coinPulsTimes;  //一問当たりのコイン獲得枚数
+    int coinPulsTimes;  //一問当たりのコイン獲得枚数
     int questionCurrent;         //正解数
     TextMeshProUGUI questionText;
 
@@ -58,6 +58,15 @@ public class BaseGameManager : MonoBehaviour
         getCoinText_Max = GameObject.Find("GetCoinNumber_Max").GetComponent<TextMeshProUGUI>();
 
         GameObject.Find("ClearCanvas").SetActive(false);
+
+        if (stageNo == 1)
+        {
+            coinPulsTimes = 100;
+        }
+        else
+        {
+            coinPulsTimes = 500;
+        }
 
         Arrangements();
     }
