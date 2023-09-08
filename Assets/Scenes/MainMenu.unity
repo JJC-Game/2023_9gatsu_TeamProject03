@@ -17668,7 +17668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1811200556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20577,7 +20577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d7426d7ae6b9d954db1396ff9b0e02b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84798be3c26f8ee4a836ca184557e0f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20620,7 +20620,7 @@ GameObject:
   - component: {fileID: 1590253741345726566}
   - component: {fileID: 6341083865765804884}
   m_Layer: 5
-  m_Name: TotalCoinBox (1)
+  m_Name: 'TotalCoinBox '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21215,7 +21215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30BF\u30C3\u30D7\u3067\u7A3C\u3044\u3060\u30B3\u30A4\u30F3"
+  m_text: "\u30C9\u30E9\u30C3\u30B0\u3067\u7A3C\u3044\u3060\u30B3\u30A4\u30F3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 64b4cf897e0bda348ba5054333f17fb5, type: 2}
   m_sharedMaterial: {fileID: -6383830251240019987, guid: 64b4cf897e0bda348ba5054333f17fb5, type: 2}
@@ -21645,7 +21645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d7426d7ae6b9d954db1396ff9b0e02b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84798be3c26f8ee4a836ca184557e0f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -22457,7 +22457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d7426d7ae6b9d954db1396ff9b0e02b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84798be3c26f8ee4a836ca184557e0f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -22559,7 +22559,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30BF\u30C3\u30D7\u3067\u7A3C\u3044\u3060\u30B3\u30A4\u30F3"
+  m_text: "\u30B9\u30EF\u30A4\u30D7\u3067\u7A3C\u3044\u3060\u30B3\u30A4\u30F3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 64b4cf897e0bda348ba5054333f17fb5, type: 2}
   m_sharedMaterial: {fileID: -6383830251240019987, guid: 64b4cf897e0bda348ba5054333f17fb5, type: 2}
