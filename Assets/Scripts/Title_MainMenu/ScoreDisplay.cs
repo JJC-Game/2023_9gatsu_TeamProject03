@@ -45,6 +45,7 @@ public class ScoreDisplay : MonoBehaviour
         {
             textureId = 0;
         }
+        Debug.Log(textureId);
 
         if (Resources.Load<Sprite>("ProjectAssets/UIPack/CoinMountain_" + textureId))
         {
