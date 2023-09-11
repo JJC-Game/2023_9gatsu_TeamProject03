@@ -46,6 +46,11 @@ public class Fric : MonoBehaviour, IDragHandler
         {
            // aimCount += Time.deltaTime;
         }
+        ClampPosition();
+        if (baseGameManajer.inGameEnable == false)
+        {
+            transform.position = nowPosition;
+        }
         if (baseGameManajer.inGameEnable == true)
         {
             if (Input.GetMouseButtonDown(0))
@@ -139,6 +144,7 @@ public class Fric : MonoBehaviour, IDragHandler
 
     private void FixedUpdate()
     {
+        ClampPosition();
         if (baseGameManajer.inGameEnable == true)
         {
             if (isFlicked)
@@ -191,10 +197,13 @@ public class Fric : MonoBehaviour, IDragHandler
             if (baseGameManajer.inGameEnable == true)
             {
                 // ドラッグの差分を計算して現在の位置に加えます
-                Vector3 deltaPosition = new Vector3(eventData.delta.x, eventData.delta.y, 0);
+                Vector3 deltaPosition = new Vector3(0, eventData.delta.y, 0);
                 transform.position += deltaPosition * dragSpeed;
             }
-          
+        else
+        {
+            transform.position = nowPosition;
+        }
       //  }
         
     }

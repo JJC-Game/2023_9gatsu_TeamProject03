@@ -53,6 +53,7 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     bool dragObj=false;
   public  bool dragOK=false;
     ButtonClickHandler buttonCheck; 
+
     private void Start()
     {
         GetComponent<RectTransform>().rotation = Quaternion.identity;
@@ -84,8 +85,8 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (dGame.inGameEnable == true)
         {
-            if (Input.touchCount == 1)
-            {
+          if (Input.touchCount == 1)
+           {
                 // ドラッグオブジェクトを複製して作成
                 dragObject = Instantiate(gameObject, transform.parent);
                 dragObject.GetComponent<Image>().raycastTarget = false;
@@ -103,8 +104,9 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 dragStartPosition = eventData.position; // スクリーン座標をワールド座標に変換して代入
                 dragObj = true;
                 dragOK = true;
+               buttonCheck. dragNowCheck = true;
             }
-                       //Debug.Log("OnPointerDown: isDragging = " + isDragging);
+            //Debug.Log("OnPointerDown: isDragging = " + isDragging);
         }
     }
     public void OnPointerUp(PointerEventData eventData)
@@ -120,6 +122,7 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
                 dragObj = false;
                 dragOK = false;
+                buttonCheck.dragNowCheck = false;
             }
            
         }
