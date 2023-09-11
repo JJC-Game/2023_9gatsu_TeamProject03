@@ -44,7 +44,7 @@ public class Fric : MonoBehaviour, IDragHandler
     {
         if (aim.targetIn)
         {
-            aimCount += Time.deltaTime;
+           // aimCount += Time.deltaTime;
         }
         if (baseGameManajer.inGameEnable == true)
         {
@@ -186,8 +186,8 @@ public class Fric : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (aimCount <= 1.9f)
-        {
+      //  if (aimCount <= 1.9f)
+       // {
             if (baseGameManajer.inGameEnable == true)
             {
                 // ドラッグの差分を計算して現在の位置に加えます
@@ -195,7 +195,7 @@ public class Fric : MonoBehaviour, IDragHandler
                 transform.position += deltaPosition * dragSpeed;
             }
           
-        }
+      //  }
         
     }
 }
