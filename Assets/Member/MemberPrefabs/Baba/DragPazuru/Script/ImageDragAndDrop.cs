@@ -52,8 +52,8 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     float alphaComponent;
     bool dragObj=false;
   public  bool dragOK=false;
-    ButtonClickHandler buttonCheck; 
-
+    ButtonClickHandler buttonCheck;
+    PauseManager pause;
     private void Start()
     {
         GetComponent<RectTransform>().rotation = Quaternion.identity;
@@ -61,6 +61,7 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         P2 = RectTransformUtility.WorldToScreenPoint(Camera.main, P1);
         d = GameObject.Find("GameManager").GetComponent<Director>();
         dGame= GameObject.Find("GameManager").GetComponent<DragGameManager>();
+        pause= GameObject.Find("GameManager").GetComponent<PauseManager>();
         i = GetComponent<Image>();
         buttonCheck = GameObject.Find("AnswerButton").GetComponent<ButtonClickHandler>();
         Color currentColor = i.color; // 現在の色を取得
@@ -74,11 +75,19 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     void Update()
     {
-        if (dGame.inGameEnable == true)
+        if (pause.pauseFLG == true)
         {
-          //  HandleInput();
+
+            isDragging = false;
+            Destroy(dragObject);
+            dragObject = null;
+            d.ClearDraggingPiece();
+            this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
+            dragObj = false;
+            dragOK = false;
+            buttonCheck.dragNowCheck = false;
         }
-        
+
         // Debug.Log(Type);
     }
     public void OnPointerDown(PointerEventData eventData)
