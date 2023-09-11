@@ -48,11 +48,6 @@ public class Fric : MonoBehaviour, IDragHandler
         {
             ((RectTransform)transform).anchoredPosition = new Vector2(0, ((RectTransform)transform).anchoredPosition.y); // x軸とz軸を0に設定
         }
-        ClampPosition();
-        if (baseGameManajer.inGameEnable == false)
-        {
-           // transform.position = nowPosition;
-        }
         if (baseGameManajer.inGameEnable == true)
         {
             if (Input.GetMouseButtonDown(0))
@@ -141,7 +136,7 @@ public class Fric : MonoBehaviour, IDragHandler
         {
             rb.velocity = Vector3.zero;
         }
-        
+        ClampPosition();
     }
 
     private void FixedUpdate()
