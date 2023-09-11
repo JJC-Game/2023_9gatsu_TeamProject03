@@ -27,7 +27,25 @@ public class InputFieldManager : MonoBehaviour
 
     void Update()
     {
-        StartInputText();
+        if (!typingGameManager.inGameEnable)
+        {
+            // フィールドの初期化
+            InitInputField();
+
+            if (inputField.readOnly)
+            {
+                inputField.readOnly = false;
+            }
+        }
+        else
+        {
+            StartInputText();
+
+            if (!inputField.readOnly)
+            {
+                inputField.readOnly = true;
+            }
+        }
     }
 
     // 入力開始時

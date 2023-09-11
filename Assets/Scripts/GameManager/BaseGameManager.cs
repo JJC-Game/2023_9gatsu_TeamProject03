@@ -164,6 +164,12 @@ public class BaseGameManager : MonoBehaviour
     public void LessTime()
     {
         timeCurrent -= 10;
+
+        if (timeCurrent <= 0)
+        {
+            timeCurrent = 0;
+        }
+
         timer.fillAmount = timeCurrent / timeLimit;
 
         clockHand.transform.rotation = Quaternion.Euler(0, 0, 360 * (timeCurrent / timeLimit));

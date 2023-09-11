@@ -124,7 +124,7 @@ public class OperationManager : Singleton<OperationManager>
     public void TextDisplay()
     {
         operationCanvas.SetActive(true);
-        OperationTextChange();
+        operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
     }
 
     void GameStart()

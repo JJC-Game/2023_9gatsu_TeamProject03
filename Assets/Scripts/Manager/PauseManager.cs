@@ -36,7 +36,7 @@ public class PauseManager : MonoBehaviour
         pauseFLG = flg;
 
         //ポーズ中だったら時間停止
-        if (flg)
+        if (flg && baseGM.inGameEnable)
         {
             baseGM.inGameEnable = false;
 
@@ -45,7 +45,7 @@ public class PauseManager : MonoBehaviour
 
             SoundManager.Instance.PlaySE_Sys(4);
         }
-        else
+        else if(!flg)
         {
             Time.timeScale = 1;
 
