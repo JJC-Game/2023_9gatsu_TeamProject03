@@ -35,11 +35,11 @@ public class MainMenuManager : MonoBehaviour
     {
         if (stageNo >= 0)
         {
-            if (stageScore[stageNo].textureId == 1 || stageScore[stageNo].textureId == 2 && !coinEffect[0].activeSelf)
+            if (stageScore[stageNo].textureId == 1 && !coinEffect[0].activeSelf)
             {
                 coinEffect[0].SetActive(true);
             }
-            else if (stageScore[stageNo].textureId == 3 && !coinEffect[1].activeSelf)
+            else if (stageScore[stageNo].textureId == 3 || stageScore[stageNo].textureId == 2 && !coinEffect[1].activeSelf)
             {
                 coinEffect[1].SetActive(true);
             }
