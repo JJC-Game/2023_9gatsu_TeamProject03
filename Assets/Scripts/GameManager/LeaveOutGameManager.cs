@@ -20,6 +20,8 @@ public class LeaveOutGameManager : BaseGameManager
     //イラストの数（イラストの通し番号の最も大きい数）
     public int spriteMax;
 
+    bool buttonDown = false;
+
     public override void Arrangements()
     {
         GameObject iconParent = GameObject.Find("IconParent");
@@ -96,19 +98,28 @@ public class LeaveOutGameManager : BaseGameManager
 
     public void Correct()
     {
-        if (inGameEnable)
+        if (inGameEnable && !buttonDown)
         {
             AddScore();
 
             RandomChange();
+
+            buttonDown = true;
         }
     }
 
     public void Incorrect()
     {
-        if (inGameEnable)
+        if (inGameEnable && !buttonDown)
         {
             LessTime();
+
+            buttonDown = true;
         }
+    }
+
+    public void ButtonDownFLG()
+    {
+        buttonDown = false;
     }
 }

@@ -80,6 +80,8 @@ public class OperationManager : Singleton<OperationManager>
         {
             progress--;
             operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
+
+            SoundManager.Instance.PlaySE_Game(0);
         }
         else
         {
@@ -93,16 +95,16 @@ public class OperationManager : Singleton<OperationManager>
                 progress = 0;
             }
         }
-
-        SoundManager.Instance.PlaySE_Game(0);
     }
 
     public void OperationTextChange()
     {
-        if (progress >= 0 && progress <= 2)
+        if (progress >= 0 && progress < 2)
         {
             progress++;
             operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
+
+            SoundManager.Instance.PlaySE_Game(0);
         }
         else
         {
@@ -117,8 +119,6 @@ public class OperationManager : Singleton<OperationManager>
                 progress = 0;
             }
         }
-
-        SoundManager.Instance.PlaySE_Game(0);
     }
 
     public void TextDisplay()
@@ -129,9 +129,9 @@ public class OperationManager : Singleton<OperationManager>
 
     void GameStart()
     {
-        baseGM.StartDemoPlay();
         startFLG = true;
         progress = 0;
+        baseGM.StartDemoPlay();
     }
 
     public void Choice_Yes()
