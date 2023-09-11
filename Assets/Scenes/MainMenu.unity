@@ -1480,10 +1480,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.98823535, g: 0.87843144, b: 0.87843144, a: 1}
-    m_HighlightedColor: {r: 0.8588236, g: 0.7725491, b: 0.7725491, a: 1}
+    m_HighlightedColor: {r: 0.98823535, g: 0.87843144, b: 0.87843144, a: 1}
     m_PressedColor: {r: 0.8588236, g: 0.7725491, b: 0.7725491, a: 1}
-    m_SelectedColor: {r: 0.8588236, g: 0.7725491, b: 0.7725491, a: 1}
-    m_DisabledColor: {r: 0.8588236, g: 0.7725491, b: 0.7725491, a: 0.5019608}
+    m_SelectedColor: {r: 0.98823535, g: 0.87843144, b: 0.87843144, a: 1}
+    m_DisabledColor: {r: 0.98823535, g: 0.87843144, b: 0.87843144, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2614,10 +2614,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 0.90196085, b: 0.7803922, a: 1}
-    m_HighlightedColor: {r: 0.79215693, g: 0.7254902, b: 0.6392157, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.90196085, b: 0.7803922, a: 1}
     m_PressedColor: {r: 0.79215693, g: 0.7254902, b: 0.6392157, a: 1}
-    m_SelectedColor: {r: 0.79215693, g: 0.7254902, b: 0.6392157, a: 1}
-    m_DisabledColor: {r: 0.79215693, g: 0.7254902, b: 0.6392157, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 0.90196085, b: 0.7803922, a: 1}
+    m_DisabledColor: {r: 1, g: 0.90196085, b: 0.7803922, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -8799,10 +8799,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10727,10 +10727,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11701,10 +11701,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 0.89019614, b: 0.89019614, a: 1}
-    m_HighlightedColor: {r: 0.8588236, g: 0.7725491, b: 0.7725491, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.89019614, b: 0.89019614, a: 1}
     m_PressedColor: {r: 0.8588236, g: 0.7725491, b: 0.7725491, a: 1}
-    m_SelectedColor: {r: 0.8588236, g: 0.7725491, b: 0.7725491, a: 1}
-    m_DisabledColor: {r: 0.8588236, g: 0.7725491, b: 0.7725491, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 0.89019614, b: 0.89019614, a: 1}
+    m_DisabledColor: {r: 1, g: 0.89019614, b: 0.89019614, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -12228,10 +12228,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -13063,10 +13063,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -13412,10 +13412,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.7294118, g: 1, b: 0.7686275, a: 1}
-    m_HighlightedColor: {r: 0.5882353, g: 0.7725491, b: 0.6156863, a: 1}
+    m_HighlightedColor: {r: 0.7294118, g: 1, b: 0.7686275, a: 1}
     m_PressedColor: {r: 0.5882353, g: 0.7725491, b: 0.6156863, a: 1}
-    m_SelectedColor: {r: 0.5882353, g: 0.7725491, b: 0.6156863, a: 1}
-    m_DisabledColor: {r: 0.5882353, g: 0.7725491, b: 0.6156863, a: 0.5019608}
+    m_SelectedColor: {r: 0.7294118, g: 1, b: 0.7686275, a: 1}
+    m_DisabledColor: {r: 0.7294118, g: 1, b: 0.7686275, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -14745,10 +14745,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -15456,10 +15456,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 0.90196085, b: 0.7803922, a: 1}
-    m_HighlightedColor: {r: 0.79215693, g: 0.7254902, b: 0.6392157, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.90196085, b: 0.7803922, a: 1}
     m_PressedColor: {r: 0.79215693, g: 0.7254902, b: 0.6392157, a: 1}
-    m_SelectedColor: {r: 0.79215693, g: 0.7254902, b: 0.6392157, a: 1}
-    m_DisabledColor: {r: 0.79215693, g: 0.7254902, b: 0.6392157, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 0.90196085, b: 0.7803922, a: 1}
+    m_DisabledColor: {r: 1, g: 0.90196085, b: 0.7803922, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -18025,10 +18025,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.7294118, g: 1, b: 0.7686275, a: 1}
-    m_HighlightedColor: {r: 0.5882353, g: 0.7725491, b: 0.6156863, a: 1}
+    m_HighlightedColor: {r: 0.7294118, g: 1, b: 0.7686275, a: 1}
     m_PressedColor: {r: 0.5882353, g: 0.7725491, b: 0.6156863, a: 1}
-    m_SelectedColor: {r: 0.5882353, g: 0.7725491, b: 0.6156863, a: 1}
-    m_DisabledColor: {r: 0.5882353, g: 0.7725491, b: 0.6156863, a: 0.5019608}
+    m_SelectedColor: {r: 0.7294118, g: 1, b: 0.7686275, a: 1}
+    m_DisabledColor: {r: 0.7294118, g: 1, b: 0.7686275, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -20093,6 +20093,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677246541}
   m_CullTransparentMesh: 1
+--- !u!1 &1682106496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682106497}
+  - component: {fileID: 1682106498}
+  m_Layer: 0
+  m_Name: TapEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1682106497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682106496}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.1639276, y: -0.14072871, z: 92.43952}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 181000561830735181}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682106498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682106496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2c65f16a62635488521993bcba435e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectParent: {fileID: 181000562139351238}
 --- !u!1 &1683285878
 GameObject:
   m_ObjectHideFlags: 0
@@ -24758,10 +24803,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -25107,10 +25152,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -25400,6 +25445,7 @@ Transform:
   - {fileID: 8401103823433260511}
   - {fileID: 181000562139351237}
   - {fileID: 181000561556313821}
+  - {fileID: 1682106497}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
