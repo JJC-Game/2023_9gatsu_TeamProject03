@@ -32,18 +32,18 @@ public class InputFieldManager : MonoBehaviour
             // フィールドの初期化
             InitInputField();
 
-            if (inputField.readOnly)
+            if (!inputField.readOnly)
             {
-                inputField.readOnly = false;
+                inputField.readOnly = true;
             }
         }
         else
         {
             StartInputText();
 
-            if (!inputField.readOnly)
+            if (inputField.readOnly)
             {
-                inputField.readOnly = true;
+                inputField.readOnly = false;
             }
         }
     }

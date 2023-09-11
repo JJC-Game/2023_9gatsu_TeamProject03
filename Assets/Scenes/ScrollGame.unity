@@ -4735,6 +4735,7 @@ MonoBehaviour:
   bforePosition: {x: 0, y: 0, z: 0}
   stop: 0
   stopNumber: 0
+  aimCount: 0
 --- !u!1 &1348977435
 GameObject:
   m_ObjectHideFlags: 0
@@ -9346,7 +9347,9 @@ PlayableDirector:
   - key: {fileID: 7563476881369933990, guid: 47f9352857fd18d4b91ea858f49bf0ed, type: 2}
     value: {fileID: 1916675350052928230}
   - key: {fileID: 8977249263830574675, guid: 47f9352857fd18d4b91ea858f49bf0ed, type: 2}
-    value: {fileID: 664106000}
+    value: {fileID: 0}
+  - key: {fileID: 7860905588618782796, guid: 47f9352857fd18d4b91ea858f49bf0ed, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1916675348633457660
