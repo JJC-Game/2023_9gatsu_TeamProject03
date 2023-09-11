@@ -68,6 +68,8 @@ public class ScoreDisplay : MonoBehaviour
             color.a = 0;
 
             coinImage.color = color;
+
+            textureId = 0;
         }
     }
 }

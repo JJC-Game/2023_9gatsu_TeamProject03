@@ -61,11 +61,15 @@ public class BaseGameManager : MonoBehaviour
 
         if (stageNo == 1)
         {
-            coinPulsTimes = 100;
+            coinPulsTimes = 50;
         }
-        else if(stageNo == 2 || stageNo == 3 || stageNo == 4)
+        else if(stageNo == 2 || stageNo == 3)
         {
-            coinPulsTimes = 300;
+            coinPulsTimes = 400;
+        }
+        else if (stageNo == 4)
+        {
+            coinPulsTimes = 200;
         }
         else
         {
