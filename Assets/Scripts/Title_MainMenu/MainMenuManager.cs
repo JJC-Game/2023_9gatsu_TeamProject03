@@ -8,11 +8,14 @@ public class MainMenuManager : MonoBehaviour
     GameObject operateSelectCanvas;
     GameObject[] stageSelectCanvas = new GameObject[3];
     GameObject creditCanvas;
+    GameObject checkCanvas;
 
     public ScoreDisplay[] stageScore;
     public GameObject[] coinEffect;
 
     int stageNo = -1;
+
+    int operateNo = 0;
 
     void Start()
     {
@@ -22,6 +25,8 @@ public class MainMenuManager : MonoBehaviour
         stageSelectCanvas[0] = GameObject.Find("TapCanvas");
         stageSelectCanvas[1] = GameObject.Find("SwipeCanvas");
         stageSelectCanvas[2] = GameObject.Find("DragCanvas");
+
+        checkCanvas = GameObject.Find("CheckCanvas");
 
         CanvasInit();
         operateSelectCanvas.SetActive(true);
@@ -59,6 +64,7 @@ public class MainMenuManager : MonoBehaviour
             stageSelectCanvas[i].SetActive(false);
         }
         creditCanvas.SetActive(false);
+        checkCanvas.SetActive(false);
     }
 
     void EffectInit()
@@ -86,6 +92,36 @@ public class MainMenuManager : MonoBehaviour
         CanvasInit();
         creditCanvas.SetActive(true);
 
+        SoundManager.Instance.PlaySE_Sys(0);
+    }
+
+    public void ScoreResetCheck(int n)
+    {
+        operateNo = n;
+
+        checkCanvas.SetActive(true);
+
+        SoundManager.Instance.PlaySE_Sys(0);
+    }
+
+    public void ScoreReset(bool flg)
+    {
+        if (flg)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                PlayerPrefs.SetInt("StageScore_" + operateNo, 0);
+                operateNo++;
+            }
+        }
+        else
+        {
+            operateNo = 0;
+
+        }
+
+        EffectInit();
+        checkCanvas.SetActive(false);
         SoundManager.Instance.PlaySE_Sys(0);
     }
 

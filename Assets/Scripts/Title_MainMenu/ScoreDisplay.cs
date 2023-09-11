@@ -14,11 +14,11 @@ public class ScoreDisplay : MonoBehaviour
 
     public int stageNo = 1;
 
+    int sumScore = 0;
+
     void Start()
     {
         text = gameObject.GetComponent<TextMeshProUGUI>();
-
-        int sumScore = 0;
 
         sumScore += PlayerPrefs.GetInt("StageScore_" + stageNo, 0);
         sumScore += PlayerPrefs.GetInt("StageScore_" + (stageNo+1), 0);
@@ -50,6 +50,24 @@ public class ScoreDisplay : MonoBehaviour
         if (Resources.Load<Sprite>("ProjectAssets/UIPack/CoinMountain_" + textureId))
         {
             coinImage.sprite = Resources.Load<Sprite>("ProjectAssets/UIPack/CoinMountain_" + textureId);
+        }
+    }
+
+    private void Update()
+    {
+        int no = PlayerPrefs.GetInt("StageScore_" + stageNo, 0);
+        no += PlayerPrefs.GetInt("StageScore_" + (stageNo + 1), 0);
+
+        if (sumScore != no)
+        {
+            sumScore = no;
+
+            text.text = sumScore.ToString("0");
+
+            Color color = coinImage.color;
+            color.a = 0;
+
+            coinImage.color = color;
         }
     }
 }
