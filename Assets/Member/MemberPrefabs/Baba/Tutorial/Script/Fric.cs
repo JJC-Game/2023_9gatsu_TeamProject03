@@ -29,19 +29,28 @@ public class Fric : MonoBehaviour, IDragHandler
     [SerializeField]
     float stopNumber=0.2f;
     private float dragSpeed = 0.1f; // ドラッグ速度を調整するための係数
+
+    AimController aim;
+   public float aimCount;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         GameObject targetObject = GameObject.Find("GameManager");
         baseGameManajer = targetObject.GetComponent<BaseGameManager>();
+        aim = GameObject.Find("Aim").GetComponent<AimController>();
     }
 
     private void Update()
     {
+        if (aim.targetIn)
+        {
+            aimCount += Time.deltaTime;
+        }
         if (baseGameManajer.inGameEnable == true)
         {
             if (Input.GetMouseButtonDown(0))
             {
+                aimCount = 0;
                 startTouchPos = Input.mousePosition;
                 startTime = Time.time;
                 velocity = Vector3.zero;
@@ -74,10 +83,12 @@ public class Fric : MonoBehaviour, IDragHandler
                          {
                                 stop = false;
                          }
+
                 }       
             }
             else if (Input.GetMouseButtonUp(0) && !isFlicked)
             {
+                aimCount = 0;
                 if (stop==false)
                 {
                     if (Mathf.Abs(nowPosition.y - bforePosition.y) >= 70)
@@ -119,6 +130,10 @@ public class Fric : MonoBehaviour, IDragHandler
             }
             ClampPosition();
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
         
     }
 
@@ -145,7 +160,11 @@ public class Fric : MonoBehaviour, IDragHandler
                 }
             }
         }
-       
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
+
     }
 
     void ClampPosition()
@@ -167,15 +186,16 @@ public class Fric : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (baseGameManajer.inGameEnable == true)
+        if (aimCount <= 1.9f)
         {
-            // ドラッグの差分を計算して現在の位置に加えます
-            Vector3 deltaPosition = new Vector3(eventData.delta.x, eventData.delta.y, 0);
-            transform.position += deltaPosition * dragSpeed;
+            if (baseGameManajer.inGameEnable == true)
+            {
+                // ドラッグの差分を計算して現在の位置に加えます
+                Vector3 deltaPosition = new Vector3(eventData.delta.x, eventData.delta.y, 0);
+                transform.position += deltaPosition * dragSpeed;
+            }
+          
         }
-
+        
     }
-
-
-
 }

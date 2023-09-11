@@ -24,6 +24,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     Timer timer;
     AnswerManager anserManager;
     DragCuizuBaseMane dragCuizeMane;
+    bool dragNow = false;
     private void Awake()
     {
         GameObject targetObject = GameObject.Find("GameManager");
@@ -80,93 +81,111 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (timer.startTime == true)
+       if (Input.touchCount == 1)
         {
-            another.okTM = false;
-            if (posi == true)
+            if (dragCuizeMane.inGameEnable == true)
             {
-                prePosition = transform.position;
-                posi = false;
-            }
-            if (era)
-            {
-                era.SetActive(true);
+                another.okTM = false;
+                dragNow = true;
+                if (posi == true)
+                {
+                    prePosition = transform.position;
+                    posi = false;
+                }
+                if (era)
+                {
+                    era.SetActive(true);
+                }
             }
         }
+
 
     }
     public void OnDrag(PointerEventData eventData)
     {
-        if (timer.startTime == true)
+        if (dragNow == true)
         {
-            transform.position = eventData.position;
+            if (dragCuizeMane.inGameEnable == true)
+            {
+                transform.position = eventData.position;
+            }
+            else
+            {
+                transform.position = prePosition;
+            }
         }
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (timer.startTime == true)
+        if (dragNow == true)
         {
-            bool flg = true;
-
-            var raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData, raycastResults);
-
-            foreach (var hit in raycastResults)
+            if (dragCuizeMane.inGameEnable == true)
             {
-                if (hit.gameObject.name == "1")
+                bool flg = true;
+
+                var raycastResults = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(eventData, raycastResults);
+
+                foreach (var hit in raycastResults)
                 {
-                    Debug.Log("元に戻す");
-                    modoru = true;
-                    transform.position = hit.gameObject.transform.position;
-                    era = hit.gameObject;
-                    DragID = 1;
-                    hit.gameObject.SetActive(false);
-                    flg = false;
+                    if (hit.gameObject.name == "1")
+                    {
+                        Debug.Log("元に戻す");
+                        modoru = true;
+                        transform.position = hit.gameObject.transform.position;
+                        era = hit.gameObject;
+                        DragID = 1;
+                        hit.gameObject.SetActive(false);
+                        flg = false;
+                    }
+                    if (hit.gameObject.name == "2")
+                    {
+                        modoru = true;
+                        DragID = 2;
+                        transform.position = hit.gameObject.transform.position;
+                        era = hit.gameObject;
+                        hit.gameObject.SetActive(false);
+                        flg = false;
+                    }
+                    if (hit.gameObject.name == "3")
+                    {
+                        modoru = true;
+                        DragID = 3;
+                        transform.position = hit.gameObject.transform.position;
+                        era = hit.gameObject;
+                        hit.gameObject.SetActive(false);
+                        flg = false;
+                    }
+                    if (hit.gameObject.name == "4")
+                    {
+                        modoru = true;
+                        DragID = 4;
+                        transform.position = hit.gameObject.transform.position;
+                        era = hit.gameObject;
+                        hit.gameObject.SetActive(false);
+                        flg = false;
+                    }
+                    if (hit.gameObject.name == "5")
+                    {
+                        modoru = true;
+                        DragID = 5;
+                        transform.position = hit.gameObject.transform.position;
+                        era = hit.gameObject;
+                        hit.gameObject.SetActive(false);
+                        flg = false;
+                    }
                 }
-                if (hit.gameObject.name == "2")
+                if (flg)
                 {
-                    modoru = true;
-                    DragID = 2;
-                    transform.position = hit.gameObject.transform.position;
-                    era = hit.gameObject;
-                    hit.gameObject.SetActive(false);
-                    flg = false;
-                }
-                if (hit.gameObject.name == "3")
-                {
-                    modoru = true;
-                    DragID = 3;
-                    transform.position = hit.gameObject.transform.position;
-                    era = hit.gameObject;
-                    hit.gameObject.SetActive(false);
-                    flg = false;
-                }
-                if (hit.gameObject.name == "4")
-                {
-                    modoru = true;
-                    DragID = 4;
-                    transform.position = hit.gameObject.transform.position;
-                    era = hit.gameObject;
-                    hit.gameObject.SetActive(false);
-                    flg = false;
-                }
-                if (hit.gameObject.name == "5")
-                {
-                    modoru = true;
-                    DragID = 5;
-                    transform.position = hit.gameObject.transform.position;
-                    era = hit.gameObject;
-                    hit.gameObject.SetActive(false);
-                    flg = false;
+                    transform.position = prePosition;
+                    DragID = 99;
                 }
             }
-            if (flg)
-            {
-                transform.position = prePosition;
-                DragID = 99;
-            }
+            dragNow = false;
         }
+
     }
     public void dragPosi()
     {

@@ -84,38 +84,40 @@ public class AnotherScript : MonoBehaviour
     }
     public void skip()
     {
-        if (baseManager.inGameEnable == true)
+        if (Input.touchCount == 1)
         {
-            okTM = true;
-            // GetChildTMPro スクリプトがアタッチされたオブジェクトを取得
-            GameObject getChildTMProObject = GameObject.Find("T");
-            GameObject getAnser = GameObject.Find("GameManager");
-            GetChildTMPro[] getChildTMProScripts = getChildTMProObject.GetComponentsInChildren<GetChildTMPro>();
-            DragFixData getAnsers = getAnser.GetComponent<DragFixData>();
-            int trueCount = 0;
-            int okCont = 0;
-            // 各子オブジェクトの condition プロパティにアクセス
-            foreach (GetChildTMPro getChildTMProScript in getChildTMProScripts)
+            if (baseManager.inGameEnable == true)
             {
-                bool isConditionTrue = getChildTMProScript.condition;
-
-                if (isConditionTrue)
+                okTM = true;
+                // GetChildTMPro スクリプトがアタッチされたオブジェクトを取得
+                GameObject getChildTMProObject = GameObject.Find("T");
+                GameObject getAnser = GameObject.Find("GameManager");
+                GetChildTMPro[] getChildTMProScripts = getChildTMProObject.GetComponentsInChildren<GetChildTMPro>();
+                DragFixData getAnsers = getAnser.GetComponent<DragFixData>();
+                int trueCount = 0;
+                int okCont = 0;
+                // 各子オブジェクトの condition プロパティにアクセス
+                foreach (GetChildTMPro getChildTMProScript in getChildTMProScripts)
                 {
-                    trueCount++;
-                }
-            }
-            // 各子オブジェクトの condition プロパティにアクセス
-            foreach (GetChildTMPro getChildTMProScript in getChildTMProScripts)
-            {
-                bool isConditionTrue = getChildTMProScript.ok;
+                    bool isConditionTrue = getChildTMProScript.condition;
 
-                if (isConditionTrue)
-                {
-                    okCont++;
+                    if (isConditionTrue)
+                    {
+                        trueCount++;
+                    }
                 }
-            }
-            List<string> anser = new List<string>();
-            anser = getAnsers.Options;
+                // 各子オブジェクトの condition プロパティにアクセス
+                foreach (GetChildTMPro getChildTMProScript in getChildTMProScripts)
+                {
+                    bool isConditionTrue = getChildTMProScript.ok;
+
+                    if (isConditionTrue)
+                    {
+                        okCont++;
+                    }
+                }
+                List<string> anser = new List<string>();
+                anser = getAnsers.Options;
 
 
                 Debug.Log("正かい");
@@ -128,12 +130,14 @@ public class AnotherScript : MonoBehaviour
                     getChildTMProScripts[i].condition = false;
                     getChildTMProScripts[i].ok = false;
                     Debug.Log("リセット");
-                   // baseManager.AddScore();
+                    // baseManager.AddScore();
                 }
 
-            // true の数を表示
-            Debug.Log("文字の数 " + trueCount);
-            Debug.Log("合ってる数 " + okCont);
+                // true の数を表示
+                Debug.Log("文字の数 " + trueCount);
+                Debug.Log("合ってる数 " + okCont);
+            }
+
         }
 
     }
