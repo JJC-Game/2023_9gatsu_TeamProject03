@@ -163,7 +163,7 @@ public class BaseGameManager : MonoBehaviour
 
     public void LessTime()
     {
-        timeCurrent -= 10;
+        timeCurrent -= 5;
 
         if (timeCurrent <= 0)
         {

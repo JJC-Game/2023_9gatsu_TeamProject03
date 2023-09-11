@@ -13,7 +13,7 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         operateSelectCanvas = GameObject.Find("StageSelectCanvas");
-        //creditCanvas = GameObject.Find("CreditCanvas");
+        creditCanvas = GameObject.Find("CreditCanvas");
 
         stageSelectCanvas[0] = GameObject.Find("TapCanvas");
         stageSelectCanvas[1] = GameObject.Find("SwipeCanvas");
@@ -37,12 +37,21 @@ public class MainMenuManager : MonoBehaviour
         {
             stageSelectCanvas[i].SetActive(false);
         }
+        creditCanvas.SetActive(false);
     }
 
     public void StageSerectCanvasChange(int canvasNo)
     {
         CanvasInit();
         stageSelectCanvas[canvasNo].SetActive(true);
+
+        SoundManager.Instance.PlaySE_Sys(0);
+    }
+
+    public void CreditCanvasOpen()
+    {
+        CanvasInit();
+        creditCanvas.SetActive(true);
 
         SoundManager.Instance.PlaySE_Sys(0);
     }
@@ -65,6 +74,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void GameStop()
     {
+        Application.runInBackground = false;
         Application.Quit();
+        return;
     }
 }
