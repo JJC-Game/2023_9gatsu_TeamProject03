@@ -5,10 +5,14 @@ using UnityEngine.EventSystems;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [Header("キャンバス")]
     GameObject operateSelectCanvas;
     GameObject[] stageSelectCanvas = new GameObject[3];
     GameObject creditCanvas;
+
+    public ScoreDisplay[] stageScore;
+    public GameObject[] coinEffect;
+
+    int stageNo = -1;
 
     void Start()
     {
@@ -22,11 +26,28 @@ public class MainMenuManager : MonoBehaviour
         CanvasInit();
         operateSelectCanvas.SetActive(true);
 
+        EffectInit();
+
         SoundManager.Instance.PlayBGM(0);
     }
 
     void Update()
     {
+        if (stageNo >= 0)
+        {
+            if (stageScore[stageNo].textureId == 1 || stageScore[stageNo].textureId == 2 && !coinEffect[0].activeSelf)
+            {
+                coinEffect[0].SetActive(true);
+            }
+            else if (stageScore[stageNo].textureId == 3 && !coinEffect[1].activeSelf)
+            {
+                coinEffect[1].SetActive(true);
+            }
+            else if (stageScore[stageNo].textureId == 4 && !coinEffect[2].activeSelf)
+            {
+                coinEffect[2].SetActive(true);
+            }
+        }
     }
 
     //すべてのキャンバスを非表示に
@@ -40,10 +61,22 @@ public class MainMenuManager : MonoBehaviour
         creditCanvas.SetActive(false);
     }
 
+    void EffectInit()
+    {
+        for (int i = 0; i < coinEffect.Length; i++)
+        {
+            coinEffect[i].SetActive(false);
+        }
+        stageNo = -1;
+    }
+
     public void StageSerectCanvasChange(int canvasNo)
     {
         CanvasInit();
         stageSelectCanvas[canvasNo].SetActive(true);
+
+        stageNo = canvasNo;
+        Debug.Log(stageNo);
 
         SoundManager.Instance.PlaySE_Sys(0);
     }
@@ -60,6 +93,8 @@ public class MainMenuManager : MonoBehaviour
     {
         CanvasInit();
         operateSelectCanvas.SetActive(true);
+
+        EffectInit();
 
         SoundManager.Instance.PlaySE_Sys(5);
     }

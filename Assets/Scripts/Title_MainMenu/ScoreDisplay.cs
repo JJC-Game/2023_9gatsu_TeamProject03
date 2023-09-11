@@ -8,7 +8,7 @@ public class ScoreDisplay : MonoBehaviour
 {
     //使用するイラスト
     public Image coinImage;
-    int textureId;
+    public int textureId;
 
     TextMeshProUGUI text;
 
