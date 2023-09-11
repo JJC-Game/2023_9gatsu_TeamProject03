@@ -21937,7 +21937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7f09514729c1b4cba4cbb934decda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFX: []
+  playerFX:
+  - {fileID: 2798588160157809082, guid: 3573a25d690ebd74a82b2959466f080b, type: 3}
   StageFX: []
   otherFX: []
 --- !u!4 &181000562139351237
@@ -26679,7 +26680,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f75ef3729fbf564ca831d882cf4d5c8, type: 3}
   - {fileID: 8300000, guid: 5100ce13e75ca7c4c9cbfd4ff2859240, type: 3}
   se_GameClip:
-  - {fileID: 8300000, guid: fef01371c722fbe40bb72a59f1b36ca0, type: 3}
   - {fileID: 8300000, guid: ecc2598953503294fae9707fd2d6b7d0, type: 3}
 --- !u!4 &8401103823433260511
 Transform:

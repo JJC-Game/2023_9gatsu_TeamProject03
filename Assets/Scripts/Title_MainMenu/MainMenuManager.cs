@@ -12,8 +12,8 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-        operateSelectCanvas = GameObject.Find("StageSerectCanvas");
-        creditCanvas = GameObject.Find("CreditCanvas");
+        operateSelectCanvas = GameObject.Find("StageSelectCanvas");
+        //creditCanvas = GameObject.Find("CreditCanvas");
 
         stageSelectCanvas[0] = GameObject.Find("TapCanvas");
         stageSelectCanvas[1] = GameObject.Find("SwipeCanvas");
