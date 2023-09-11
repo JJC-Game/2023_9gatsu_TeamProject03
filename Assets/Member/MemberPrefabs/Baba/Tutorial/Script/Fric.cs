@@ -32,24 +32,26 @@ public class Fric : MonoBehaviour, IDragHandler
 
     AimController aim;
    public float aimCount;
+    PauseManager pause;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         GameObject targetObject = GameObject.Find("GameManager");
         baseGameManajer = targetObject.GetComponent<BaseGameManager>();
         aim = GameObject.Find("Aim").GetComponent<AimController>();
+        pause = GameObject.Find("GameManager").GetComponent<PauseManager>();
     }
 
     private void Update()
     {
-        if (aim.targetIn)
+        if (pause.pauseFLG == true)
         {
-           // aimCount += Time.deltaTime;
+            ((RectTransform)transform).anchoredPosition = new Vector2(0, ((RectTransform)transform).anchoredPosition.y); // x軸とz軸を0に設定
         }
         ClampPosition();
         if (baseGameManajer.inGameEnable == false)
         {
-            transform.position = nowPosition;
+           // transform.position = nowPosition;
         }
         if (baseGameManajer.inGameEnable == true)
         {
@@ -123,7 +125,7 @@ public class Fric : MonoBehaviour, IDragHandler
 
                     velocity += touchDirection * flickSpeed * acceleration * Time.deltaTime;
                     velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-
+                    
                     isFlicked = true;
                     timer = 0;
                 }
