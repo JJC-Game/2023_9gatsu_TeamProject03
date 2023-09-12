@@ -54,6 +54,10 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
   public  bool dragOK=false;
     ButtonClickHandler buttonCheck;
     PauseManager pause;
+    bool gameNow = false;
+    
+    public Button button;// ボタンの参照を保持するための変数   
+    private Color whiteColor = Color.white;// 白の色
     private void Start()
     {
         GetComponent<RectTransform>().rotation = Quaternion.identity;
@@ -64,6 +68,11 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         pause= GameObject.Find("GameManager").GetComponent<PauseManager>();
         i = GetComponent<Image>();
         buttonCheck = GameObject.Find("AnswerButton").GetComponent<ButtonClickHandler>();
+        if (button == null)
+        {
+            button = GetComponent<Button>();
+        }
+    
         Color currentColor = i.color; // 現在の色を取得
 
         redComponent = currentColor.r;
@@ -87,7 +96,25 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             dragOK = false;
             buttonCheck.dragNowCheck = false;
         }
-
+        if(dGame.inGameEnable == true)
+        {
+            gameNow = true;
+        }else if(dGame.inGameEnable == false&& gameNow == true)
+        {
+            isDragging = false;
+            Destroy(dragObject);
+            dragObject = null;
+            d.ClearDraggingPiece();
+            this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
+            dragObj = false;
+            dragOK = false;
+            // PressedColorとDisabledColorを設定します
+            ColorBlock colors = button.colors;
+            colors.pressedColor = whiteColor;
+            colors.disabledColor = whiteColor;
+            button.colors = colors;
+            // Debug.Log("rogu");
+        }
         // Debug.Log(Type);
     }
     public void OnPointerDown(PointerEventData eventData)
@@ -114,7 +141,7 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 dragObj = true;
                 dragOK = true;
                buttonCheck. dragNowCheck = true;
-            }
+           }
             //Debug.Log("OnPointerDown: isDragging = " + isDragging);
         }
     }

@@ -57,9 +57,10 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 anserManager.reduce();
             }
             gameNow = true;
-        }else if (gameNow==true&& dragCuizeMane.inGameEnable == false)
+        }else if (gameNow==true&& dragCuizeMane.inGameEnable == false&& dragNow == true)
         {
             transform.position = prePosition;
+            Debug.Log("戻したよ");
             DragID = 99;
         }
 
@@ -90,7 +91,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-       if (Input.touchCount == 1)
+     if (Input.touchCount == 1)
         {
             if (dragCuizeMane.inGameEnable == true)
             {
@@ -105,7 +106,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 {
                     era.SetActive(true);
                 }
-            }
+          }
        }
 
 
