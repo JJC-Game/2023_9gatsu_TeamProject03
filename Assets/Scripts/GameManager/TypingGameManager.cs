@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TypingGameManager : BaseGameManager
@@ -14,10 +15,14 @@ public class TypingGameManager : BaseGameManager
 
     GameObject blind;
 
+    InputField inputField;
+
     public override void Arrangements()
     {
         questionText = GameObject.Find("QuestionText").GetComponent<TextMeshProUGUI>();
         blind = GameObject.Find("Blind");
+        inputField = GameObject.Find("InputField (Legacy)").GetComponent<InputField>();
+        inputField.enabled = false;
         LoadFixData();
         WordChange();
     }
@@ -37,9 +42,29 @@ public class TypingGameManager : BaseGameManager
 
     public override void UpdatePlus()
     {
-        if (inGameEnable && blind.activeSelf)
+        if (inGameEnable)
         {
-            blind.SetActive(false);
+            if (blind.activeSelf)
+            {
+                blind.SetActive(false);
+            }
+
+            if (!inputField.enabled)
+            {
+                inputField.enabled = true;
+            }
+        }
+        else
+        {
+            if (!blind.activeSelf)
+            {
+                blind.SetActive(true);
+            }
+
+            if (inputField.enabled)
+            {
+                inputField.enabled = false;
+            }
         }
     }
 

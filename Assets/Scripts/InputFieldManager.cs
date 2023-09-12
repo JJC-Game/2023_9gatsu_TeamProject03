@@ -37,6 +37,11 @@ public class InputFieldManager : MonoBehaviour
             {
                 inputField.readOnly = true;
             }
+
+            if (keyboard.active)
+            {
+                keyboard.active = false;
+            }
         }
         else
         {
@@ -45,11 +50,6 @@ public class InputFieldManager : MonoBehaviour
             if (inputField.readOnly)
             {
                 inputField.readOnly = false;
-            }
-
-            if (keyboard.active)
-            {
-                keyboard.active = false;
             }
         }
     }
