@@ -25,6 +25,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     AnswerManager anserManager;
     DragCuizuBaseMane dragCuizeMane;
     bool dragNow = false;
+    bool gameNow = false;
     private void Awake()
     {
         GameObject targetObject = GameObject.Find("GameManager");
@@ -45,13 +46,21 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 ok = true;
             }
+            else
+            {
+               ok = false;
+            }
             if (another.okTM == true)
             {
                 dragPosi();
                 era = null;
                 anserManager.reduce();
             }
-
+            gameNow = true;
+        }else if (gameNow==true&& dragCuizeMane.inGameEnable == false)
+        {
+            transform.position = prePosition;
+            DragID = 99;
         }
 
     }
@@ -97,7 +106,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     era.SetActive(true);
                 }
             }
-        }
+       }
 
 
     }
