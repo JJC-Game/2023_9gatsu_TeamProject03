@@ -13,8 +13,9 @@ public class InputFieldManager : MonoBehaviour
 
     private bool isCancel = false;  // cancelボタンが押されたか
 
-    TypingGameManager typingGameManager;
+    TouchScreenKeyboard keyboard;
 
+    TypingGameManager typingGameManager;
 
     void Start()
     {
@@ -44,6 +45,11 @@ public class InputFieldManager : MonoBehaviour
             if (inputField.readOnly)
             {
                 inputField.readOnly = false;
+            }
+
+            if (keyboard.active)
+            {
+                keyboard.active = false;
             }
         }
     }
