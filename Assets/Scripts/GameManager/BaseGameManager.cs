@@ -24,7 +24,7 @@ public class BaseGameManager : MonoBehaviour
     [Header("スコア関連")]
     int coinPulsTimes;  //一問当たりのコイン獲得枚数
     int questionCurrent;         //正解数
-    TextMeshProUGUI questionText;
+    TextMeshProUGUI questionNoText;
 
     //ゲーム終了時
     TextMeshProUGUI clearNoText;
@@ -54,8 +54,8 @@ public class BaseGameManager : MonoBehaviour
         timeCurrent = timeLimit;
         timeText.text = timeCurrent.ToString("00");
 
-        questionText = GameObject.Find("QuestionNumber").GetComponent<TextMeshProUGUI>();
-        questionText.text = 1.ToString("00");
+        questionNoText = GameObject.Find("QuestionNumber").GetComponent<TextMeshProUGUI>();
+        questionNoText.text = 1.ToString("00");
 
         clearNoText = GameObject.Find("ClearNumber").GetComponent<TextMeshProUGUI>();
         getCoinText_Current = GameObject.Find("GetCoinNumber_Current").GetComponent<TextMeshProUGUI>();
@@ -171,7 +171,7 @@ public class BaseGameManager : MonoBehaviour
     public void AddScore()
     {
         questionCurrent++;
-        questionText.text = questionCurrent.ToString("00");
+        questionNoText.text = questionCurrent.ToString("00");
 
         pd_correct.Play();
         SoundManager.Instance.PlaySE_Sys(2);

@@ -50,7 +50,6 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     float greenComponent;
     float blueComponent;
     float alphaComponent;
-    bool dragObj=false;
   public  bool dragOK=false;
     ButtonClickHandler buttonCheck;
     PauseManager pause;
@@ -92,7 +91,6 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             dragObject = null;
             d.ClearDraggingPiece();
             this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
-            dragObj = false;
             dragOK = false;
             buttonCheck.dragNowCheck = false;
         }
@@ -106,7 +104,6 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             dragObject = null;
             d.ClearDraggingPiece();
             this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
-            dragObj = false;
             dragOK = false;
             // PressedColorとDisabledColorを設定します
             ColorBlock colors = button.colors;
@@ -138,7 +135,6 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 d.SetDraggingPiece(this);
                 isDragging = true;
                 dragStartPosition = eventData.position; // スクリーン座標をワールド座標に変換して代入
-                dragObj = true;
                 dragOK = true;
                buttonCheck. dragNowCheck = true;
            }
@@ -156,7 +152,6 @@ public class ImageDragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 dragObject = null;
                 d.ClearDraggingPiece();
                 this.i.color = new Color(redComponent, greenComponent, blueComponent, alphaComponent);
-                dragObj = false;
                 dragOK = false;
                 buttonCheck.dragNowCheck = false;
             }
