@@ -54,6 +54,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 dragPosi();
                 era = null;
+                DragID = 99;
                 anserManager.reduce();
             }
             gameNow = true;
@@ -92,7 +93,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
      if (Input.touchCount == 1)
-        {
+     {
             if (dragCuizeMane.inGameEnable == true)
             {
                 another.okTM = false;
@@ -106,7 +107,7 @@ public class GetChildTMPro : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 {
                     era.SetActive(true);
                 }
-          }
+         }
        }
 
 
