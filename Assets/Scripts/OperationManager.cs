@@ -81,7 +81,7 @@ public class OperationManager : Singleton<OperationManager>
             progress--;
             operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
 
-            SoundManager.Instance.PlaySE_Game(0);
+            SoundManager.Instance.PlaySE_Sys(0);
         }
         else
         {
@@ -104,7 +104,7 @@ public class OperationManager : Singleton<OperationManager>
             progress++;
             operationText.text = fixDataList[baseGM.stageNo - 1]._operationText[progress];
 
-            SoundManager.Instance.PlaySE_Game(0);
+            SoundManager.Instance.PlaySE_Sys(0);
         }
         else
         {
@@ -138,6 +138,8 @@ public class OperationManager : Singleton<OperationManager>
     {
         choicesCanvas.SetActive(false);
         operationCanvas.SetActive(true);
+
+        SoundManager.Instance.PlaySE_Sys(0);
     }
 
     public void Choice_No()

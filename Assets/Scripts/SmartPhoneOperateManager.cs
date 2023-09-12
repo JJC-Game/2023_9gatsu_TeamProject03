@@ -112,13 +112,13 @@ public class SmartPhoneOperateManager : MonoBehaviour
             }
         }
 
-        SoundManager.Instance.PlaySE_Game(0);
+        SoundManager.Instance.PlaySE_Sys(0);
     }
 
     public void SceneMove()
     {
         FadeManager.Instance.LoadSceneIndex(1, 0.5f);
 
-        SoundManager.Instance.PlaySE_Sys(3);
+        SoundManager.Instance.PlaySE_Sys(5);
     }
 }
