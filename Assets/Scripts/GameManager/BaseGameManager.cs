@@ -37,8 +37,12 @@ public class BaseGameManager : MonoBehaviour
     [SerializeField] PlayableDirector pd_correct;  //ゲームスタートのデモ演出
     [SerializeField] PlayableDirector pd_incorrect;  //ゲームクリアのデモ演出
 
+    bool sceneMove;
+
     void Awake()
     {
+        sceneMove = false;
+
         questionCurrent = 1;
 
         timer = GameObject.Find("Clock").GetComponent<Image>();
@@ -73,7 +77,7 @@ public class BaseGameManager : MonoBehaviour
         }
         else if (stageNo == 4)
         {
-            coinPulsTimes = 400;
+            coinPulsTimes = 500;
         }
         else
         {
@@ -193,7 +197,14 @@ public class BaseGameManager : MonoBehaviour
     //シーン遷移
     public void SceneMove(int sceneNo)
     {
-        FadeManager.Instance.LoadSceneIndex(sceneNo, 0.5f);
+        if (!sceneMove)
+        {
+            FadeManager.Instance.LoadSceneIndex(sceneNo, 0.5f);
+
+            sceneMove = true;
+
+            SoundManager.Instance.PlaySE_Sys(1);
+        }
     }
     
     //シーンリセット

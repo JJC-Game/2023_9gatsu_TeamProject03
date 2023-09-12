@@ -1980,13 +1980,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157327237}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2911605347993287370}
-  m_RootOrder: 7
+  m_Father: {fileID: 1393542725}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2126,7 +2126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1271419164
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2608,6 +2608,8 @@ RectTransform:
   - {fileID: 1456676920}
   - {fileID: 279644557}
   - {fileID: 976620377}
+  - {fileID: 1157327238}
+  - {fileID: 2118247344}
   m_Father: {fileID: 3452736280503127138}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3303,15 +3305,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118247343}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 394085664}
   - {fileID: 1583990383}
-  m_Father: {fileID: 2911605347993287370}
-  m_RootOrder: 8
+  m_Father: {fileID: 1393542725}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3968,8 +3970,6 @@ RectTransform:
   - {fileID: 2911605347152884348}
   - {fileID: 2911605348096997689}
   - {fileID: 598479064}
-  - {fileID: 1157327238}
-  - {fileID: 2118247344}
   m_Father: {fileID: 3452736280503127138}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8395,7 +8395,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f75ef3729fbf564ca831d882cf4d5c8, type: 3}
   - {fileID: 8300000, guid: 5100ce13e75ca7c4c9cbfd4ff2859240, type: 3}
   se_GameClip:
-  - {fileID: 8300000, guid: ca7c717941955fc4283d63599222c35c, type: 3}
+  - {fileID: 8300000, guid: fef01371c722fbe40bb72a59f1b36ca0, type: 3}
 --- !u!4 &4008410594923332479
 Transform:
   m_ObjectHideFlags: 0

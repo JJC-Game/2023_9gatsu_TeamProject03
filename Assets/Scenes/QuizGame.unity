@@ -13267,7 +13267,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f75ef3729fbf564ca831d882cf4d5c8, type: 3}
   - {fileID: 8300000, guid: 5100ce13e75ca7c4c9cbfd4ff2859240, type: 3}
   se_GameClip:
-  - {fileID: 8300000, guid: ca7c717941955fc4283d63599222c35c, type: 3}
+  - {fileID: 8300000, guid: fef01371c722fbe40bb72a59f1b36ca0, type: 3}
 --- !u!4 &6916998645194948897
 Transform:
   m_ObjectHideFlags: 0
@@ -16520,10 +16520,10 @@ RectTransform:
   m_Father: {fileID: 8603843739249174097}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1920}
+  m_SizeDelta: {x: 840, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8957488152282763392
 CanvasRenderer:
