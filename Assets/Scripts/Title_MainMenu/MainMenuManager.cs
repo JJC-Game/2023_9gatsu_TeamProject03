@@ -17,6 +17,8 @@ public class MainMenuManager : MonoBehaviour
 
     int operateNo = 0;
 
+    bool sceneMove;
+
     void Start()
     {
         operateSelectCanvas = GameObject.Find("StageSelectCanvas");
@@ -32,6 +34,8 @@ public class MainMenuManager : MonoBehaviour
         operateSelectCanvas.SetActive(true);
 
         EffectInit();
+
+        sceneMove = false;
 
         SoundManager.Instance.PlayBGM(0);
     }
@@ -138,9 +142,14 @@ public class MainMenuManager : MonoBehaviour
     //シーン遷移
     public void SceneMove(int sceneNo)
     {
-        FadeManager.Instance.LoadSceneIndex(sceneNo, 0.5f);
+        if (!sceneMove)
+        {
+            FadeManager.Instance.LoadSceneIndex(sceneNo, 0.5f);
 
-        SoundManager.Instance.PlaySE_Sys(1);
+            sceneMove = true;
+
+            SoundManager.Instance.PlaySE_Sys(1);
+        }
     }
 
     public void GameStop()

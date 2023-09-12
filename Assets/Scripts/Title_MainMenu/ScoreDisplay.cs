@@ -25,11 +25,11 @@ public class ScoreDisplay : MonoBehaviour
 
         text.text = sumScore.ToString("0");
 
-        if (sumScore >= 1000000)
+        if (sumScore >= 100000)
         {
             textureId = 4;
         }
-        else if(sumScore >= 100000)
+        else if(sumScore >= 50000)
         {
             textureId = 3;
         }
