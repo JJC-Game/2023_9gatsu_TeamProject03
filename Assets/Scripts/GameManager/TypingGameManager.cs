@@ -55,7 +55,7 @@ public class TypingGameManager : BaseGameManager
         }
     }
 
-    void WordChange()
+    public void WordChange()
     {
         int wordNo = Random.Range(0, fixDataList.Count);
         answerWord = fixDataList[wordNo];
